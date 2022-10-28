@@ -1,7 +1,8 @@
+import HomePage from "./pages/HomePage";
 function App() {
   return (
     <div>
-      <h1 className="">Welcome to react</h1>
+      <HomePage />
     </div>
   );
 }
