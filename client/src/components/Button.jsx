@@ -7,6 +7,7 @@ export default function Button(props) {
         onClick={props.onClick}
         className={`${textColor} ${bgColor} h-fit px-3 py-0.5 rounded-lg`}
       >
+        {props.icon}
         {props.text}
       </button>
     </div>

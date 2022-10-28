@@ -1,4 +1,6 @@
 import Button from "./Button";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSquarePlus, faUser } from "@fortawesome/free-solid-svg-icons";
 export default function Navbar() {
   return (
     <div className="bg-bg-dark fixed w-full py-2.5">
@@ -16,12 +18,21 @@ export default function Navbar() {
             text="Post a listing"
             bgColor="bg-accent"
             textColor="text-text-dark"
+            icon={
+              <FontAwesomeIcon
+                icon={faSquarePlus}
+                className="text-text-dark pr-2"
+              />
+            }
           />
           <p className="text-white text-2xl">|</p>
           <Button
             text="Login"
-            bgColor="bg-bg-dark"
-            textColor="text-text-white"
+            bgColor="bg-text-white"
+            textColor="text-bg-dark"
+            icon={
+              <FontAwesomeIcon icon={faUser} className="text-bg-dark pr-2" />
+            }
           />
         </div>
       </div>
