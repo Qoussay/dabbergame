@@ -17,6 +17,9 @@ module.exports = {
         "text-medium": "#62737F",
         "text-dark": "#38444F",
       },
+      boxShadow: {
+        all: "0px 0px 10px",
+      },
     },
   },
   plugins: [],

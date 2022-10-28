@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faUser } from "@fortawesome/free-solid-svg-icons";
 export default function Navbar() {
   return (
-    <div className="bg-bg-dark fixed w-full py-2.5">
+    <div className="bg-bg-dark fixed w-full py-2.5 shadow-md shadow-bg-dark">
       <div className="flex flex-row justify-center mx-80 space-x-20">
-        <h1 className=" text-3xl text-accent text-right">DabberGame</h1>
+        <h1 className=" text-2xl text-accent text-right">DabberGame</h1>
         <form className="grow flex flex-col justify-center">
           <input
             type="text"
@@ -24,6 +24,7 @@ export default function Navbar() {
                 className="text-text-dark pr-2"
               />
             }
+            className="text-sm"
           />
           <p className="text-white text-2xl">|</p>
           <Button
@@ -33,6 +34,7 @@ export default function Navbar() {
             icon={
               <FontAwesomeIcon icon={faUser} className="text-bg-dark pr-2" />
             }
+            className="text-sm"
           />
         </div>
       </div>
