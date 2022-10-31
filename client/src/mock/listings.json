@@ -10,7 +10,7 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
         "id": "2",
@@ -20,7 +20,7 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
         "platform": "playstation4",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": true
@@ -35,7 +35,7 @@
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
-        "delivery": true,
+        "delivery": false,
         "trade": true
     },
     {
@@ -49,7 +49,7 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
         "id": "5",
@@ -59,10 +59,10 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
         "platform": "playstation4",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
+        "delivery": false,
+        "trade": false
     },
     {
         "id": "6",
@@ -72,7 +72,7 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
         "platform": "xboxOne",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": true
@@ -85,9 +85,9 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
         "platform": "playstation4",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
-        "delivery": true,
+        "delivery": false,
         "trade": true
     },
     {
@@ -101,7 +101,7 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
         "id": "9",
@@ -113,8 +113,8 @@
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
+        "delivery": false,
+        "trade": false
     },
     {
         "id": "10",
@@ -124,10 +124,10 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
         "platform": "playstation5",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
+        "delivery": false,
+        "trade": false
     },
     {
         "id": "11",
@@ -139,7 +139,7 @@
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
-        "delivery": true,
+        "delivery": false,
         "trade": true
     },
     {
@@ -150,10 +150,10 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
         "platform": "xboxOne",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
         "id": "13",
@@ -166,7 +166,7 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
         "id": "1",
@@ -202,10 +202,10 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
         "platform": "playstation5",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
         "id": "4",
@@ -215,10 +215,10 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
         "platform": "xboxOne",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
         "id": "5",
@@ -230,7 +230,7 @@
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
-        "delivery": true,
+        "delivery": false,
         "trade": true
     },
     {
@@ -243,8 +243,8 @@
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
+        "delivery": false,
+        "trade": false
     },
     {
         "id": "7",
@@ -254,7 +254,7 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
         "platform": "playstation4",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": true
@@ -267,7 +267,7 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
         "platform": "playstation5",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": true
@@ -280,7 +280,7 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
         "platform": "playstation5",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": true
@@ -293,7 +293,7 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
         "platform": "playstation5",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": true
@@ -358,7 +358,7 @@
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
         "platform": "playstation4",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": true
