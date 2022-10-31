@@ -13,8 +13,8 @@ function Listings({ currentListings }) {
   return (
     <div className="grid desktop:grid-cols-7 laptop:grid-cols-6 gap-6 py-8">
       {currentListings &&
-        currentListings.map((listing) => {
-          return <ListingCard data={listing} />;
+        currentListings.map((listing, index) => {
+          return <ListingCard data={listing} key={index} />;
         })}
     </div>
   );

@@ -5,6 +5,7 @@ export default function Button(props) {
     <div className="flex flex-col justify-center">
       <button
         onClick={props.onClick}
+        type={props.type}
         className={`${textColor} ${bgColor} ${props.className} h-fit px-3 py-0.5 rounded-lg`}
       >
         {props.icon}

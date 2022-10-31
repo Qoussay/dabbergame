@@ -1,10 +1,20 @@
+import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import AddListingPage from "./pages/AddListingPage";
+import { useState } from "react";
+
+import ReactModal from "react-modal";
+
 function App() {
   return (
-    <div>
+    <div id="App">
+      <Navbar />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/sell" element={<AddListingPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </div>
   );

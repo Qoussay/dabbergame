@@ -1,7 +1,16 @@
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faUser } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 export default function Navbar() {
+  const navigate = useNavigate();
+  const navigateLogin = () => {
+    navigate("/login");
+  };
+  const navigateAddListing = () => {
+    navigate("/sell");
+  };
+
   return (
     <div className="bg-bg-dark fixed w-full py-2.5 shadow-md shadow-bg-dark">
       <div className="flex flex-row justify-center desktop:mx-80 laptop:mx-60 space-x-20">
@@ -25,6 +34,7 @@ export default function Navbar() {
               />
             }
             className="text-sm"
+            onClick={navigateAddListing}
           />
           <p className="text-white text-2xl">|</p>
           <Button
@@ -35,6 +45,7 @@ export default function Navbar() {
               <FontAwesomeIcon icon={faUser} className="text-bg-dark pr-2" />
             }
             className="text-sm"
+            onClick={navigateLogin}
           />
         </div>
       </div>
