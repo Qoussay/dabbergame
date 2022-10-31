@@ -11,7 +11,7 @@ export default function HomePage() {
         <hr></hr>
         <div className="py-6">
           <SortAndFilter />
-          <ListingsViewer />
+          <ListingsViewer itemsPerPage={42} />
         </div>
       </div>
     </div>
