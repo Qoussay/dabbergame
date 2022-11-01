@@ -2,7 +2,7 @@ import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-export default function Navbar() {
+export default function Navbar(props) {
   const navigate = useNavigate();
   const navigateLogin = () => {
     navigate("/login");
@@ -45,7 +45,7 @@ export default function Navbar() {
               <FontAwesomeIcon icon={faUser} className="text-bg-dark pr-2" />
             }
             className="text-sm"
-            onClick={navigateLogin}
+            onClick={props.loginClick}
           />
         </div>
       </div>

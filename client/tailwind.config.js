@@ -26,6 +26,7 @@ module.exports = {
         "text-light": "#9CB3BF",
         "text-medium": "#62737F",
         "text-dark": "#38444F",
+        "dark-bg": "rgba(0,0,0,0.5)",
       },
       boxShadow: {
         all: "0px 0px 10px",
