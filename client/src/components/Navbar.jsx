@@ -14,7 +14,9 @@ export default function Navbar(props) {
   return (
     <div className="bg-bg-dark fixed w-full py-2.5 shadow-md shadow-bg-dark">
       <div className="flex flex-row justify-center desktop:mx-80 laptop:mx-60 space-x-20">
-        <h1 className=" text-2xl text-accent text-right">DabberGame</h1>
+        <a href="/" className=" text-2xl text-accent text-right">
+          DabberGame
+        </a>
         <form className="grow flex flex-col justify-center">
           <input
             type="text"
