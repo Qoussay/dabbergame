@@ -30,6 +30,7 @@ module.exports = {
       },
       boxShadow: {
         all: "0px 0px 10px",
+        accent: "0 0 10px #47DDC2",
       },
     },
   },

@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import AddListingPage from "./pages/AddListingPage";
 import LoginModal from "./components/LoginModal";
+import ListingPage from "./pages/ListingPage";
 import { useState } from "react";
 
 function App() {
@@ -36,6 +37,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/sell" element={<AddListingPage />} />
+        <Route path="/listing/:listingId" element={<ListingPage />} />
       </Routes>
     </div>
   );

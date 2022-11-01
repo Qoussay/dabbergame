@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
 import data from "../mock/listings.json";
 import ListingCard from "./ListingCard";
@@ -10,11 +10,18 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function Listings({ currentListings }) {
+  const navigate = useNavigate();
   return (
     <div className="grid desktop:grid-cols-7 laptop:grid-cols-6 gap-6 py-8">
       {currentListings &&
-        currentListings.map((listing, index) => {
-          return <ListingCard data={listing} key={index} />;
+        currentListings.map((listing) => {
+          return (
+            <ListingCard
+              data={listing}
+              key={listing.id}
+              onClick={() => navigate(`/listing/${listing.id}`)}
+            />
+          );
         })}
     </div>
   );
