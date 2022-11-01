@@ -7,20 +7,32 @@ import { useState } from "react";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
+  const [modalType, setModalType] = useState(true);
 
   const handleOpen = () => {
     setOpenModal(true);
+    setModalType(true);
     document.body.style.overflow = "hidden";
   };
 
   const handleClose = () => {
     setOpenModal(false);
+    setModalType(true);
     document.body.style.overflow = "auto";
+  };
+
+  const handleModalSwitch = () => {
+    setModalType(!modalType);
   };
   return (
     <div id="App">
       <Navbar loginClick={() => handleOpen()} />
-      <LoginModal open={openModal} closeButtonClick={() => handleClose()} />
+      <LoginModal
+        open={openModal}
+        closeButtonClick={() => handleClose()}
+        type={modalType}
+        switchButtonClick={handleModalSwitch}
+      />
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/sell" element={<AddListingPage />} />
