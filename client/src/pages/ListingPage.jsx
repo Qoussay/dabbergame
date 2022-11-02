@@ -121,7 +121,7 @@ export default function ListingPage() {
         {/* RIght Panel  */}
         <div class="flex-1 flex overflow-hidden">
           <div class="flex-1 overflow-y-scroll no-scrollbar">
-            <div className="flex flex-col flex-auto">
+            <div className="flex flex-col flex-auto pb-10">
               {/* title and price  */}
               <div className="flex flex-row font-semibold">
                 <div className="text-text-white text-[2rem] grow">
