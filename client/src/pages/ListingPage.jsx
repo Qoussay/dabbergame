@@ -15,10 +15,31 @@ import Pill from "../components/Pill";
 import reviews from "../mock/reviews.json";
 import ListingPageSectionTitle from "../components/ListingPageSectionTitle";
 import GameCover from "../components/GameCover";
-
+import { useState, useEffect } from "react";
 export default function ListingPage() {
   const { listingId } = useParams();
   const listing = data.filter((listing) => listing.id === listingId)[0];
+
+  const [reviewsIsMore, setReviewsIsMore] = useState(false);
+  const [showingReviews, setShowingReviews] = useState([]);
+
+  const userReviews = reviews.filter(
+    (review) => review.target === listing.user
+  );
+
+  useEffect(() => {
+    setShowingReviews([...userReviews.slice(0, 3)]);
+    if (userReviews.length >= 3) {
+      setReviewsIsMore(true);
+    }
+  }, []);
+
+  const handleMore = () => {
+    setShowingReviews(userReviews.slice(0, showingReviews.length + 3));
+    if (showingReviews.length + 3 >= userReviews.length) {
+      setReviewsIsMore(false);
+    }
+  };
 
   let gamesTradeSection;
   if (listing.trade) {
@@ -169,13 +190,22 @@ export default function ListingPage() {
               {/* Review Section  */}
               <div className="flex flex-col w-1/2 space-y-4">
                 <div className="text-text-white">Total review count</div>
-                {reviews
-                  .filter((review) => review.target === listing.user)
-                  .map((review) => {
-                    if (review) {
-                      return <ListingUserReviewPanel data={review} />;
-                    }
-                  })}
+                {showingReviews.map((review) => {
+                  if (review) {
+                    return <ListingUserReviewPanel data={review} />;
+                  }
+                })}
+                <div className="w-1/3 py-2">
+                  {reviewsIsMore && (
+                    <Button
+                      text="Show More"
+                      bgColor="bg-text-white"
+                      textColor="text-bg-dark"
+                      className="text-sm py-1.5"
+                      onClick={handleMore}
+                    />
+                  )}
+                </div>
               </div>
               {/* Games accepted to trade with section  */}
               {gamesTradeSection}
