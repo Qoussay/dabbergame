@@ -3,11 +3,11 @@
         "id": "1",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
+        "gameName": "Scorn",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
         "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
+        "price": "130",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": false
@@ -23,26 +23,48 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": true,
+        "gamesTrade": [{
+            "name": "Elden Ring",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+            "platform": "xboxOne"
+        },{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+        }]
     },
     {
         "id": "3",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
+        "gameName": "Elden Ring",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
         "platform": "playstation5",
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": false,
-        "trade": true
+        "trade": true,
+        "gamesTrade": [{
+            "name": "Stray",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
+            "platform": "playstation4"
+        },{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+        },{
+            "name": "Ghostwire Tokyo",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
+            "platform": "xboxOne"
+        }]
     },
     {
         "id": "4",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
+        "gameName": "Hogwarts Legacy",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
         "platform": "xboxOne",
         "price": "250",
@@ -55,50 +77,59 @@
         "id": "5",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": false,
-        "trade": false
-    },
-    {
-        "id": "6",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
+        "gameName": "Ghostwire Tokyo",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
         "platform": "xboxOne",
         "price": "250",
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": true,
+        "gamesTrade": [{
+            "name": "Elden Ring",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+            "platform": "xboxOne"
+        },{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+        }]
+    },
+    {
+        "id": "6",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "God Of War Ragnarok",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
+        "platform": "playstation5",
+        "price": "250",
+        "condition": "Used",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": false
     },
     {
         "id": "7",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
-        "platform": "playstation4",
+        "gameName": "Horizon Forbidden West",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
+        "platform": "xboxOne",
         "price": "250",
         "condition": "New",
         "paymentMethod": "Cash",
-        "delivery": false,
-        "trade": true
+        "delivery": true,
+        "trade": false
     },
     {
         "id": "8",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
+        "gameName": "Scorn",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
         "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
+        "price": "130",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
         "trade": false
@@ -108,571 +139,369 @@
         "user": "Qoussay",
         "state": "Ben Arous",
         "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
-        "platform": "playstation5",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
+        "platform": "playstation4",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
-        "delivery": false,
-        "trade": false
+        "delivery": true,
+        "trade": true,
+        "gamesTrade": [{
+            "name": "Elden Ring",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+            "platform": "xboxOne"
+        },{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+        }]
     },
     {
         "id": "10",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": false,
-        "trade": false
-    },
-    {
-        "id": "11",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": false,
-        "trade": true
-    },
-    {
-        "id": "12",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": false
-    },
-    {
-        "id": "13",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": false
-    },
-    {
-        "id": "1",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "2",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "3",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": false
-    },
-    {
-        "id": "4",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": false
-    },
-    {
-        "id": "5",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": false,
-        "trade": true
-    },
-    {
-        "id": "6",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": false,
-        "trade": false
-    },
-    {
-        "id": "7",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "8",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "9",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "10",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "11",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "12",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "13",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "1",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "2",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "New",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "3",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "4",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "5",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "6",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "7",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "8",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "9",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "10",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
+        "gameName": "Elden Ring",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
         "platform": "playstation5",
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
+        "delivery": false,
+        "trade": true,
+        "gamesTrade": [{
+            "name": "Stray",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
+            "platform": "playstation4"
+        },{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+        },{
+            "name": "Ghostwire Tokyo",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
+            "platform": "xboxOne"
+        }]
     },
     {
         "id": "11",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
+        "gameName": "Hogwarts Legacy",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+        "platform": "xboxOne",
+        "price": "250",
+        "condition": "Used",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": false
+    },
+    {
+        "id": "12",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Ghostwire Tokyo",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "12",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
         "platform": "xboxOne",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": true,
+        "gamesTrade": [{
+            "name": "Elden Ring",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+            "platform": "xboxOne"
+        },{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+        }]
     },
     {
         "id": "13",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "1",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
+        "gameName": "God Of War Ragnarok",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
         "platform": "playstation5",
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
-        "id": "2",
+        "id": "14",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
+        "gameName": "Horizon Forbidden West",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
-        "platform": "playstation4",
+        "platform": "xboxOne",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
-        "id": "3",
+        "id": "15",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+        "gameName": "Scorn",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
         "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
+        "price": "130",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
-        "id": "4",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "5",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "6",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "7",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
-        "platform": "playstation4",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "8",
+        "id": "16",
         "user": "Qoussay",
         "state": "Ben Arous",
         "gameName": "Stray",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
+        "platform": "playstation4",
+        "price": "250",
+        "condition": "New",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": true,
+        "gamesTrade": [{
+            "name": "Elden Ring",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+            "platform": "xboxOne"
+        },{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+        }]
+    },
+    {
+        "id": "17",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Elden Ring",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+        "platform": "playstation5",
+        "price": "250",
+        "condition": "Used",
+        "paymentMethod": "Cash",
+        "delivery": false,
+        "trade": true,
+        "gamesTrade": [
+            {
+            "name": "Stray",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
+            "platform": "playstation4"
+            }
+            ,{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+            }
+            ,{
+            "name": "Ghostwire Tokyo",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
+            "platform": "xboxOne"
+            }   
+        ]   
+    },
+    {
+        "id": "18",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Hogwarts Legacy",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+        "platform": "xboxOne",
+        "price": "250",
+        "condition": "Used",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": false
+    },
+    {
+        "id": "19",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Ghostwire Tokyo",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
+        "platform": "xboxOne",
+        "price": "250",
+        "condition": "New",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": true,
+        "gamesTrade": [
+            {
+            "name": "Elden Ring",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+            "platform": "xboxOne"
+            },
+            {
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+            }
+        ]
+    },
+    {
+        "id": "20",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "God Of War Ragnarok",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
         "platform": "playstation5",
         "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
-        "id": "9",
+        "id": "21",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Horizon Forbidden West",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
+        "platform": "xboxOne",
+        "price": "250",
+        "condition": "New",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": false
+    },
+    {
+        "id": "22",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Scorn",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
+        "platform": "playstation5",
+        "price": "130",
+        "condition": "New",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": false
+    },
+    {
+        "id": "23",
         "user": "Qoussay",
         "state": "Ben Arous",
         "gameName": "Stray",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "10",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png",
-        "platform": "playstation5",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "11",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
         "platform": "playstation4",
         "price": "250",
+        "condition": "New",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": true,
+        "gamesTrade": [
+            {
+            "name": "Elden Ring",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+            "platform": "xboxOne"
+            },
+            {
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+            }
+        ]
+    },
+    {
+        "id": "24",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Elden Ring",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+        "platform": "playstation5",
+        "price": "250",
+        "condition": "Used",
+        "paymentMethod": "Cash",
+        "delivery": false,
+        "trade": true,
+        "gamesTrade": [
+            {
+            "name": "Stray",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4tt2.png",
+            "platform": "playstation4"
+            }
+            ,{
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+            }
+            ,{
+            "name": "Ghostwire Tokyo",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
+            "platform": "xboxOne"
+            }   
+        ]  
+    },
+    {
+        "id": "25",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Hogwarts Legacy",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+        "platform": "xboxOne",
+        "price": "250",
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
+        "trade": false
     },
     {
-        "id": "12",
+        "id": "26",
         "user": "Qoussay",
         "state": "Ben Arous",
-        "gameName": "Stray",
+        "gameName": "Ghostwire Tokyo",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
+        "platform": "xboxOne",
+        "price": "250",
+        "condition": "New",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": true,
+        "gamesTrade": [
+            {
+            "name": "Elden Ring",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
+            "platform": "xboxOne"
+            },
+            {
+            "name": "Hogwarts Legacy",
+            "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
+            "platform": "playstation5"
+            }
+        ]
+    },
+    {
+        "id": "27",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "God Of War Ragnarok",
+        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co3swk.png",
+        "platform": "playstation5",
+        "price": "250",
+        "condition": "Used",
+        "paymentMethod": "Cash",
+        "delivery": true,
+        "trade": false
+    },
+    {
+        "id": "28",
+        "user": "Qoussay",
+        "state": "Ben Arous",
+        "gameName": "Horizon Forbidden West",
         "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gvu.png",
         "platform": "xboxOne",
         "price": "250",
-        "condition": "Used",
+        "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": true
-    },
-    {
-        "id": "13",
-        "user": "Qoussay",
-        "state": "Ben Arous",
-        "gameName": "Stray",
-        "coverURL": "https://images.igdb.com/igdb/image/upload/t_cover_big/co4jni.png",
-        "platform": "xboxOne",
-        "price": "250",
-        "condition": "Used",
-        "paymentMethod": "Cash",
-        "delivery": true,
-        "trade": true
+        "trade": false
     }
 ]

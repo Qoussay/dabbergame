@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const plugin = require("tailwindcss/plugin");
 module.exports = {
   content: [
     "./src/**/*.{js, jsx, ts, tsx}",
@@ -30,8 +31,17 @@ module.exports = {
       },
       boxShadow: {
         all: "0px 0px 10px",
+        accent: "0 0 10px #47DDC2",
       },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        ".no-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+      });
+    }),
+  ],
 };

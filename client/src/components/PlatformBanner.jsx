@@ -22,7 +22,7 @@ export default function PlatformBanner(props) {
   }
   return (
     <div
-      className={`${bannerColor} ${bannerTextColor} text-[0.8rem] py-0.5 text-center rounded-t-lg`}
+      className={`${bannerColor} ${bannerTextColor} ${props.textSize} py-0.5 text-center rounded-t-lg`}
     >
       {props.platform}
     </div>
