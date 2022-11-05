@@ -27,7 +27,7 @@ function App() {
     setModalType(!modalType);
   };
   return (
-    <div id="App" className="flex flex-col h-screen">
+    <div id="App" className="flex flex-col h-screen ">
       <Navbar loginClick={() => handleOpen()} />
       <LoginModal
         open={openModal}
@@ -35,12 +35,12 @@ function App() {
         type={modalType}
         switchButtonClick={handleModalSwitch}
       />
-      <div className="desktop:px-80 laptop:px-60 pt-24 flex-1 h-full">
+      <div className="desktop:px-80 laptop:px-60 pt-24 flex-1 h-full ">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/sell" element={<AddListingPage />} />
           <Route path="/listing/:listingId" element={<ListingPage />} />
-          <Route path="/user/:userId" element={<ProfilePage />} />
+          <Route path="/user/:username" element={<ProfilePage />} />
         </Routes>
       </div>
     </div>
