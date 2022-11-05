@@ -20,7 +20,7 @@ export default function AddListingPage() {
   switch (pageState) {
     case 0:
       formStage = (
-        <div className="flex flex-col p-4">
+        <div className="flex flex-col py-6 px-10">
           <div className="text-text-white pb-4">
             Choose a game and select the corresponding platform
           </div>

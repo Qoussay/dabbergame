@@ -183,15 +183,19 @@ export default function ListingPage() {
                 </div>
               </div>
               {/* condition and method of payment  */}
-              <div className="flex flex-row text-text-white">
-                <div className="flex flex-col grow">
+              <div className="flex flex-row text-text-white pb-12">
+                <div className="flex flex-col space-y-1.5 grow">
                   <div className="font-semibold">Condition</div>
                   <div className=" text-sm">{listing.condition}</div>
                 </div>
-                <div className="flex flex-col text-right">
+                <div className="flex flex-col space-y-1.5 text-right">
                   <div className="font-semibold">Payment Method</div>
                   <div className=" text-sm">{listing.paymentMethod}</div>
                 </div>
+              </div>
+              <div className="flex flex-col space-y-1.5 text-text-white">
+                <div className="font-semibold">Description</div>
+                <div className=" text-sm">{listing.description}</div>
               </div>
               {/* next section title  */}
               <ListingPageSectionTitle title="Seller's reviews" />
