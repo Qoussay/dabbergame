@@ -1,5 +1,5 @@
 // When you get to this pageXOffset, search the listing via ID
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import data from "../mock/listings.json";
 import PlatformBanner from "../components/PlatformBanner";
 import Button from "../components/Button";
@@ -16,8 +16,10 @@ import reviews from "../mock/reviews.json";
 import ListingPageSectionTitle from "../components/ListingPageSectionTitle";
 import GameCover from "../components/GameCover";
 import { useState, useEffect } from "react";
+import UserReviewsScore from "../components/UserReviewsScore";
 export default function ListingPage() {
   const { listingId } = useParams();
+  const navigate = useNavigate();
   const listing = data.filter((listing) => listing.id === listingId)[0];
 
   const [reviewsIsMore, setReviewsIsMore] = useState(false);
@@ -67,7 +69,7 @@ export default function ListingPage() {
   }
 
   return (
-    <div className=" bg-bg-medium desktop:px-80 laptop:px-60 pt-24 h-screen">
+    <div className="h-full">
       <div className="flex flex-row space-x-10 h-full">
         {/* Left Panel */}
         <div className="flex flex-col w-1/4 space-y-10">
@@ -77,6 +79,7 @@ export default function ListingPage() {
             platform={listing.platform}
             rounded={true}
             textSize="text-base"
+            className="shadow-md shadow-bg-dark"
           />
           {/* Profile Section  */}
           {/* Fetch data of user from userId from the listing data  */}
@@ -88,8 +91,13 @@ export default function ListingPage() {
               ></img>
             </div>
             <div className="flex flex-col">
-              <div className="text-text-white">{listing.user}</div>
-              <div className="text-accent text-sm">Reviews</div>
+              <div
+                className="text-text-white hover:underline hover:cursor-pointer"
+                onClick={() => navigate(`/user/${listing.user}`)} //change the 1 to the actual useId or whatever will define the user in the listing
+              >
+                {listing.user}
+              </div>
+              <UserReviewsScore username={listing.user} />
               <div className=" text-text-medium text-sm">Date User Joined</div>
             </div>
           </div>
@@ -186,13 +194,13 @@ export default function ListingPage() {
                 </div>
               </div>
               {/* next section title  */}
-              <ListingPageSectionTitle title="Seller's ratings" />
+              <ListingPageSectionTitle title="Seller's reviews" />
               {/* Review Section  */}
               <div className="flex flex-col w-1/2 space-y-4">
-                <div className="text-text-white">Total review count</div>
+                <UserReviewsScore username={listing.user} />
                 {showingReviews.map((review) => {
                   if (review) {
-                    return <ListingUserReviewPanel data={review} />;
+                    return <ListingUserReviewPanel review={review} />;
                   }
                 })}
                 <div className="w-1/3 py-2">

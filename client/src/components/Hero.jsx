@@ -1,7 +1,7 @@
 import Button from "./Button";
 export default function Hero() {
   return (
-    <div className="my-24 space-y-24">
+    <div className="mb-24 space-y-24">
       {/* title of the hero section */}
       <h1 className="text-2xl w-1/2 mx-auto text-center text-text-white font-semibold leading-relaxed">
         Find all the game listings and deals you want and more!

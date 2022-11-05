@@ -4,10 +4,17 @@ import {
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
 export default function ListingCardInfo(props) {
+  let username;
+
+  if (props.user.length > 8) {
+    username = props.user.slice(0, 6) + "...";
+  } else {
+    username = props.user;
+  }
   return (
     <div className="bg-bg-light rounded-b-lg px-2 py-1 flex flex-row h-full">
       <div className="flex flex-col grow justify-center space-y-0.5">
-        <p className="text-text-white text-sm">{props.user}</p>
+        <p className="text-text-white text-sm">{username}</p>
         <p className=" text-text-light text-[0.7rem]">{props.state}</p>
       </div>
       <div className="flex flex-col justify-start w-1/2">

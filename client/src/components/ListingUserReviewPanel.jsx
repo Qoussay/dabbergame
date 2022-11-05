@@ -1,4 +1,6 @@
-export default function ListingUserReviewPanel({ data }) {
+import { useNavigate } from "react-router-dom";
+export default function ListingUserReviewPanel({ review }) {
+  const navigate = useNavigate();
   return (
     <div className="flex flex-row space-x-2">
       <div className="flex flex-col justify-center w-1/6">
@@ -10,13 +12,18 @@ export default function ListingUserReviewPanel({ data }) {
       <div className="flex flex-col grow justify-center">
         {/* first row of name rate and date  */}
         <div className="flex flex-row space-x-1">
-          <div className="text-accent text-sm font-semibold">{data.source}</div>
-          <div className="text-text-white text-sm">({data.rate})</div>
+          <div
+            className="text-accent text-sm font-semibold hover:cursor-pointer hover:underline"
+            onClick={() => navigate(`/user/${review.source}`)}
+          >
+            {review.source}
+          </div>
+          <div className="text-text-white text-sm">({review.rate})</div>
           <div className="text-text-medium text-xs grow text-right">
-            {data.date}
+            {review.date}
           </div>
         </div>
-        <div className="text-text-white">{data.message}</div>
+        <div className="text-text-white">{review.message}</div>
       </div>
     </div>
   );

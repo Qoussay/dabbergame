@@ -29,6 +29,9 @@ module.exports = {
         "text-dark": "#38444F",
         "dark-bg": "rgba(0,0,0,0.5)",
       },
+      backgroundSize: {
+        16: "24rem",
+      },
       boxShadow: {
         all: "0px 0px 10px",
         accent: "0 0 10px #47DDC2",

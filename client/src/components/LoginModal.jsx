@@ -93,7 +93,7 @@ export default function LoginModal({
             icon={
               <FontAwesomeIcon
                 icon={faX}
-                className="text-text-white text-lg pr-2"
+                className="text-text-white text-lg pr-2 h-4"
               />
             }
             onClick={closeButtonClick}
