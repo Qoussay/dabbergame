@@ -14,7 +14,7 @@ export default function UserReviewsScore({ username }) {
     userReviews.map((review) => (totalScore += review.rate));
     totalScore = Number((totalScore / userReviews.length).toFixed(1));
     return (
-      <div className="flex flex-row space-x-3">
+      <div className="flex flex-row space-x-3 -z-10">
         <StarRatingComponent
           name="userRating"
           editing={false}
