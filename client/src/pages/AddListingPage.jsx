@@ -209,7 +209,7 @@ export default function AddListingPage() {
   }
   return (
     <div className=" bg-bg-light rounded-lg shadow-md shadow-bg-dark flex flex-col space-y-6">
-      <div className="flex flex-row space-x-4 px-2 bg-bg-dark shadow-md shadow-bg-dark py-3">
+      <div className="flex flex-row space-x-4 px-2 bg-bg-dark rounded-t-lg shadow-md shadow-bg-dark py-3">
         <div className="flex flex-col justify-center grow">
           <hr className="border-accent" />
         </div>
