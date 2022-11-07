@@ -1,11 +1,13 @@
 import { useState } from "react";
 import Button from "../components/Button";
 import GameCover from "../components/GameCover";
+import TradeGamesPanel from "../components/TradeGamesPanel";
 export default function AddListingPage() {
   // this state will keep track of the page state
   const [pageState, setPageState] = useState(0);
   const [gameChosen, setGameChosen] = useState(null);
   const [listing, setListing] = useState({});
+  const [tradeAccepted, setTradeAccepted] = useState(false);
 
   const handleNextBtn = () => {
     setPageState(pageState + 1);
@@ -13,6 +15,16 @@ export default function AddListingPage() {
 
   const handleBackBtn = () => {
     setPageState(pageState - 1);
+  };
+
+  const handleTradeChange = (e) => {
+    if (e.target.value === "yes") {
+      setTradeAccepted(true);
+      return;
+    } else {
+      setTradeAccepted(false);
+      return;
+    }
   };
 
   let formStage = null;
@@ -145,23 +157,31 @@ export default function AddListingPage() {
               />
             </div>
             {/* right panel  */}
-            <div className="w-3/4 flex flex-col space-y-3">
+            <div className="w-3/4 flex flex-col space-y-8">
               <div className="flex flex-row space-x-4">
                 <div className="flex flex-col w-1/2 space-y-1">
                   <div className="text-text-white">Trade</div>
-                  <select className="px-3 py-0.5 rounded-full h-8 focus:shadow-accent focus:border-accent focus:outline-none">
+                  <select
+                    onChange={handleTradeChange}
+                    className="px-3 py-0.5 rounded-full h-8 focus:shadow-accent focus:border-accent focus:outline-none"
+                  >
                     <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option selected value="no">
+                      No
+                    </option>
                   </select>
                 </div>
                 <div className="flex flex-col w-1/2 space-y-1">
                   <div className="text-text-white">Delivery</div>
                   <select className="px-3 py-0.5 rounded-full h-8 focus:shadow-accent focus:border-accent focus:outline-none">
                     <option value="yes">Yes</option>
-                    <option value="no">No</option>
+                    <option selected value="no">
+                      No
+                    </option>
                   </select>
                 </div>
               </div>
+              {tradeAccepted ? <TradeGamesPanel /> : null}
             </div>
           </div>
           <div className="flex flex-row pt-10">
