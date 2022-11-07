@@ -31,7 +31,7 @@ export default function ProfileReviewsPanel({ reviews, user }) {
   return (
     <div className="flex flex-col space-y-4">
       <div className=" flex flex-row">
-        <div className="flex flex-col grow text-lg text-text-white -z-10">
+        <div className="flex flex-col grow text-lg text-text-white z-0">
           <UserReviewsScore username={user.username} />
           <div className="text-text-light">
             {reviews.length} {reviews.length > 1 ? "Reviews" : "Review"}

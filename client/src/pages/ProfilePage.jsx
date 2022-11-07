@@ -52,7 +52,7 @@ export default function ProfilePage() {
           <div className="text-text-light desktop:text-xl laptop:text-base">
             {username}
           </div>
-          <div className=" text-text-white desktop:text-xl laptop:text-lg py-3 -z-10">
+          <div className=" text-text-white desktop:text-xl laptop:text-lg py-3">
             <UserReviewsScore username={username} />
           </div>
           <div className="flex flex-col space-y-1">
@@ -84,7 +84,7 @@ export default function ProfilePage() {
               onClick={handleReviewBtn}
             />
           </div>
-          <div className="rounded-lg bg-bg-light h-[65vh] overscroll-auto overflow-y-scroll no-scrollbar p-4 -z-20">
+          <div className="rounded-lg bg-bg-light h-[65vh] overscroll-auto overflow-y-scroll no-scrollbar p-4">
             {panel ? (
               <ProfileListingsPanel listings={userListings} />
             ) : (
