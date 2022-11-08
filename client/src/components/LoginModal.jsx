@@ -82,8 +82,8 @@ export default function LoginModal({
   );
   if (!open) return null;
   return (
-    <div className="w-full h-full fixed pt-24 bg-dark-bg">
-      <div className="bg-bg-light shadow-md shadow-bg-dark rounded-lg w-1/4 h-fit mx-auto flex flex-col py-3">
+    <div className="w-full h-full fixed pt-24 bg-dark-bg z-10">
+      <div className="bg-bg-light shadow-md shadow-bg-dark rounded-lg w-1/4 h-fit mx-auto flex flex-col py-3 z-10">
         <div className="flex flex-row justify-end pl-4">
           <h1 className=" text-2xl text-accent text-left flex-auto ">
             DabberGame

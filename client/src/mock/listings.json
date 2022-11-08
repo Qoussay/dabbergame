@@ -10,7 +10,8 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "2",
@@ -32,7 +33,8 @@
             "name": "Hogwarts Legacy",
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
             "platform": "playstation5"
-        }]
+        }],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "3",
@@ -58,7 +60,8 @@
             "name": "Ghostwire Tokyo",
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
             "platform": "xboxOne"
-        }]
+        }],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "4",
@@ -71,7 +74,8 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "5",
@@ -93,7 +97,8 @@
             "name": "Hogwarts Legacy",
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
             "platform": "playstation5"
-        }]
+        }],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "6",
@@ -106,7 +111,8 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "7",
@@ -119,7 +125,8 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "8",
@@ -132,7 +139,8 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "9",
@@ -154,7 +162,8 @@
             "name": "Hogwarts Legacy",
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
             "platform": "playstation5"
-        }]
+        }],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "10",
@@ -180,7 +189,8 @@
             "name": "Ghostwire Tokyo",
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
             "platform": "xboxOne"
-        }]
+        }],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "11",
@@ -193,7 +203,8 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "12",
@@ -215,7 +226,8 @@
             "name": "Hogwarts Legacy",
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
             "platform": "playstation5"
-        }]
+        }],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "13",
@@ -228,7 +240,8 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "14",
@@ -241,7 +254,8 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "15",
@@ -254,7 +268,8 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "16",
@@ -276,7 +291,8 @@
             "name": "Hogwarts Legacy",
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
             "platform": "playstation5"
-        }]
+        }],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "17",
@@ -306,7 +322,8 @@
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
             "platform": "xboxOne"
             }   
-        ]   
+        ]  ,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. " 
     },
     {
         "id": "18",
@@ -319,7 +336,8 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "19",
@@ -344,7 +362,8 @@
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
             "platform": "playstation5"
             }
-        ]
+        ],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "20",
@@ -357,7 +376,8 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "21",
@@ -370,7 +390,8 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "22",
@@ -383,7 +404,8 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "23",
@@ -408,7 +430,8 @@
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
             "platform": "playstation5"
             }
-        ]
+        ],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "24",
@@ -438,7 +461,8 @@
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co55xn.png",
             "platform": "xboxOne"
             }   
-        ]  
+        ]  ,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "25",
@@ -451,7 +475,8 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "26",
@@ -476,7 +501,8 @@
             "coverUrl": "https://images.igdb.com/igdb/image/upload/t_cover_big/co2gn3.png",
             "platform": "playstation5"
             }
-        ]
+        ],
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "27",
@@ -489,7 +515,8 @@
         "condition": "Used",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     },
     {
         "id": "28",
@@ -502,6 +529,7 @@
         "condition": "New",
         "paymentMethod": "Cash",
         "delivery": true,
-        "trade": false
+        "trade": false,
+        "description": "Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. "
     }
 ]

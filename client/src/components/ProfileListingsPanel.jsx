@@ -8,7 +8,7 @@ export default function ProfileListingsPanel({ listings }) {
     );
   }
   return (
-    <div className="grid grid-cols-5 gap-4">
+    <div className="grid desktop:grid-cols-6 laptop:grid-cols-5 gap-4">
       {listings.map((listing) => {
         return <ProfileListingCard listing={listing} />;
       })}
