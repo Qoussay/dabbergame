@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ListingUserReviewPanel from "../components/ListingUserReviewPanel";
 import {
   faMessage,
+  faSquarePlus,
   faFlag,
   faArrowRightArrowLeft,
   faTruck,
@@ -200,13 +201,34 @@ export default function ListingPage() {
               {/* next section title  */}
               <ListingPageSectionTitle title="Seller's reviews" />
               {/* Review Section  */}
-              <div className="flex flex-col w-1/2 space-y-4">
-                <UserReviewsScore username={listing.user} />
-                {showingReviews.map((review) => {
-                  if (review) {
-                    return <ListingUserReviewPanel review={review} />;
-                  }
-                })}
+              <div className="flex flex-col space-y-4">
+                <div className="flex flex-row">
+                  <div className="flex flex-col justify-center grow">
+                    <UserReviewsScore username={listing.user} />
+                  </div>
+                  <Button
+                    text="Add a review"
+                    bgColor="bg-accent"
+                    textColor="text-text-dark"
+                    icon={
+                      <FontAwesomeIcon
+                        icon={faSquarePlus}
+                        className="text-text-dark pr-2"
+                      />
+                    }
+                    className="text-sm py-1.5"
+                    onClick={() =>
+                      navigate(`/user/${listing.user}/reviews/add`)
+                    }
+                  />
+                </div>
+                <div className="flex flex-col space-y-3 w-1/2 max-w-[50%]">
+                  {showingReviews.map((review) => {
+                    if (review) {
+                      return <ListingUserReviewPanel review={review} />;
+                    }
+                  })}
+                </div>
                 <div className="w-1/3 py-2">
                   {reviewsIsMore && (
                     <Button
