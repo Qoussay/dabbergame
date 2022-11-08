@@ -23,7 +23,7 @@ export default function AddReviewPage() {
         <div className="flex flex-row w-1/2 space-x-6">
           <img
             src={process.env.PUBLIC_URL + "/userImage.png"}
-            className="w-1/3"
+            className="w-1/3 h-fit"
           ></img>
           <div className="flex flex-col w-1/3 justify-center">
             <div className=" text-text-white desktop:text-2xl laptop:text-xl">
