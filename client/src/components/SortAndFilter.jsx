@@ -1,5 +1,5 @@
 import Select from "react-select";
-export default function SortAndFilter() {
+export default function SortAndFilter({ className }) {
   const sortOptions = [
     { value: "option1", label: "option1" },
     { value: "option2", label: "option2" },
@@ -8,7 +8,7 @@ export default function SortAndFilter() {
     { value: "option5", label: "option5" },
   ];
   return (
-    <form className="flex flex-row space-x-5">
+    <form className={`flex flex-row space-x-5 ${className}`}>
       <Select
         options={sortOptions}
         placeholder="Sort By:"

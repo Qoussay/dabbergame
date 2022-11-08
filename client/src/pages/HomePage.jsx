@@ -7,7 +7,7 @@ export default function HomePage() {
       <Hero />
       <hr></hr>
       <div className="py-6">
-        {/* <SortAndFilter /> */}
+        <SortAndFilter />
         <ListingsViewer itemsPerPage={42} />
       </div>
     </div>
