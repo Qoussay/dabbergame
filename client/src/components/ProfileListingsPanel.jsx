@@ -11,7 +11,7 @@ export default function ProfileListingsPanel({ listings }) {
   return (
     <div className="flex flex-col space-y-4">
       <div className="flex flex-row">
-        <SortAndFilter className="grow" />
+        <SortAndFilter className="grow text-sm" />
         <form className="flex flex-col justify-center">
           <input
             type="text"

@@ -12,7 +12,7 @@ export default function SortAndFilter({ className }) {
       <Select
         options={sortOptions}
         placeholder="Sort By:"
-        className="w-1/6 rounded-lg"
+        className="w-1/4 rounded-lg"
       />
 
       <p className="text-3xl text-text-white">|</p>
