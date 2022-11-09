@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Playstation 5",
+        "image": "/platformLogos/ps5_logo.png",
+        "color": "bg-white"
+    },
+    {
+        "name": "Playstation 4",
+        "image": "/platformLogos/ps4Logo.png",
+        "color": "bg-blue-700"
+    },
+    {
+        "name": "Xbox One",
+        "image": "/platformLogos/xboxOneLogo.png",
+        "color": "bg-green-500"
+    },
+    {
+        "name": "Xbox Series X",
+        "image": "/platformLogos/xboxSeriesXLogo.png",
+        "color": "bg-green-500"
+    },
+    {
+        "name": "Nintendo Switch",
+        "image": "/platformLogos/NintendoSwitchLogo.png",
+        "color": "bg-red-500"
+    }
+]
