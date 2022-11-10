@@ -7,8 +7,9 @@ export default function HomePage() {
   return (
     <div className="pt-8">
       <Hero />
-      <SectionTitle title="Most used platforms" />
+      <SectionTitle title="Popular platforms" />
       <PopularPlatformSection />
+      <SectionTitle title="Latest Listings" />
       <div className="py-6">
         <SortAndFilter />
         <ListingsViewer itemsPerPage={42} />
