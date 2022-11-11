@@ -22,7 +22,7 @@ module.exports = {
         "bg-light": "#3E436D",
         "bg-medium": "#27283E",
         "bg-dark": "#171826",
-        accent: "#40c7af",
+        accent: "#47DDC2",
         "text-white": "#E5F0F4",
         "text-light": "#9CB3BF",
         "text-medium": "#62737F",

@@ -14,7 +14,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import Pill from "../components/Pill";
 import reviews from "../mock/reviews.json";
-import ListingPageSectionTitle from "../components/ListingPageSectionTitle";
+import SectionTitle from "../components/SectionTitle";
 import GameCover from "../components/GameCover";
 import { useState, useEffect } from "react";
 import UserReviewsScore from "../components/UserReviewsScore";
@@ -48,7 +48,7 @@ export default function ListingPage() {
   if (listing.trade) {
     gamesTradeSection = (
       <div className="pb-10">
-        <ListingPageSectionTitle title="Games accepted for trade" />
+        <SectionTitle title="Games accepted for trade" />
         <div className="flex flex-row space-x-4">
           {listing.gamesTrade.map((game) => {
             return (
@@ -199,7 +199,7 @@ export default function ListingPage() {
                 <div className=" text-sm">{listing.description}</div>
               </div>
               {/* next section title  */}
-              <ListingPageSectionTitle title="Seller's reviews" />
+              <SectionTitle title="Seller's reviews" />
               {/* Review Section  */}
               <div className="flex flex-col space-y-4">
                 <div className="flex flex-row">

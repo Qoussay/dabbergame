@@ -1,4 +1,4 @@
-export default function ListingPageSectionTitle({ title }) {
+export default function SectionTitle({ title }) {
   return (
     <div className="flex flex-row text-text-white text-2xl space-x-4 font-semibold mt-10 mb-5">
       <div>{title}</div>
