@@ -4,7 +4,7 @@ import GameCover from "./GameCover";
 export default function ListingCard(props) {
   return (
     <div
-      className="flex flex-col shadow-md shadow-bg-dark rounded-lg h-full hover:cursor-pointer hover:shadow-accent hover:border-accent"
+      className="flex flex-col shadow-md shadow-bg-dark rounded-lg h-full hover:cursor-pointer hover:shadow-accent hover:border-accent transition-all duration-300"
       onClick={props.onClick}
     >
       <GameCover

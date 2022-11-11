@@ -41,14 +41,7 @@ export default function Navbar(props) {
                 background: "#fff",
                 borderRadius: "5px",
                 "& .MuiFilledInput-root": {
-                  // bgcolor: "#fff",
-                  // height: "1.8rem",
                   paddingTop: 0,
-                  // borderRadius: "25px",
-                },
-                "& :hover": {
-                  // bgcolor: "#E5F0F4",
-                  // borderRadius: "25px",
                 },
               }}
             />
