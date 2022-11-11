@@ -15,6 +15,7 @@ export default function Navbar(props) {
   };
 
   //set up the game states
+  const [inputValue, setInputValue] = useState(null);
   const [gameSearch, setGameSearch] = useState([]);
   const [chosenGame, setChosenGame] = useState(null);
 
@@ -25,6 +26,14 @@ export default function Navbar(props) {
           DabberGame
         </a>
         <Autocomplete
+          value={chosenGame}
+          onChange={(event, newValue) => {
+            setChosenGame(newValue);
+          }}
+          inputValue={inputValue}
+          onInputChange={(event, newInputValue) => {
+            setInputValue(newInputValue);
+          }}
           className="grow pt-1"
           disablePortal
           id="combo-box-demo"
