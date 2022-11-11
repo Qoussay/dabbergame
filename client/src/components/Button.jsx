@@ -6,7 +6,7 @@ export default function Button(props) {
       <button
         onClick={props.onClick}
         type={props.type}
-        className={`${textColor} ${bgColor} ${props.className} h-fit px-3 py-0.5 rounded-[5px] hover:brightness-110 `}
+        className={`${textColor} ${bgColor} ${props.className} h-fit px-3 py-0.5 rounded-[5px] drop-shadow hover:drop-shadow-lg hover:brightness-90 transition-all duration-300 `}
       >
         {props.icon}
         {props.text}

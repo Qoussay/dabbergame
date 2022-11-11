@@ -121,16 +121,16 @@ export default function RegistrationForm({ onClick }) {
           className="mb-5 mt-3 py-3"
         />
       </form>
-      <div className="flex flex-row justify-center py-2">
+      <div className="flex flex-row justify-center py-2 space-x-2">
         <p className="text-text-white flex flex-col justify-center">
           You have an account?
         </p>
-        <Button
-          bgColor="bg-bg-light"
-          textColor="text-accent"
-          text="Sign In"
+        <p
+          className="text-accent hover:cursor-pointer hover:brightness-120 hover:scale-105 transition-all duration-300"
           onClick={onClick}
-        />
+        >
+          Sign In
+        </p>
       </div>
     </div>
   );
