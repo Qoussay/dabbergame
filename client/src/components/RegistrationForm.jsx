@@ -118,7 +118,7 @@ export default function RegistrationForm({ onClick }) {
           bgColor="bg-accent"
           textColor="text-text-dark"
           text="Sign Up"
-          className="mb-5 mt-3 py-3 hover:brightness-110"
+          className="mb-5 mt-3 py-3"
         />
       </form>
       <div className="flex flex-row justify-center py-2">
