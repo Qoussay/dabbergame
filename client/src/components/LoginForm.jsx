@@ -2,8 +2,46 @@ import Button from "./Button";
 import { TextField } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 export default function LoginForm({ onClick }) {
+  const navigate = useNavigate();
+  const [signingIn, setSigningIn] = useState(false);
+  const [values, setValues] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setValues({
+      ...values,
+      [name]: value,
+    });
+  };
+
+  const loginUser = async () => {
+    const res = await axios.post("/api/signin", values).catch((err) => {
+      console.log(err);
+    });
+
+    if (res.status === 200) {
+      navigate(0);
+    }
+  };
+
+  const handleSubmission = (e) => {
+    e.preventDefault();
+    setSigningIn(true);
+    try {
+      loginUser();
+    } catch {
+      console.log("error signing in");
+    }
+  };
   return (
     <div className="px-4">
       <h1 className="text-center text-text-white text-2xl text py-5 font-semibold ">
@@ -12,6 +50,9 @@ export default function LoginForm({ onClick }) {
 
       <form className="grow flex flex-col justify-center space-y-4">
         <TextField
+          name="email"
+          value={values.email}
+          onChange={handleInputChange}
           sx={{
             background: "#fff",
             borderRadius: "5px",
@@ -24,6 +65,9 @@ export default function LoginForm({ onClick }) {
           size="small"
         />
         <TextField
+          name="password"
+          value={values.password}
+          onChange={handleInputChange}
           sx={{
             background: "#fff",
             borderRadius: "5px",
@@ -39,7 +83,8 @@ export default function LoginForm({ onClick }) {
         <Button
           bgColor="bg-accent"
           textColor="text-text-dark"
-          text="Log In"
+          onClick={handleSubmission}
+          text={signingIn ? "Signing you in ..." : "Sign In"}
           className="mb-5 mt-3 py-3 hover:brightness-110"
         />
       </form>
