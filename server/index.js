@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const passport = require("passport");
 require("dotenv").config();
 
 const app = express();
@@ -26,8 +27,12 @@ mongoose
   });
 
 const gameFetchRoute = require("./routes/gameFetchRoute");
+const signupRoute = require("./routes/signupRoute");
+const signinRoute = require("./routes/signinRoute");
 
 app.use("/api/games", gameFetchRoute);
+app.use("/api/signup", signupRoute);
+app.use("/api/signin", signinRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
