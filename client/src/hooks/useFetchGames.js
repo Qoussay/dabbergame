@@ -9,6 +9,12 @@ export default function useFetchGames(searchString) {
       setGameSearch(data);
     }
     if (searchString) {
+      //   setGameSearch(["Searching ..."]);
+      //   try {
+      //     getData();
+      //   } catch {
+      //     setGameSearch(["Try again please."]);
+      //   }
       getData();
     }
   }, [searchString]);
