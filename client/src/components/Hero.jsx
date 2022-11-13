@@ -12,6 +12,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import states from "../mock/states.json";
 import platforms from "../mock/platforms.json";
+
 export default function Hero() {
   const platformNames = [];
   platforms.map((platform) => {

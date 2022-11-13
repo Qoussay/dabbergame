@@ -3,21 +3,21 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquarePlus, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { TextField, Autocomplete } from "@mui/material";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import useFetchGames from "../hooks/useFetchGames";
 
 export default function Navbar(props) {
   const navigate = useNavigate();
-  const navigateLogin = () => {
-    navigate("/login");
-  };
   const navigateAddListing = () => {
     navigate("/sell");
   };
 
   //set up the game states
-  const [inputValue, setInputValue] = useState(null);
-  const [gameSearch, setGameSearch] = useState([]);
-  const [chosenGame, setChosenGame] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+  const [chosenGame, setChosenGame] = useState("");
+
+  const searchOptions = useFetchGames(inputValue);
 
   return (
     <div className="bg-bg-dark fixed w-full py-2.5 shadow-md shadow-bg-dark z-10">
@@ -37,7 +37,7 @@ export default function Navbar(props) {
           className="grow pt-1"
           disablePortal
           id="combo-box-demo"
-          options={gameSearch}
+          options={searchOptions}
           renderInput={(params) => (
             <TextField
               {...params}
