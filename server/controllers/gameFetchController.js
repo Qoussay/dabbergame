@@ -2,7 +2,7 @@ var axios = require("axios");
 require("dotenv").config();
 
 exports.getGames = async (req, res) => {
-  var data = `fields id,name,cover,platforms ; search "${req.body.input}"; limit 5;`;
+  var data = `fields id,name,first_release_date ; search "${req.body.input}"; limit 5;`;
   var config = {
     method: "post",
     url: "https://api.igdb.com/v4/games",
