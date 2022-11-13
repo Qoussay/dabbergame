@@ -25,6 +25,10 @@ mongoose
     process.exit();
   });
 
+const gameFetchRoute = require("./routes/gameFetchRoute");
+
+app.use("/api/games", gameFetchRoute);
+
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
