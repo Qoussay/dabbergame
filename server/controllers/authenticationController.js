@@ -21,14 +21,14 @@ exports.login = async (req, res) => {
         if (userController.validatePassword(user, password)) {
           res
             .status(200)
-            .send({ user: username, message: "User created succesffuly." });
+            .json({ user: username, message: "User created succesffuly." });
         } else {
           res
             .status(406)
-            .send({ error: "Username and password combination is incorrect." });
+            .json({ error: "Username and password combination is incorrect." });
         }
       } else {
-        res.status(404).send({ error: "User does not exist." });
+        res.status(404).json({ error: "User does not exist. Try signing up." });
       }
     });
   } catch (error) {

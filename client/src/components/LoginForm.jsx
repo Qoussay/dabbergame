@@ -1,10 +1,11 @@
 import Button from "./Button";
-import { TextField } from "@mui/material";
+import { TextField, Stack, Alert } from "@mui/material";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import GoogleIcon from "@mui/icons-material/Google";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import CustomAlert from "./CustomAlert";
 
 export default function LoginForm({ onClick }) {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ export default function LoginForm({ onClick }) {
     username: "",
     password: "",
   });
+
+  const [error, setError] = useState(null);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -25,22 +28,36 @@ export default function LoginForm({ onClick }) {
 
   const loginUser = async () => {
     const res = await axios.post("/api/signin", values).catch((err) => {
-      console.log(err);
+      console.log(err.response.data.error);
+      setError(err.response.data.error);
+      setSigningIn(false);
     });
 
     if (res.status === 200) {
       localStorage.setItem("user", values.username);
       navigate(0);
-    } else {
-      console.log(res.response.data);
     }
+  };
+
+  const validateInput = () => {
+    if (!values.username) {
+      setError("You must enter a username.");
+      setSigningIn(false);
+      return false;
+    }
+    if (!values.password) {
+      setError("You must enter a password.");
+      setSigningIn(false);
+      return false;
+    }
+    return true;
   };
 
   const handleSubmission = (e) => {
     e.preventDefault();
     setSigningIn(true);
     try {
-      loginUser();
+      if (validateInput()) loginUser();
     } catch {
       console.log("error signing in");
     }
@@ -83,6 +100,7 @@ export default function LoginForm({ onClick }) {
           dark="true"
           size="small"
         />
+        {/* </Stack> */}
         <Button
           bgColor="bg-accent"
           textColor="text-text-dark"
@@ -118,6 +136,7 @@ export default function LoginForm({ onClick }) {
           Sign Up
         </p>
       </div>
+      <CustomAlert type="error" message={error} />
     </div>
   );
 }

@@ -4,6 +4,7 @@ import {
   faSquarePlus,
   faUser,
   faRightFromBracket,
+  faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import { TextField, Autocomplete } from "@mui/material";
@@ -31,7 +32,12 @@ export default function Navbar(props) {
       text="Login"
       bgColor="bg-text-white"
       textColor="text-bg-dark"
-      icon={<FontAwesomeIcon icon={faUser} className="text-bg-dark pr-2" />}
+      icon={
+        <FontAwesomeIcon
+          icon={faRightToBracket}
+          className="text-bg-dark pr-2"
+        />
+      }
       className="text-sm py-1"
       onClick={props.loginClick}
     />
