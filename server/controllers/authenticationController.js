@@ -4,10 +4,10 @@ exports.signup = async (req, res) => {
   try {
     await userController.createUser(req.body);
     // console.log(req.body);
-    res.status(200).send({ done: true });
+    res.status(200).send({ done: true, username: req.body.username });
   } catch (error) {
     console.error(error);
-    res.status(500).end(error.message);
+    res.status(500).end({ error: error.message, done: false });
   }
 };
 

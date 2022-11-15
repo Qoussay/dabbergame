@@ -61,7 +61,7 @@ export default function LoginForm({ onClick }) {
           label="Email"
           variant="filled"
           color="primary"
-          dark
+          dark="true"
           size="small"
         />
         <TextField
@@ -77,7 +77,7 @@ export default function LoginForm({ onClick }) {
           type="password"
           variant="filled"
           color="primary"
-          dark
+          dark="true"
           size="small"
         />
         <Button

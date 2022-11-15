@@ -71,7 +71,7 @@ export default function Hero() {
                   {...params}
                   variant="filled"
                   color="primary"
-                  dark
+                  dark="true"
                   size="small"
                   label="Platform"
                   sx={{
@@ -91,7 +91,7 @@ export default function Hero() {
                   {...params}
                   variant="filled"
                   color="primary"
-                  dark
+                  dark="true"
                   size="small"
                   label="Game"
                   sx={{
@@ -113,7 +113,7 @@ export default function Hero() {
                 {...params}
                 variant="filled"
                 color="primary"
-                dark
+                dark="true"
                 size="small"
                 label="State"
                 sx={{
