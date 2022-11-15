@@ -3,7 +3,12 @@ import Button from "../components/Button";
 import GameCover from "../components/GameCover";
 import TradeGamesPanel from "../components/TradeGamesPanel";
 import axios from "axios";
-import { Autocomplete, TextField } from "@mui/material";
+import {
+  Autocomplete,
+  TextField,
+  CircularProgress,
+  Backdrop,
+} from "@mui/material";
 import useFetchGames from "../hooks/useFetchGames";
 import useFetchGameInfo from "../hooks/useFetchGameInfo";
 export default function AddListingPage() {
@@ -15,11 +20,11 @@ export default function AddListingPage() {
   const [tradeAccepted, setTradeAccepted] = useState(false);
 
   const searchOptions = useFetchGames(inputValue);
-  const gameChosen = useFetchGameInfo(gameName);
+  const { gameInfo, done } = useFetchGameInfo(gameName);
 
   useEffect(() => {
-    console.log(gameChosen);
-  }, [gameChosen]);
+    console.log(gameInfo);
+  }, [gameInfo]);
 
   const handleNextBtn = () => {
     setPageState(pageState + 1);
@@ -105,7 +110,7 @@ export default function AddListingPage() {
             {/* left panel for image  */}
             <div className="w-1/4">
               <GameCover
-                url={gameChosen.coverUrl}
+                url={gameInfo.coverUrl}
                 platform="playstation5"
                 rounded={true}
                 textSize="text-base"
@@ -187,7 +192,7 @@ export default function AddListingPage() {
             {/* left panel for image  */}
             <div className="w-1/4 ">
               <GameCover
-                url={gameChosen.coverUrl}
+                url={gameInfo.coverUrl}
                 platform="playstation5"
                 rounded={true}
                 textSize="text-base"
@@ -247,6 +252,12 @@ export default function AddListingPage() {
   }
   return (
     <div className=" bg-bg-light rounded-lg shadow-md shadow-bg-dark flex flex-col space-y-6">
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={!done}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
       <div className="flex flex-row space-x-4 px-2 bg-bg-dark rounded-t-lg shadow-md shadow-bg-dark py-3">
         <div className="flex flex-col justify-center grow">
           <hr className="border-accent" />
