@@ -29,10 +29,12 @@ mongoose
 const gameFetchRoute = require("./routes/gameFetchRoute");
 const signupRoute = require("./routes/signupRoute");
 const signinRoute = require("./routes/signinRoute");
+const userRoute = require("./routes/userRoute");
 
 app.use("/api/games", gameFetchRoute);
 app.use("/api/signup", signupRoute);
 app.use("/api/signin", signinRoute);
+app.use("/api/user", userRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

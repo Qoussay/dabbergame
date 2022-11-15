@@ -15,6 +15,22 @@ exports.validatePassword = (user, inputPassword) => {
   return passwordsMatch;
 };
 
+exports.getUserInfo = (req, res) => {
+  const username = req.params.username;
+  User.findOne({ username: username }, function (err, user) {
+    if (err) {
+      res.status(500).json({ error: err });
+      return;
+    } else {
+      if (!user) {
+        res.status(404).json({ error: "User does not exist." });
+      } else {
+        res.status(200).json(user);
+      }
+    }
+  });
+};
+
 exports.createUser = async (user) => {
   const salt = crypto.randomBytes(16).toString("hex");
   const hash = crypto
