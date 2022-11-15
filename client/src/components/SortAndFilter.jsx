@@ -18,7 +18,7 @@ export default function SortAndFilter({ className }) {
             {...params}
             variant="filled"
             color="primary"
-            dark
+            dark="true"
             size="small"
             placeholder="Sort By:"
             sx={{
@@ -42,7 +42,7 @@ export default function SortAndFilter({ className }) {
             {...params}
             variant="filled"
             color="primary"
-            dark
+            dark="true"
             size="small"
             placeholder="All Platforms"
             sx={{
@@ -64,7 +64,7 @@ export default function SortAndFilter({ className }) {
             {...params}
             variant="filled"
             color="primary"
-            dark
+            dark="true"
             size="small"
             placeholder="All Tunisia"
             sx={{
@@ -86,7 +86,7 @@ export default function SortAndFilter({ className }) {
             {...params}
             variant="filled"
             color="primary"
-            dark
+            dark="true"
             size="small"
             placeholder="Any Condition"
             sx={{

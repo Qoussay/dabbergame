@@ -8,13 +8,16 @@ import { ThemeProvider } from "@mui/material";
 import { theme } from "./themes/theme";
 import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { UserContextProvider } from "./context/LoggedUserContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
     <ThemeProvider theme={theme}>
       <LocalizationProvider dateAdapter={AdapterMoment}>
-        <App />
+        <UserContextProvider>
+          <App />
+        </UserContextProvider>
       </LocalizationProvider>
     </ThemeProvider>
   </BrowserRouter>

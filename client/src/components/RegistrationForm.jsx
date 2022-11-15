@@ -5,8 +5,12 @@ import { TextField, Autocomplete } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../context/LoggedUserContext";
+
 export default function RegistrationForm({ onClick }) {
   const navigate = useNavigate();
+  const { setLoggedUser } = useUserContext();
+
   const [signingUp, setSigningUp] = useState(false);
   const [values, setValues] = useState({
     firstName: "",
@@ -34,6 +38,7 @@ export default function RegistrationForm({ onClick }) {
 
     if (res.status === 200) {
       console.log("User created successfully");
+      localStorage.setItem("user", values.username);
       navigate(0);
     }
   };
@@ -65,7 +70,7 @@ export default function RegistrationForm({ onClick }) {
           label="First Name"
           variant="filled"
           color="primary"
-          dark
+          dark="true"
           size="small"
         />
         <TextField
@@ -79,7 +84,7 @@ export default function RegistrationForm({ onClick }) {
           label="Last Name"
           variant="filled"
           color="primary"
-          dark
+          dark="true"
           size="small"
         />
         <Autocomplete
@@ -96,7 +101,7 @@ export default function RegistrationForm({ onClick }) {
               {...params}
               variant="filled"
               color="primary"
-              dark
+              dark="true"
               size="small"
               label="State"
               sx={{
@@ -118,7 +123,7 @@ export default function RegistrationForm({ onClick }) {
               {...params}
               variant="filled"
               color="primary"
-              dark
+              dark="true"
               size="small"
               label="Birthdate"
               sx={{
@@ -139,7 +144,7 @@ export default function RegistrationForm({ onClick }) {
           label="Username"
           variant="filled"
           color="primary"
-          dark
+          dark="true"
           size="small"
         />
         <TextField
@@ -154,7 +159,7 @@ export default function RegistrationForm({ onClick }) {
           type="email"
           variant="filled"
           color="primary"
-          dark
+          dark="true"
           size="small"
         />
         <TextField
@@ -169,7 +174,7 @@ export default function RegistrationForm({ onClick }) {
           type="password"
           variant="filled"
           color="primary"
-          dark
+          dark="true"
           size="small"
         />
 

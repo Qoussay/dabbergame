@@ -6,8 +6,7 @@ import LoginModal from "./components/LoginModal";
 import ListingPage from "./pages/ListingPage";
 import ProfilePage from "./pages/ProfilePage";
 import AddReviewPage from "./pages/AddReviewPage";
-import { useState } from "react";
-import Alert from "./components/Alert";
+import { useState, useContext, createContext, useEffect } from "react";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -39,7 +38,6 @@ function App() {
         type={modalType}
         switchButtonClick={handleModalSwitch}
       />
-      {alert ? <Alert /> : null}
       <div className="desktop:px-80 laptop:px-60 pt-24 flex-1 h-full ">
         <Routes>
           <Route path="/" element={<HomePage />} />

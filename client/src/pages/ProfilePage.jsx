@@ -2,20 +2,32 @@ import Button from "../components/Button";
 import ProfileListingsPanel from "../components/ProfileListingsPanel";
 import ProfileReviewsPanel from "../components/ProfileReviewsPanel";
 import UserReviewsScore from "../components/UserReviewsScore";
-import { useState } from "react";
-import users from "../mock/users.json";
+import { useEffect, useState } from "react";
 import reviews from "../mock/reviews.json";
 import listings from "../mock/listings.json";
 import { useParams } from "react-router-dom";
+import axios from "axios";
 
 export default function ProfilePage() {
   // what panel is being rendered/ true for listings and false for reviews
   const [panel, setPanel] = useState(true);
   const { username } = useParams();
+  const [user, setUser] = useState(null);
   //   get user
-  const user = users.filter((tempUser) => tempUser.username === username)[0];
   const userListings = listings.filter((listing) => listing.user === username);
   const userReviews = reviews.filter((review) => review.target === username);
+
+  useEffect(() => {
+    axios
+      .get(`/api/user/${username}`)
+      .then((res) => {
+        console.log(res.data);
+        setUser(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   const handleReviewBtn = () => {
     setPanel(false);
