@@ -1,18 +1,11 @@
 const crypto = require("crypto");
 const User = require("../models/UserModel");
 
-exports.findUser = ({ username }) => {
-  User.findOne({ username: username })
-    .then((data) => {
-      //   res.status(200).send(data);
-      return data;
-    })
-    .catch((error) => {
-      console.log(error);
-      //   res.status(500).send({ message: "An error occured." });
-      return null;
-    });
-};
+// exports.findUser = (username) => {
+//   User.findOne({ username: username }, function (err, user) {
+//     if (!err) return user;
+//   });
+// };
 
 exports.validatePassword = (user, inputPassword) => {
   const inputHash = crypto

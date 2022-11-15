@@ -10,7 +10,7 @@ export default function LoginForm({ onClick }) {
   const navigate = useNavigate();
   const [signingIn, setSigningIn] = useState(false);
   const [values, setValues] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -29,7 +29,10 @@ export default function LoginForm({ onClick }) {
     });
 
     if (res.status === 200) {
+      localStorage.setItem("user", values.username);
       navigate(0);
+    } else {
+      console.log(res.response.data);
     }
   };
 
@@ -50,15 +53,15 @@ export default function LoginForm({ onClick }) {
 
       <form className="grow flex flex-col justify-center space-y-4">
         <TextField
-          name="email"
-          value={values.email}
+          name="username"
+          value={values.username}
           onChange={handleInputChange}
           sx={{
             background: "#fff",
             borderRadius: "5px",
           }}
           id="filled-basic"
-          label="Email"
+          label="Username"
           variant="filled"
           color="primary"
           dark="true"
