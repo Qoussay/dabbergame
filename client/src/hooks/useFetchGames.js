@@ -24,12 +24,12 @@ export default function useFetchGames(searchString) {
 
 const generateSearchOptions = (array) =>
   array.map(
-    (item) =>
-      `${item.name} (${
-        item.first_release_date
-          ? new Date(item.first_release_date * 1000).getFullYear()
-          : "#"
-      })`
+    (item) => item.name
+    // `${item.name} (${
+    //   item.first_release_date
+    //     ? new Date(item.first_release_date * 1000).getFullYear()
+    //     : "#"
+    // })`
   );
 
 async function fetchData(searchString) {

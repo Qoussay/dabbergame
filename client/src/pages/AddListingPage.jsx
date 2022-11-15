@@ -1,13 +1,25 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../components/Button";
 import GameCover from "../components/GameCover";
 import TradeGamesPanel from "../components/TradeGamesPanel";
+import axios from "axios";
+import { Autocomplete, TextField } from "@mui/material";
+import useFetchGames from "../hooks/useFetchGames";
+import useFetchGameInfo from "../hooks/useFetchGameInfo";
 export default function AddListingPage() {
   // this state will keep track of the page state
   const [pageState, setPageState] = useState(0);
-  const [gameChosen, setGameChosen] = useState(null);
+  const [inputValue, setInputValue] = useState("");
+  const [gameName, setGameName] = useState("");
   const [listing, setListing] = useState({});
   const [tradeAccepted, setTradeAccepted] = useState(false);
+
+  const searchOptions = useFetchGames(inputValue);
+  const gameChosen = useFetchGameInfo(gameName);
+
+  useEffect(() => {
+    console.log(gameChosen);
+  }, [gameChosen]);
 
   const handleNextBtn = () => {
     setPageState(pageState + 1);
@@ -37,10 +49,36 @@ export default function AddListingPage() {
             Choose a game and select the corresponding platform
           </div>
           <form className="flex flex-row space-x-4">
-            <input
-              type="text"
-              className="pl-5 py-0.5 rounded-full w-3/4 h-8 focus:shadow-accent focus:border-accent focus:outline-none"
-              placeholder="Search for a game"
+            <Autocomplete
+              value={gameName}
+              onChange={(event, newValue) => {
+                setGameName(newValue);
+              }}
+              inputValue={inputValue}
+              onInputChange={(event, newInputValue) => {
+                setInputValue(newInputValue);
+              }}
+              className="grow pt-1"
+              disablePortal
+              id="combo-box-demo"
+              options={searchOptions}
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  variant="filled"
+                  color="primary"
+                  dark="true"
+                  size="small"
+                  placeholder="Search for a game"
+                  sx={{
+                    background: "#fff",
+                    borderRadius: "5px",
+                    "& .MuiFilledInput-root": {
+                      paddingTop: 0,
+                    },
+                  }}
+                />
+              )}
             />
             <input
               type="text"
@@ -67,7 +105,7 @@ export default function AddListingPage() {
             {/* left panel for image  */}
             <div className="w-1/4">
               <GameCover
-                url="https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png"
+                url={gameChosen.coverUrl}
                 platform="playstation5"
                 rounded={true}
                 textSize="text-base"
@@ -149,7 +187,7 @@ export default function AddListingPage() {
             {/* left panel for image  */}
             <div className="w-1/4 ">
               <GameCover
-                url="https://images.igdb.com/igdb/image/upload/t_cover_big/co4v5c.png"
+                url={gameChosen.coverUrl}
                 platform="playstation5"
                 rounded={true}
                 textSize="text-base"
