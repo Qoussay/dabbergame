@@ -39,7 +39,8 @@ exports.getGameInfo = async (req, res) => {
 
   gameInfo = { ...gameInfo, coverUrl: coverUrl };
 
-  console.log(gameInfo);
+  await getPlatformList(gameInfo.platforms);
+  // console.log(gameInfo);
   res.json(gameInfo);
 };
 
@@ -60,4 +61,31 @@ const getGameCover = async (coverId) => {
   const coverUrl = `https://images.igdb.com/igdb/image/upload/t_cover_big/${result.data[0].image_id}.png`;
 
   return coverUrl;
+};
+
+const getPlatformName = async (platformId) => {
+  var data = `fields name ; where id=${platformId}; `;
+  var config = {
+    method: "post",
+    url: "https://api.igdb.com/v4/platforms",
+    headers: {
+      "Client-ID": process.env.CLIENT_ID,
+      Authorization: `Bearer ${process.env.ACCESS_TOKEN}`,
+      "Content-Type": "text/plain",
+    },
+    data: data,
+  };
+  const result = await axios(config);
+
+  return result.data[0].name;
+};
+
+const getPlatformList = async (platformArray) => {
+  for (let index = 0; index < platformArray.length; index++) {
+    const platformId = platformArray[index];
+    const name = await getPlatformName(platformId);
+    platformArray[index] = name;
+  }
+
+  console.log(platformArray);
 };

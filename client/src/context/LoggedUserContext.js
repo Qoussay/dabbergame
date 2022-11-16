@@ -21,7 +21,7 @@ export function UserContextProvider({ children }) {
 
   useEffect(() => {
     setLoggedUser(localStorage.getItem("user"));
-    console.log(loggedUser);
+    // console.log(loggedUser);
   }, [loggedUser]);
 
   const value = {

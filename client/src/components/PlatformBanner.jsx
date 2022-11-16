@@ -3,11 +3,11 @@ export default function PlatformBanner(props) {
   let bannerTextColor = "";
 
   switch (props.platform) {
-    case "Playstation 5":
+    case "PlayStation 5":
       bannerColor = "bg-white";
       bannerTextColor = "text-black";
       break;
-    case "Playstation 4":
+    case "PlayStation 4":
       bannerColor = "bg-blue-700";
       bannerTextColor = "text-white";
       break;
@@ -15,9 +15,13 @@ export default function PlatformBanner(props) {
       bannerColor = "bg-green-500";
       bannerTextColor = "text-white";
       break;
+    case "Xbox Series X|S":
+      bannerColor = "bg-green-500";
+      bannerTextColor = "text-white";
+      break;
     default:
       bannerColor = "bg-black";
-      bannerTextColor = "text-black";
+      bannerTextColor = "text-text-white";
       break;
   }
   return (

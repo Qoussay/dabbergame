@@ -14,16 +14,30 @@ import useFetchGameInfo from "../hooks/useFetchGameInfo";
 export default function AddListingPage() {
   // this state will keep track of the page state
   const [pageState, setPageState] = useState(0);
-  const [inputValue, setInputValue] = useState("");
+
+  // input Values
+  const [gameTitleIV, setGameTitleIV] = useState("");
+  const [platformOptions, setPlatformOptions] = useState([]);
+  const [platformChosen, setPlatformChosen] = useState("");
+  const [platformInput, setPlatformInput] = useState("");
+
+  //final gamename chosen by the user
   const [gameName, setGameName] = useState("");
+
+  //final object that will be passed to the backend to be saved in the database
   const [listing, setListing] = useState({});
   const [tradeAccepted, setTradeAccepted] = useState(false);
 
-  const searchOptions = useFetchGames(inputValue);
+  //these are the search options that will be displayed while the user is typing
+  const searchOptions = useFetchGames(gameTitleIV);
+
+  //get game details from the hook
   const { gameInfo, done } = useFetchGameInfo(gameName);
 
   useEffect(() => {
-    console.log(gameInfo);
+    if (gameInfo) {
+      setPlatformOptions(gameInfo.platforms);
+    }
   }, [gameInfo]);
 
   const handleNextBtn = () => {
@@ -54,19 +68,50 @@ export default function AddListingPage() {
             Choose a game and select the corresponding platform
           </div>
           <form className="flex flex-row space-x-4">
+            <div className="w-2/3">
+              <Autocomplete
+                value={gameName}
+                onChange={(event, newValue) => {
+                  setGameName(newValue);
+                }}
+                inputValue={gameTitleIV}
+                onInputChange={(event, newInputValue) => {
+                  setGameTitleIV(newInputValue);
+                }}
+                className="grow pt-1"
+                disablePortal
+                options={searchOptions}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    variant="filled"
+                    color="primary"
+                    dark="true"
+                    size="small"
+                    placeholder="Search for a game"
+                    sx={{
+                      background: "#fff",
+                      borderRadius: "5px",
+                      "& .MuiFilledInput-root": {
+                        paddingTop: 0,
+                      },
+                    }}
+                  />
+                )}
+              />
+            </div>
             <Autocomplete
-              value={gameName}
+              value={platformChosen}
               onChange={(event, newValue) => {
-                setGameName(newValue);
+                setPlatformChosen(newValue);
               }}
-              inputValue={inputValue}
+              inputValue={platformInput}
               onInputChange={(event, newInputValue) => {
-                setInputValue(newInputValue);
+                setPlatformInput(newInputValue);
               }}
               className="grow pt-1"
               disablePortal
-              id="combo-box-demo"
-              options={searchOptions}
+              options={platformOptions}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -74,7 +119,7 @@ export default function AddListingPage() {
                   color="primary"
                   dark="true"
                   size="small"
-                  placeholder="Search for a game"
+                  placeholder="Platform"
                   sx={{
                     background: "#fff",
                     borderRadius: "5px",
@@ -84,11 +129,6 @@ export default function AddListingPage() {
                   }}
                 />
               )}
-            />
-            <input
-              type="text"
-              className=" pl-5 py-0.5 w-1/4 rounded-full h-8 focus:shadow-accent focus:border-accent focus:outline-none"
-              placeholder="Platform"
             />
           </form>
           <div className="flex flex-row justify-end pt-10">
@@ -111,9 +151,9 @@ export default function AddListingPage() {
             <div className="w-1/4">
               <GameCover
                 url={gameInfo.coverUrl}
-                platform="playstation5"
+                platform={platformChosen}
                 rounded={true}
-                textSize="text-base"
+                textSize="text-sm"
                 className="shadow-md shadow-bg-dark"
               />
             </div>
@@ -252,12 +292,6 @@ export default function AddListingPage() {
   }
   return (
     <div className=" bg-bg-light rounded-lg shadow-md shadow-bg-dark flex flex-col space-y-6">
-      <Backdrop
-        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
-        open={!done}
-      >
-        <CircularProgress color="inherit" />
-      </Backdrop>
       <div className="flex flex-row space-x-4 px-2 bg-bg-dark rounded-t-lg shadow-md shadow-bg-dark py-3">
         <div className="flex flex-col justify-center grow">
           <hr className="border-accent" />
@@ -268,6 +302,12 @@ export default function AddListingPage() {
         </div>
       </div>
       {formStage}
+      <Backdrop
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={!done}
+      >
+        <CircularProgress color="inherit" />
+      </Backdrop>
     </div>
   );
 }
