@@ -19,6 +19,10 @@ export default function PlatformBanner(props) {
       bannerColor = "bg-green-500";
       bannerTextColor = "text-white";
       break;
+    case "Nintendo Switch":
+      bannerColor = "bg-[#E60013]";
+      bannerTextColor = "text-white";
+      break;
     default:
       bannerColor = "bg-black";
       bannerTextColor = "text-text-white";
