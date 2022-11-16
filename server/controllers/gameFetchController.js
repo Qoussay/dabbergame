@@ -81,10 +81,14 @@ const getPlatformName = async (platformId) => {
 };
 
 const getPlatformList = async (platformArray) => {
-  for (let index = 0; index < platformArray.length; index++) {
-    const platformId = platformArray[index];
-    const name = await getPlatformName(platformId);
-    platformArray[index] = name;
+  if (platformArray) {
+    for (let index = 0; index < platformArray.length; index++) {
+      const platformId = platformArray[index];
+      const name = await getPlatformName(platformId);
+      platformArray[index] = name;
+    }
+  } else {
+    return null;
   }
 
   console.log(platformArray);

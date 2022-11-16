@@ -13,7 +13,15 @@ import {
 import useFetchGames from "../hooks/useFetchGames";
 import useFetchGameInfo from "../hooks/useFetchGameInfo";
 import { useUserContext } from "../context/LoggedUserContext";
+import { useNavigate } from "react-router-dom";
+import CustomAlert from "../components/CustomAlert";
+
 export default function AddListingPage() {
+  const navigate = useNavigate();
+
+  //setting up the error state for alert
+  const [error, setError] = useState(null);
+
   // this state will keep track of the page state
   const [pageState, setPageState] = useState(0);
 
@@ -68,6 +76,18 @@ export default function AddListingPage() {
     }
   }, [gameInfo]);
 
+  useEffect(() => {
+    if (gameName && platformChosen) {
+      setListing({
+        ...listing,
+        user: loggedUser,
+        gameName: gameName,
+        coverURL: gameInfo.coverUrl,
+        platform: platformChosen,
+      });
+    }
+  }, [gameName, platformChosen]);
+
   const handleNextBtn = () => {
     setPageState(pageState + 1);
   };
@@ -86,17 +106,23 @@ export default function AddListingPage() {
     }
   };
 
-  const handleSubmit = () => {
-    setListing({
-      ...listing,
-      user: loggedUser,
-      gameName: gameName,
-      coverURL: gameInfo.coverUrl,
-      platform: platformChosen,
-    });
+  const handleSubmission = async () => {
+    const res = await axios
+      .post("/api/listings", { listing: listing })
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.error);
+      });
 
-    return;
+    if (res.status === 200) {
+      console.log("Listing created successfully");
+      navigate("/");
+    } else {
+      setError("An error has occured. Listing could not be created.");
+      navigate(0);
+    }
   };
+
   let formStage = null;
 
   switch (pageState) {
@@ -126,7 +152,6 @@ export default function AddListingPage() {
                     variant="filled"
                     color="primary"
                     dark="true"
-                    size="small"
                     placeholder="Search for a game"
                     sx={{
                       background: "#fff",
@@ -157,7 +182,6 @@ export default function AddListingPage() {
                   variant="filled"
                   color="primary"
                   dark="true"
-                  size="small"
                   placeholder="Platform"
                   sx={{
                     background: "#fff",
@@ -363,7 +387,10 @@ export default function AddListingPage() {
                     value={listing.trade}
                     onChange={(e, newValue) => {
                       e.preventDefault();
-                      setListing({ ...listing, trade: newValue });
+                      setListing({
+                        ...listing,
+                        trade: newValue === "Yes" ? true : false,
+                      });
                       handleTradeChange(newValue);
                     }}
                     disablePortal
@@ -390,7 +417,10 @@ export default function AddListingPage() {
                     value={listing.delivery}
                     onChange={(e, newValue) => {
                       e.preventDefault();
-                      setListing({ ...listing, delivery: newValue });
+                      setListing({
+                        ...listing,
+                        delivery: newValue === "Yes" ? true : false,
+                      });
                     }}
                     disablePortal
                     options={["Yes", "No"]}
@@ -428,7 +458,7 @@ export default function AddListingPage() {
               bgColor="bg-accent"
               textColor="text-text-dark"
               className="text-base py-1.5 px-6"
-              onClick={handleSubmit}
+              onClick={handleSubmission}
             />
           </div>
         </div>
@@ -460,6 +490,7 @@ export default function AddListingPage() {
         >
           <CircularProgress color="inherit" />
         </Backdrop>
+        <CustomAlert type="error" message={error} />
       </div>
     </div>
   );
