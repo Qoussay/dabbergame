@@ -68,6 +68,7 @@ export default function Navbar(props) {
         className="text-sm py-1"
         onClick={() => {
           localStorage.removeItem("user");
+          setLoggedUser(null);
           navigate(0);
         }}
       />

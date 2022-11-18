@@ -47,15 +47,22 @@ exports.createUser = async (user) => {
     hash: hash,
   };
   const newUser = new User(user);
-  // console.log(newUser);
-  newUser
-    .save()
-    .then((data) => {
-      console.log("user created successfully");
-      return { username: data.username, createdAt: Date.now() };
-    })
-    .catch((error) => {
-      console.log(error);
-      return null;
-    });
+
+  await newUser.save(function (err) {
+    if (err) {
+      const result = {
+        done: false,
+        error: "Username or Email already in use.",
+      };
+      console.log(result);
+      return result;
+    } else {
+      const result = {
+        done: true,
+        username: data.username,
+        createdAt: Date.now(),
+      };
+      return result;
+    }
+  });
 };

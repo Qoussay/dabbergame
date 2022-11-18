@@ -6,9 +6,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import CustomAlert from "./CustomAlert";
+import { useUserContext } from "../context/LoggedUserContext";
 
 export default function LoginForm({ onClick }) {
   const navigate = useNavigate();
+  const { setLoggedUser } = useUserContext();
   const [signingIn, setSigningIn] = useState(false);
   const [values, setValues] = useState({
     username: "",
@@ -35,6 +37,7 @@ export default function LoginForm({ onClick }) {
 
     if (res.status === 200) {
       localStorage.setItem("user", values.username);
+      setLoggedUser(values.username);
       navigate(0);
     }
   };
@@ -100,6 +103,7 @@ export default function LoginForm({ onClick }) {
           dark="true"
           size="small"
         />
+        <CustomAlert type="error" message={error} fixed={false} timed={false} />
         {/* </Stack> */}
         <Button
           bgColor="bg-accent"
@@ -136,7 +140,6 @@ export default function LoginForm({ onClick }) {
           Sign Up
         </p>
       </div>
-      <CustomAlert type="error" message={error} />
     </div>
   );
 }
