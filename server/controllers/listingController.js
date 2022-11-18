@@ -1,3 +1,4 @@
+const Mongoose = require("mongoose");
 const ListingModel = require("../models/ListingModel");
 
 exports.saveListing = (req, res) => {
@@ -17,4 +18,23 @@ exports.saveListing = (req, res) => {
       console.log(error);
       res.status(500).json({ message: "An error has occured", error: error });
     });
+};
+
+exports.getListings = (req, res) => {
+  ListingModel.find({}, function (err, data) {
+    if (!err) {
+      res.status(200).json(data);
+    }
+  });
+};
+
+exports.getOneListing = (req, res) => {
+  const listingId = req.params.id;
+
+  ListingModel.findById(listingId, function (err, data) {
+    if (!err) {
+      res.status(200).json(data);
+      console.log(data);
+    }
+  });
 };

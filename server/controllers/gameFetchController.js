@@ -2,7 +2,7 @@ var axios = require("axios");
 require("dotenv").config();
 
 exports.getGames = async (req, res) => {
-  var data = `fields id,name,first_release_date ; search "${req.body.input}"; limit 5;`;
+  var data = `fields id,name,first_release_date ; search "${req.body.input}"; limit 10;`;
   var config = {
     method: "post",
     url: "https://api.igdb.com/v4/games",
@@ -84,12 +84,11 @@ const getPlatformList = async (platformArray) => {
   if (platformArray) {
     for (let index = 0; index < platformArray.length; index++) {
       const platformId = platformArray[index];
-      const name = await getPlatformName(platformId);
+      let name = await getPlatformName(platformId);
+      if (name === "PC (Microsoft Windows)") name = "PC";
       platformArray[index] = name;
     }
   } else {
     return null;
   }
-
-  console.log(platformArray);
 };
