@@ -137,9 +137,9 @@ export default function AddListingPage() {
           <form className="flex flex-row space-x-4">
             <div className="w-2/3">
               <Autocomplete
-                value={gameName}
+                // value={gameName}
                 onChange={(event, newValue) => {
-                  setGameName(newValue);
+                  setGameName(newValue.name);
                 }}
                 inputValue={gameTitleIV}
                 onInputChange={(event, newInputValue) => {
@@ -148,6 +148,23 @@ export default function AddListingPage() {
                 className="grow pt-1"
                 disablePortal
                 options={searchOptions}
+                getOptionLabel={(option) => option.name}
+                renderOption={(props, option) => (
+                  <Box
+                    component="li"
+                    sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                    {...props}
+                  >
+                    <img
+                      // loading="lazy"
+                      width="40"
+                      src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${option.cover.image_id}.png`}
+                      alt=""
+                    />
+                    {option.name} (
+                    {new Date(option.first_release_date * 1000).getFullYear()})
+                  </Box>
+                )}
                 renderInput={(params) => (
                   <TextField
                     {...params}
@@ -507,7 +524,7 @@ export default function AddListingPage() {
         >
           <CircularProgress color="inherit" />
         </Backdrop>
-        <CustomAlert type="error" message={error} />
+        <CustomAlert type="error" message={error} fixed={true} timed={true} />
       </div>
     </div>
   );

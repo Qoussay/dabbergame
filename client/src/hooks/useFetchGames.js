@@ -19,6 +19,8 @@ export default function useFetchGames(searchString) {
     }
   }, [searchString]);
 
+  console.log(gameSearch);
+
   return gameSearch;
 }
 
@@ -39,5 +41,5 @@ async function fetchData(searchString) {
       console.log(err);
     });
 
-  return generateSearchOptions(res.data);
+  return res.data;
 }
