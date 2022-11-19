@@ -33,7 +33,8 @@ module.exports = {
         16: "24rem",
       },
       boxShadow: {
-        all: "0px 0px 10px",
+        all: "0px 0px 10px rgba(0, 0, 0, 0.3)",
+        // md: "0 0 10px  rgba(0, 0, 0, 0.3)",
         accent: "0 0 10px #47DDC2",
       },
     },

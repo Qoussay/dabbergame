@@ -9,6 +9,7 @@ import {
   TextField,
   CircularProgress,
   Backdrop,
+  Box,
 } from "@mui/material";
 import useFetchGames from "../hooks/useFetchGames";
 import useFetchGameInfo from "../hooks/useFetchGameInfo";
@@ -46,7 +47,7 @@ export default function AddListingPage() {
   });
 
   //get user
-  const { loggedUser, setLoggedUser } = useUserContext();
+  const { loggedUser } = useUserContext();
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -73,6 +74,7 @@ export default function AddListingPage() {
   useEffect(() => {
     if (gameInfo) {
       setPlatformOptions(gameInfo.platforms);
+      console.log(gameInfo);
     }
   }, [gameInfo]);
 
@@ -82,8 +84,8 @@ export default function AddListingPage() {
         ...listing,
         user: loggedUser,
         gameName: gameName,
-        coverURL: gameInfo.coverUrl,
-        platform: platformChosen,
+        coverURL: `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.png`,
+        platform: platformChosen.name,
       });
     }
   }, [gameName, platformChosen]);
@@ -165,7 +167,7 @@ export default function AddListingPage() {
               />
             </div>
             <Autocomplete
-              value={platformChosen}
+              // value={platformChosen ? platformChosen.name : null}
               onChange={(event, newValue) => {
                 setPlatformChosen(newValue);
               }}
@@ -175,7 +177,18 @@ export default function AddListingPage() {
               }}
               className="grow pt-1"
               disablePortal
+              autoHighlight
               options={platformOptions}
+              getOptionLabel={(option) => option.name}
+              renderOption={(props, option) => (
+                <Box
+                  component="li"
+                  sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+                  {...props}
+                >
+                  {option.name}
+                </Box>
+              )}
               renderInput={(params) => (
                 <TextField
                   {...params}
@@ -189,6 +202,10 @@ export default function AddListingPage() {
                     "& .MuiFilledInput-root": {
                       paddingTop: 0,
                     },
+                  }}
+                  inputProps={{
+                    ...params.inputProps,
+                    autoComplete: "new-password", // disable autocomplete and autofill
                   }}
                 />
               )}
@@ -213,11 +230,11 @@ export default function AddListingPage() {
             {/* left panel for image  */}
             <div className="w-1/4">
               <GameCover
-                url={gameInfo.coverUrl}
-                platform={platformChosen}
+                url={`https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.png`}
+                platform={platformChosen.name}
                 rounded={true}
                 textSize="text-sm"
-                className="shadow-md shadow-bg-dark"
+                className="shadow-all shadow-bg-dark"
               />
             </div>
             {/* right panel  */}
@@ -371,11 +388,11 @@ export default function AddListingPage() {
             {/* left panel for image  */}
             <div className="w-1/4 ">
               <GameCover
-                url={gameInfo.coverUrl}
-                platform={platformChosen}
+                url={`https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.png`}
+                platform={platformChosen.name}
                 rounded={true}
                 textSize="text-sm"
-                className="shadow-md shadow-bg-dark"
+                className=" shadow-md shadow-bg-dark"
               />
             </div>
             {/* right panel  */}

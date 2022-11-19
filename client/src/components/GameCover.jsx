@@ -8,7 +8,7 @@ export default function GameCover({
 }) {
   return (
     <div
-      className={`${className} flex flex-col font-bold ${
+      className={`${className} flex flex-col font-bold rounded-t-lg ${
         rounded ? "rounded-b-lg" : null
       }`}
     >
