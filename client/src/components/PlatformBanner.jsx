@@ -23,6 +23,14 @@ export default function PlatformBanner(props) {
       bannerColor = "bg-[#E60013]";
       bannerTextColor = "text-white";
       break;
+    case "Wii":
+      bannerColor = "bg-[#0096C7]";
+      bannerTextColor = "text-white";
+      break;
+    case "Google Stadia":
+      bannerColor = "bg-[#F7461F]";
+      bannerTextColor = "text-white";
+      break;
     default:
       bannerColor = "bg-black";
       bannerTextColor = "text-text-white";
@@ -32,7 +40,7 @@ export default function PlatformBanner(props) {
     <div
       className={`${bannerColor} ${bannerTextColor} ${props.textSize} py-0.5 text-center rounded-t-lg`}
     >
-      {props.platform}
+      {props.platform === "PC (Microsoft Windows)" ? "PC" : props.platform}
     </div>
   );
 }

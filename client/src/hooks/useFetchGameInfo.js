@@ -16,6 +16,8 @@ export default function useFetchGameInfo(gameName) {
 
       await setGameInfo(data.data);
 
+      console.log(data.data);
+
       setDone(true);
     }
     if (gameName) {
