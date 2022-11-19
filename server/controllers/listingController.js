@@ -21,11 +21,13 @@ exports.saveListing = (req, res) => {
 };
 
 exports.getListings = (req, res) => {
-  ListingModel.find({}, function (err, data) {
-    if (!err) {
-      res.status(200).json(data);
-    }
-  });
+  ListingModel.find({})
+    .sort({ dateCreated: "desc" })
+    .exec(function (err, data) {
+      if (!err) {
+        res.status(200).json(data);
+      }
+    });
 };
 
 exports.getOneListing = (req, res) => {
