@@ -35,6 +35,7 @@ export default function AddListingPage() {
   const [platformOptions, setPlatformOptions] = useState([]);
   const [platformChosen, setPlatformChosen] = useState("");
   const [platformInput, setPlatformInput] = useState("");
+  const [gameTradeList, setGameTradeList] = useState([]);
   // the rest of the values
   const [listing, setListing] = useState({
     user: "",
@@ -48,6 +49,7 @@ export default function AddListingPage() {
     delivery: "",
     trade: "",
     description: "",
+    gamesTrade: [],
   });
 
   //get user
@@ -81,6 +83,10 @@ export default function AddListingPage() {
       console.log(gameInfo);
     }
   }, [gameInfo]);
+
+  useEffect(() => {
+    setListing({ ...listing, gamesTrade: gameTradeList });
+  }, [gameTradeList]);
 
   useEffect(() => {
     if (gameName && platformChosen) {
@@ -256,7 +262,7 @@ export default function AddListingPage() {
                 platform={platformChosen.name}
                 rounded={true}
                 textSize="text-sm"
-                className="shadow-all shadow-bg-dark"
+                className="shadow-md shadow-bg-dark"
               />
             </div>
             {/* right panel  */}
@@ -418,7 +424,7 @@ export default function AddListingPage() {
               />
             </div>
             {/* right panel  */}
-            <div className="w-3/4 flex flex-col space-y-8">
+            <div className="w-3/4 flex flex-col space-y-4">
               <div className="flex flex-row space-x-4">
                 <div className="w-1/2">
                   <TextField
@@ -476,7 +482,13 @@ export default function AddListingPage() {
                   </TextField>
                 </div>
               </div>
-              {tradeAccepted ? <TradeGamesPanel /> : null}
+              {tradeAccepted ? (
+                <TradeGamesPanel
+                  passTradeGamesList={(list) => {
+                    setGameTradeList(list);
+                  }}
+                />
+              ) : null}
             </div>
           </div>
           <div className="flex flex-row pt-10">

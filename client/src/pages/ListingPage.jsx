@@ -74,19 +74,15 @@ export default function ListingPage() {
     gamesTradeSection = (
       <div className="pb-10">
         <SectionTitle title="Games accepted for trade" />
-        <div className="flex flex-row space-x-4">
-          {/* {listing.gamesTrade.map((game) => {
+        <div className="grid grid-cols-5 gap-4">
+          {listing.gamesTrade.map((game) => {
             return (
-              <div className="w-1/5">
-                <GameCover
-                  url={game.coverUrl}
-                  platform={game.platform}
-                  rounded={true}
-                  textSize="text-xs"
-                />
-              </div>
+              <img
+                src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.png`}
+                className="rounded-lg shadow-md shadow-bg-dark  "
+              ></img>
             );
-          })} */}
+          })}
         </div>
       </div>
     );
