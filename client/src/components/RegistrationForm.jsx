@@ -6,11 +6,11 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../context/LoggedUserContext";
+import CustomAlert from "./CustomAlert";
 
 export default function RegistrationForm({ onClick }) {
   const navigate = useNavigate();
   const { setLoggedUser } = useUserContext();
-
   const [signingUp, setSigningUp] = useState(false);
   const [values, setValues] = useState({
     firstName: "",
@@ -21,6 +21,65 @@ export default function RegistrationForm({ onClick }) {
     dateOfBirth: null,
     state: "",
   });
+
+  const [error, setError] = useState(null);
+
+  const validateInput = () => {
+    var reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!values.firstName) {
+      setError("You must enter a first name.");
+      setSigningUp(false);
+      return false;
+    }
+    if (!values.lastName) {
+      setError("You must enter a last name.");
+      setSigningUp(false);
+      return false;
+    }
+    if (!values.email) {
+      setError("You must enter an email.");
+      setSigningUp(false);
+      return false;
+    }
+    if (!reg.test(values.email)) {
+      setError("You must enter a valid email.");
+      setSigningUp(false);
+      return false;
+    }
+    if (!values.state) {
+      setError("You must choose a state.");
+      setSigningUp(false);
+      return false;
+    }
+    if (!values.dateOfBirth) {
+      setError("You must enter a date of birth.");
+      setSigningUp(false);
+      return false;
+    } else {
+      const thisYear = new Date().getFullYear();
+      if (thisYear - values.dateOfBirth._d.getFullYear() < 14) {
+        setError("You must be 14 years old or older.");
+        setSigningUp(false);
+        return false;
+      }
+    }
+    if (!values.username) {
+      setError("You must enter a username.");
+      setSigningUp(false);
+      return false;
+    }
+    if (!values.password) {
+      setError("You must enter a password.");
+      setSigningUp(false);
+      return false;
+    }
+    if (values.password.length < 8) {
+      setError("You must enter a password of 8 characters or more.");
+      setSigningUp(false);
+      return false;
+    }
+    return true;
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -33,12 +92,20 @@ export default function RegistrationForm({ onClick }) {
 
   const registerUser = async () => {
     const res = await axios.post("/api/signup", values).catch((err) => {
-      console.log(err);
+      // console.log(err);
+      // setError(err.response.data.message);
+      // setSigningUp(false);
+      // return;
+      console.log("res status is 400");
+      setError("Username or email is already in use.");
+      setSigningUp(false);
+      return;
     });
 
     if (res.status === 200) {
       console.log("User created successfully");
       localStorage.setItem("user", values.username);
+      setLoggedUser(values.username);
       navigate(0);
     }
   };
@@ -47,7 +114,7 @@ export default function RegistrationForm({ onClick }) {
     e.preventDefault();
     setSigningUp(true);
     try {
-      registerUser();
+      if (validateInput()) registerUser();
     } catch {
       console.log("error signing up");
     }
@@ -177,7 +244,7 @@ export default function RegistrationForm({ onClick }) {
           dark="true"
           size="small"
         />
-
+        <CustomAlert type="error" message={error} fixed={false} timed={false} />
         <Button
           bgColor="bg-accent"
           textColor="text-text-dark"

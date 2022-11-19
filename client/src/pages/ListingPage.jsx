@@ -1,6 +1,5 @@
 // When you get to this pageXOffset, search the listing via ID
 import { useParams, useNavigate } from "react-router-dom";
-import data from "../mock/listings.json";
 import PlatformBanner from "../components/PlatformBanner";
 import Button from "../components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,24 +17,50 @@ import SectionTitle from "../components/SectionTitle";
 import GameCover from "../components/GameCover";
 import { useState, useEffect } from "react";
 import UserReviewsScore from "../components/UserReviewsScore";
+import axios from "axios";
 export default function ListingPage() {
   const { listingId } = useParams();
   const navigate = useNavigate();
-  const listing = data.filter((listing) => listing.id === listingId)[0];
+
+  const [listing, setListing] = useState({
+    user: "",
+    state: "",
+    gameName: "",
+    coverURL: "",
+    platform: "",
+    price: "",
+    condition: "",
+    paymentMethod: "",
+    delivery: "",
+    trade: "",
+    description: "",
+  });
 
   const [reviewsIsMore, setReviewsIsMore] = useState(false);
   const [showingReviews, setShowingReviews] = useState([]);
 
-  const userReviews = reviews.filter(
-    (review) => review.target === listing.user
-  );
+  // const userReviews = reviews.filter(
+  //   (review) => review.target === listing.user
+  // );
+
+  const userReviews = [];
 
   useEffect(() => {
+    async function getData() {
+      const res = await axios.get(`/api/listings/${listingId}`).catch((err) => {
+        console.log(err);
+      });
+
+      setListing(res.data);
+    }
+
+    getData();
+
     setShowingReviews([...userReviews.slice(0, 3)]);
     if (userReviews.length >= 3) {
       setReviewsIsMore(true);
     }
-  }, []);
+  }, [listing]);
 
   const handleMore = () => {
     setShowingReviews(userReviews.slice(0, showingReviews.length + 3));
@@ -50,7 +75,7 @@ export default function ListingPage() {
       <div className="pb-10">
         <SectionTitle title="Games accepted for trade" />
         <div className="flex flex-row space-x-4">
-          {listing.gamesTrade.map((game) => {
+          {/* {listing.gamesTrade.map((game) => {
             return (
               <div className="w-1/5">
                 <GameCover
@@ -61,7 +86,7 @@ export default function ListingPage() {
                 />
               </div>
             );
-          })}
+          })} */}
         </div>
       </div>
     );

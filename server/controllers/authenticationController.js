@@ -1,11 +1,34 @@
 const userController = require("../controllers/userController");
 const User = require("../models/UserModel");
+const crypto = require("crypto");
 
 exports.signup = async (req, res) => {
   try {
-    await userController.createUser(req.body);
+    const user = req.body;
+    const salt = crypto.randomBytes(16).toString("hex");
+    const hash = crypto
+      .pbkdf2Sync(user.password, salt, 1000, 64, "sha512")
+      .toString("hex");
+
+    const newUser = new User({
+      firstName: user.firstName,
+      lastName: user.lastName,
+      dateOfBirth: user.dateOfBirth,
+      state: user.state,
+      username: user.username,
+      email: user.email,
+      salt: salt,
+      hash: hash,
+    });
+
+    await newUser.save(function (err) {
+      if (err) {
+        res.status(400).send({ message: "Email or username is already used" });
+      } else {
+        res.status(200).send({ done: true });
+      }
+    });
     // console.log(req.body);
-    res.status(200).send({ done: true, username: req.body.username });
   } catch (error) {
     console.error(error);
     res.status(500).end({ error: error.message, done: false });

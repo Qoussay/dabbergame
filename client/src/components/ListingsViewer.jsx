@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactPaginate from "react-paginate";
-import data from "../mock/listings.json";
+import axios from "axios";
 import ListingCard from "./ListingCard";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -18,8 +18,8 @@ function Listings({ currentListings }) {
           return (
             <ListingCard
               data={listing}
-              key={listing.id}
-              onClick={() => navigate(`/listing/${listing.id}`)}
+              key={listing._id}
+              onClick={() => navigate(`/listing/${listing._id}`)}
             />
           );
         })}
@@ -34,14 +34,24 @@ export default function ListingsViewer({ itemsPerPage }) {
   // Here we use item offsets; we could also use page offsets
   // following the API or data you're working with.
   const [itemOffset, setItemOffset] = useState(0);
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     // Fetch items from another resources.
+    async function getData() {
+      const res = await axios.get("/api/listings").catch((err) => {
+        console.log(err);
+      });
+
+      setData(res.data);
+    }
+
+    getData();
     const endOffset = itemOffset + itemsPerPage;
     console.log(`Loading items from ${itemOffset} to ${endOffset}`);
     setCurrentListings(data.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage]);
+  }, [itemOffset, itemsPerPage, data]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
