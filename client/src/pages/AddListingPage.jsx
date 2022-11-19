@@ -10,6 +10,10 @@ import {
   CircularProgress,
   Backdrop,
   Box,
+  Select,
+  MenuItem,
+  InputLabel,
+  FormControl,
 } from "@mui/material";
 import useFetchGames from "../hooks/useFetchGames";
 import useFetchGameInfo from "../hooks/useFetchGameInfo";
@@ -99,7 +103,7 @@ export default function AddListingPage() {
   };
 
   const handleTradeChange = (value) => {
-    if (value === "Yes") {
+    if (value) {
       setTradeAccepted(true);
       return;
     } else {
@@ -130,8 +134,8 @@ export default function AddListingPage() {
   switch (pageState) {
     case 0:
       formStage = (
-        <div className="flex flex-col py-6 px-10">
-          <div className="text-text-white pb-4">
+        <div className="flex flex-col">
+          <div className="text-text-white text-lg pb-4">
             Choose a game and select the corresponding platform
           </div>
           <form className="flex flex-row space-x-4">
@@ -183,6 +187,7 @@ export default function AddListingPage() {
                 )}
               />
             </div>
+
             <Autocomplete
               // value={platformChosen ? platformChosen.name : null}
               onChange={(event, newValue) => {
@@ -192,8 +197,8 @@ export default function AddListingPage() {
               onInputChange={(event, newInputValue) => {
                 setPlatformInput(newInputValue);
               }}
-              className="grow pt-1"
               disablePortal
+              className="grow pt-1"
               autoHighlight
               options={platformOptions}
               getOptionLabel={(option) => option.name}
@@ -242,7 +247,7 @@ export default function AddListingPage() {
       break;
     case 1:
       formStage = (
-        <div className="flex flex-col py-6 px-10">
+        <div className="flex flex-col">
           <div className="flex flex-row space-x-16">
             {/* left panel for image  */}
             <div className="w-1/4">
@@ -258,56 +263,56 @@ export default function AddListingPage() {
             <div className="w-3/4 flex flex-col space-y-8">
               <div className="flex flex-row space-x-4">
                 <div className="w-1/2">
-                  <Autocomplete
+                  <TextField
                     name="condition"
                     value={listing.condition}
-                    onChange={(e, newValue) => {
-                      e.preventDefault();
-                      setListing({ ...listing, condition: newValue });
+                    onChange={handleInputChange}
+                    sx={{
+                      background: "#fff",
+                      borderRadius: "5px",
+                      width: "100%",
                     }}
-                    disablePortal
-                    options={["New", "Used"]}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="filled"
-                        color="primary"
-                        dark="true"
-                        size="small"
-                        label="Condition"
-                        sx={{
-                          background: "#fff",
-                          borderRadius: "5px",
-                        }}
-                      />
-                    )}
-                  />
+                    type="number"
+                    label="Condition"
+                    variant="filled"
+                    color="primary"
+                    dark="true"
+                    size="small"
+                    select
+                  >
+                    <MenuItem key="New" value="New">
+                      New
+                    </MenuItem>
+                    <MenuItem key="Used" value="Used">
+                      Used
+                    </MenuItem>
+                  </TextField>
                 </div>
                 <div className="w-1/2">
-                  <Autocomplete
+                  <TextField
                     name="paymentMethod"
                     value={listing.paymentMethod}
-                    onChange={(e, newValue) => {
-                      e.preventDefault();
-                      setListing({ ...listing, paymentMethod: newValue });
+                    onChange={handleInputChange}
+                    sx={{
+                      background: "#fff",
+                      borderRadius: "5px",
+                      width: "100%",
                     }}
-                    disablePortal
-                    options={["Cash", "Bank Transfer"]}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="filled"
-                        color="primary"
-                        dark="true"
-                        size="small"
-                        label="Payment Method"
-                        sx={{
-                          background: "#fff",
-                          borderRadius: "5px",
-                        }}
-                      />
-                    )}
-                  />
+                    type="number"
+                    label="Payment Method"
+                    variant="filled"
+                    color="primary"
+                    dark="true"
+                    size="small"
+                    select
+                  >
+                    <MenuItem key="Cash" value="Cash">
+                      Cash
+                    </MenuItem>
+                    <MenuItem key="CreditCard" value="Credit Card">
+                      Credit Card
+                    </MenuItem>
+                  </TextField>
                 </div>
               </div>
               <div className="flex flex-row space-x-4">
@@ -400,7 +405,7 @@ export default function AddListingPage() {
       break;
     case 2:
       formStage = (
-        <div className="flex flex-col py-6 px-10">
+        <div className="flex flex-col">
           <div className="flex flex-row space-x-16">
             {/* left panel for image  */}
             <div className="w-1/4 ">
@@ -416,63 +421,59 @@ export default function AddListingPage() {
             <div className="w-3/4 flex flex-col space-y-8">
               <div className="flex flex-row space-x-4">
                 <div className="w-1/2">
-                  <Autocomplete
+                  <TextField
                     name="trade"
                     value={listing.trade}
-                    onChange={(e, newValue) => {
-                      e.preventDefault();
-                      setListing({
-                        ...listing,
-                        trade: newValue === "Yes" ? true : false,
-                      });
-                      handleTradeChange(newValue);
+                    onChange={(e) => {
+                      handleInputChange(e);
+                      handleTradeChange(e.target.value);
                     }}
-                    disablePortal
-                    options={["Yes", "No"]}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="filled"
-                        color="primary"
-                        dark="true"
-                        size="small"
-                        label="Trade"
-                        sx={{
-                          background: "#fff",
-                          borderRadius: "5px",
-                        }}
-                      />
-                    )}
-                  />
+                    sx={{
+                      background: "#fff",
+                      borderRadius: "5px",
+                      width: "100%",
+                    }}
+                    type="number"
+                    label="Trade"
+                    variant="filled"
+                    color="primary"
+                    dark="true"
+                    size="small"
+                    select
+                  >
+                    <MenuItem key="yes" value={true}>
+                      Yes
+                    </MenuItem>
+                    <MenuItem key="no" value={false}>
+                      No
+                    </MenuItem>
+                  </TextField>
                 </div>
                 <div className="w-1/2">
-                  <Autocomplete
+                  <TextField
                     name="delivery"
                     value={listing.delivery}
-                    onChange={(e, newValue) => {
-                      e.preventDefault();
-                      setListing({
-                        ...listing,
-                        delivery: newValue === "Yes" ? true : false,
-                      });
+                    onChange={handleInputChange}
+                    sx={{
+                      background: "#fff",
+                      borderRadius: "5px",
+                      width: "100%",
                     }}
-                    disablePortal
-                    options={["Yes", "No"]}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        variant="filled"
-                        color="primary"
-                        dark="true"
-                        size="small"
-                        label="Delivery"
-                        sx={{
-                          background: "#fff",
-                          borderRadius: "5px",
-                        }}
-                      />
-                    )}
-                  />
+                    type="number"
+                    label="Delivery"
+                    variant="filled"
+                    color="primary"
+                    dark="true"
+                    size="small"
+                    select
+                  >
+                    <MenuItem key="yes" value={true}>
+                      Yes
+                    </MenuItem>
+                    <MenuItem key="no" value={false}>
+                      No
+                    </MenuItem>
+                  </TextField>
                 </div>
               </div>
               {tradeAccepted ? <TradeGamesPanel /> : null}
@@ -503,17 +504,13 @@ export default function AddListingPage() {
       break;
   }
   return (
-    <div className=" bg-bg-light rounded-lg shadow-md shadow-bg-dark flex flex-col space-y-6">
-      <div className="flex flex-row space-x-4 px-2 bg-bg-dark rounded-t-lg shadow-md shadow-bg-dark py-3">
-        <div className="flex flex-col justify-center grow">
-          <hr className="border-accent" />
-        </div>
-        <div className="text-accent text-2xl">Add a Listing</div>
-        <div className="flex flex-col justify-center grow">
-          <hr className="border-accent" />
-        </div>
+    <div>
+      {/* <div className="text-text-white text-3xl">
+        What game would you like to sell ?
+      </div> */}
+      <div className=" bg-bg-light rounded-lg shadow-md shadow-bg-dark flex flex-col space-y-6 p-10 mt-10">
+        {formStage}
       </div>
-      {formStage}
       <div className="mt-20">
         <Backdrop
           sx={{
