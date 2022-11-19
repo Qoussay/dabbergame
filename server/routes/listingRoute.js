@@ -7,5 +7,6 @@ router
   .post(listingControlelr.saveListing)
   .get(listingControlelr.getListings);
 router.route("/:id").get(listingControlelr.getOneListing);
+router.route("/user/:username").get(listingControlelr.getListingsForUser);
 
 module.exports = router;
