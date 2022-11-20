@@ -117,7 +117,7 @@ export default function ProfilePage() {
               onClick={handleReviewBtn}
             />
           </div>
-          <div className="rounded-lg bg-bg-light h-[65vh] overscroll-auto overflow-y-scroll no-scrollbar p-4">
+          <div className="rounded-lg bg-bg-light h-[65vh] overscroll-auto overflow-y-scroll no-scrollbar p-4 shadow-md shadow-bg-dark">
             {panel ? (
               <ProfileListingsPanel listings={userListings} />
             ) : (

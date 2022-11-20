@@ -5,7 +5,6 @@ import AddListingPage from "./pages/AddListingPage";
 import LoginModal from "./components/LoginModal";
 import ListingPage from "./pages/ListingPage";
 import ProfilePage from "./pages/ProfilePage";
-import AddReviewPage from "./pages/AddReviewPage";
 import { useState, useContext, createContext, useEffect } from "react";
 
 function App() {
@@ -44,10 +43,6 @@ function App() {
           <Route path="/sell" element={<AddListingPage />} />
           <Route path="/listing/:listingId" element={<ListingPage />} />
           <Route path="/user/:username" element={<ProfilePage />} />
-          <Route
-            path="/user/:username/reviews/add"
-            element={<AddReviewPage />}
-          />
         </Routes>
       </div>
     </div>
