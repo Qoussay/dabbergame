@@ -39,5 +39,5 @@ async function fetchData(searchString) {
       console.log(err);
     });
 
-  return generateSearchOptions(res.data);
+  return res.data;
 }

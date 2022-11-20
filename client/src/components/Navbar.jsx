@@ -7,23 +7,31 @@ import {
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { TextField, Autocomplete } from "@mui/material";
+import { TextField, Autocomplete, Box } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import useFetchGames from "../hooks/useFetchGames";
 import { useUserContext } from "../context/LoggedUserContext";
+import CustomAlert from "./CustomAlert";
 
 export default function Navbar(props) {
   const navigate = useNavigate();
-  const navigateAddListing = () => {
-    navigate("/sell");
-  };
 
   const { loggedUser, setLoggedUser } = useUserContext();
 
   //set up the game states
   const [inputValue, setInputValue] = useState("");
   const [chosenGame, setChosenGame] = useState("");
+
+  //setting up the error state for alert
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   const searchOptions = useFetchGames(inputValue);
 
@@ -82,9 +90,9 @@ export default function Navbar(props) {
           DabberGame
         </a>
         <Autocomplete
-          value={chosenGame}
+          // value={gameName}
           onChange={(event, newValue) => {
-            setChosenGame(newValue);
+            setChosenGame(newValue.name);
           }}
           inputValue={inputValue}
           onInputChange={(event, newInputValue) => {
@@ -92,15 +100,31 @@ export default function Navbar(props) {
           }}
           className="grow pt-1"
           disablePortal
-          id="combo-box-demo"
           options={searchOptions}
+          getOptionLabel={(option) => option.name}
+          renderOption={(props, option) => (
+            <Box
+              component="li"
+              sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+              {...props}
+            >
+              <img
+                // loading="lazy"
+                width="40"
+                src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${option.cover.image_id}.png`}
+                alt=""
+              />
+              {option.name} (
+              {new Date(option.first_release_date * 1000).getFullYear()})
+            </Box>
+          )}
           renderInput={(params) => (
             <TextField
               {...params}
               variant="filled"
               color="primary"
-              dark="true"
               size="small"
+              dark="true"
               placeholder="Search for a game"
               sx={{
                 background: "#fff",
@@ -124,12 +148,17 @@ export default function Navbar(props) {
               />
             }
             className="text-sm py-1"
-            onClick={navigateAddListing}
+            onClick={() => {
+              loggedUser
+                ? navigate("/sell")
+                : setError("You must log in first.");
+            }}
           />
           <p className="text-white text-2xl">|</p>
           {loggedUser ? profileLogoutButtons : loginButton}
         </div>
       </div>
+      <CustomAlert type="error" message={error} fixed={true} timed={true} />
     </div>
   );
 }

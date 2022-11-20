@@ -10,6 +10,8 @@ import {
   faFlag,
   faArrowRightArrowLeft,
   faTruck,
+  faPenToSquare,
+  faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import Pill from "../components/Pill";
 import reviews from "../mock/reviews.json";
@@ -18,9 +20,12 @@ import GameCover from "../components/GameCover";
 import { useState, useEffect } from "react";
 import UserReviewsScore from "../components/UserReviewsScore";
 import axios from "axios";
+import { useUserContext } from "../context/LoggedUserContext";
+
 export default function ListingPage() {
   const { listingId } = useParams();
   const navigate = useNavigate();
+  const { loggedUser, setLoggedUser } = useUserContext();
 
   const [listing, setListing] = useState({
     user: "",
@@ -74,19 +79,15 @@ export default function ListingPage() {
     gamesTradeSection = (
       <div className="pb-10">
         <SectionTitle title="Games accepted for trade" />
-        <div className="flex flex-row space-x-4">
-          {/* {listing.gamesTrade.map((game) => {
+        <div className="grid grid-cols-5 gap-4">
+          {listing.gamesTrade.map((game) => {
             return (
-              <div className="w-1/5">
-                <GameCover
-                  url={game.coverUrl}
-                  platform={game.platform}
-                  rounded={true}
-                  textSize="text-xs"
-                />
-              </div>
+              <img
+                src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.png`}
+                className="rounded-lg shadow-md shadow-bg-dark  "
+              ></img>
             );
-          })} */}
+          })}
         </div>
       </div>
     );
@@ -128,29 +129,61 @@ export default function ListingPage() {
             </div>
           </div>
           {/* Buttons for messaging user and for reporting  */}
-          <div className="flex flex-col space-y-3">
-            <Button
-              text="Contact The Seller"
-              bgColor="bg-accent"
-              textColor="text-text-dark"
-              icon={
-                <FontAwesomeIcon
-                  icon={faMessage}
-                  className="text-bg-dark pr-2"
-                />
-              }
-              className="text-sm py-1.5"
-            />
-            <Button
-              text="Report Listing"
-              bgColor="bg-red-400"
-              textColor="text-bg-dark"
-              icon={
-                <FontAwesomeIcon icon={faFlag} className="text-bg-dark pr-2" />
-              }
-              className="text-sm py-1.5"
-            />
-          </div>
+          {loggedUser === listing.user ? (
+            <div className="flex flex-col space-y-3">
+              <Button
+                text="Update the listing"
+                bgColor="bg-accent"
+                textColor="text-text-dark"
+                icon={
+                  <FontAwesomeIcon
+                    icon={faPenToSquare}
+                    className="text-bg-dark pr-2"
+                  />
+                }
+                className="text-sm py-1.5"
+              />
+              <Button
+                text="Mark as sold"
+                bgColor="bg-text-white"
+                textColor="text-text-dark"
+                icon={
+                  <FontAwesomeIcon
+                    icon={faCircleCheck}
+                    className="text-bg-dark pr-2"
+                  />
+                }
+                className="text-sm py-1.5"
+              />
+            </div>
+          ) : (
+            <div className="flex flex-col space-y-3">
+              <Button
+                text="Contact The Seller"
+                bgColor="bg-accent"
+                textColor="text-text-dark"
+                icon={
+                  <FontAwesomeIcon
+                    icon={faMessage}
+                    className="text-bg-dark pr-2"
+                  />
+                }
+                className="text-sm py-1.5"
+              />
+              <Button
+                text="Report Listing"
+                bgColor="bg-red-400"
+                textColor="text-bg-dark"
+                icon={
+                  <FontAwesomeIcon
+                    icon={faFlag}
+                    className="text-bg-dark pr-2"
+                  />
+                }
+                className="text-sm py-1.5"
+              />
+            </div>
+          )}
         </div>
         {/* RIght Panel  */}
         <div class="flex-1 flex overflow-hidden">
@@ -231,21 +264,23 @@ export default function ListingPage() {
                   <div className="flex flex-col justify-center grow">
                     <UserReviewsScore username={listing.user} />
                   </div>
-                  <Button
-                    text="Add a review"
-                    bgColor="bg-accent"
-                    textColor="text-text-dark"
-                    icon={
-                      <FontAwesomeIcon
-                        icon={faSquarePlus}
-                        className="text-text-dark pr-2"
-                      />
-                    }
-                    className="text-sm py-1.5"
-                    onClick={() =>
-                      navigate(`/user/${listing.user}/reviews/add`)
-                    }
-                  />
+                  {loggedUser === listing.user ? null : (
+                    <Button
+                      text="Add a review"
+                      bgColor="bg-accent"
+                      textColor="text-text-dark"
+                      icon={
+                        <FontAwesomeIcon
+                          icon={faSquarePlus}
+                          className="text-text-dark pr-2"
+                        />
+                      }
+                      className="text-sm py-1.5"
+                      onClick={() =>
+                        navigate(`/user/${listing.user}/reviews/add`)
+                      }
+                    />
+                  )}
                 </div>
                 <div className="flex flex-col space-y-3 w-1/2 max-w-[50%]">
                   {showingReviews.map((review) => {

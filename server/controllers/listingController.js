@@ -21,11 +21,26 @@ exports.saveListing = (req, res) => {
 };
 
 exports.getListings = (req, res) => {
-  ListingModel.find({}, function (err, data) {
-    if (!err) {
-      res.status(200).json(data);
-    }
-  });
+  ListingModel.find({})
+    .sort({ dateCreated: "desc" })
+    .exec(function (err, data) {
+      if (!err) {
+        res.status(200).json(data);
+      }
+    });
+};
+
+exports.getListingsForUser = (req, res) => {
+  const username = req.params.username;
+  console.log(username);
+  ListingModel.find({ user: username })
+    .sort({ dateCreated: "desc" })
+    .exec(function (err, data) {
+      if (!err) {
+        console.log(data);
+        res.status(200).json(data);
+      }
+    });
 };
 
 exports.getOneListing = (req, res) => {

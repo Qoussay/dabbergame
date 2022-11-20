@@ -12,6 +12,11 @@ const listingSchema = new mongoose.Schema({
   delivery: Boolean,
   trade: Boolean,
   description: String,
+  gamesTrade: Array,
+  dateCreated: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 module.exports = mongoose.model("Listing", listingSchema);

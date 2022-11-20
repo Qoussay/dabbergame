@@ -4,8 +4,9 @@ import ProfileReviewsPanel from "../components/ProfileReviewsPanel";
 import UserReviewsScore from "../components/UserReviewsScore";
 import { useEffect, useState } from "react";
 import reviews from "../mock/reviews.json";
-import listings from "../mock/listings.json";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 export default function ProfilePage() {
@@ -14,20 +15,27 @@ export default function ProfilePage() {
   const { username } = useParams();
   const [user, setUser] = useState(null);
   //   get user
-  const userListings = listings.filter((listing) => listing.user === username);
+  const [userListings, setUserListings] = useState([]);
   const userReviews = reviews.filter((review) => review.target === username);
 
   useEffect(() => {
     axios
       .get(`/api/user/${username}`)
       .then((res) => {
-        console.log(res.data);
         setUser(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []);
+
+    axios
+      .get(`/api/listings/user/${username}`)
+      .then((res) => {
+        setUserListings(res.data);
+        console.log(userListings);
+      })
+      .catch((err) => {});
+  }, [username]);
 
   const handleReviewBtn = () => {
     setPanel(false);
@@ -69,10 +77,14 @@ export default function ProfilePage() {
           </div>
           <div className="flex flex-col space-y-1">
             <div className=" text-text-light desktop:text-lg laptop:text-base">
+              <FontAwesomeIcon
+                icon={faLocationDot}
+                className="text-text-light pr-2"
+              />
               {user.state}
             </div>
             <div className="text-text-medium desktop:text-lg laptop:text-base">
-              {user.dateJoined}
+              Joined since {user.dateJoined.substring(0, 10)}
             </div>
           </div>
         </div>

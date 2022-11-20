@@ -4,27 +4,31 @@ import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import UserReviewsScore from "./UserReviewsScore";
 import ProfileReviewCard from "./ProfileReviewCard";
+import { useUserContext } from "../context/LoggedUserContext";
 export default function ProfileReviewsPanel({ reviews, user }) {
   const navigate = useNavigate();
+  const { loggedUser, setLoggedUser } = useUserContext();
   if (reviews.length === 0) {
     return (
       <div className=" flex flex-row">
         <div className="grow text-lg text-text-white">
           The user has no reviews yet
         </div>
-        <Button
-          text="Add a review"
-          bgColor="bg-accent"
-          textColor="text-text-dark"
-          icon={
-            <FontAwesomeIcon
-              icon={faSquarePlus}
-              className="text-text-dark pr-2"
-            />
-          }
-          className="text-base py-2"
-          onClick={() => navigate(`/user/${user.username}/reviews/add`)}
-        />
+        {loggedUser === user.username ? null : (
+          <Button
+            text="Add a review"
+            bgColor="bg-accent"
+            textColor="text-text-dark"
+            icon={
+              <FontAwesomeIcon
+                icon={faSquarePlus}
+                className="text-text-dark pr-2"
+              />
+            }
+            className="text-base py-2"
+            onClick={() => navigate(`/user/${user.username}/reviews/add`)}
+          />
+        )}
       </div>
     );
   }
