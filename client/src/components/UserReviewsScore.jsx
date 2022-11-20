@@ -1,8 +1,5 @@
-import reviews from "../mock/reviews.json";
 import StarRatingComponent from "react-star-rating-component";
-export default function UserReviewsScore({ username }) {
-  const userReviews = reviews.filter((review) => review.target === username);
-
+export default function UserReviewsScore({ userReviews }) {
   if (userReviews.length === 0) {
     return (
       <div className="desktop:text-lg laptop:text-base text-accent">

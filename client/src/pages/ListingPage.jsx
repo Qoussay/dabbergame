@@ -81,12 +81,16 @@ export default function ListingPage() {
         setUserReviews(res.data);
       })
       .catch((err) => {});
-
-    setShowingReviews([...userReviews.slice(0, 3)]);
-    if (userReviews.length > 3) {
-      setReviewsIsMore(true);
-    }
   }, [listing]);
+
+  useEffect(() => {
+    if (userReviews) {
+      setShowingReviews([...userReviews.slice(0, 3)]);
+      if (userReviews.length > 3) {
+        setReviewsIsMore(true);
+      }
+    }
+  }, [userReviews]);
 
   const handleMore = () => {
     setShowingReviews(userReviews.slice(0, showingReviews.length + 3));
@@ -166,7 +170,7 @@ export default function ListingPage() {
               >
                 {listing.user}
               </div>
-              <UserReviewsScore username={listing.user} />
+              <UserReviewsScore userReviews={userReviews} />
               <div className=" text-text-medium text-sm">Date User Joined</div>
             </div>
           </div>
@@ -304,7 +308,7 @@ export default function ListingPage() {
               <div className="flex flex-col space-y-4">
                 <div className="flex flex-row">
                   <div className="flex flex-col justify-center grow">
-                    <UserReviewsScore username={listing.user} />
+                    <UserReviewsScore userReviews={userReviews} />
                   </div>
                   {loggedUser === listing.user ? null : (
                     <Button
