@@ -73,7 +73,7 @@ export default function ProfilePage() {
             {username}
           </div>
           <div className=" text-text-white desktop:text-xl laptop:text-lg py-3">
-            <UserReviewsScore username={username} />
+            {/* <UserReviewsScore userReviews={userReviews} /> */}
           </div>
           <div className="flex flex-col space-y-1">
             <div className=" text-text-light desktop:text-lg laptop:text-base">
