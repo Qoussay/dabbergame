@@ -75,13 +75,21 @@ export default function ListingPage() {
 
     getData();
     console.log("has ben called");
-    axios
-      .get(`/api/reviews/user/${listing.user}`)
-      .then((res) => {
-        setUserReviews(res.data);
-      })
-      .catch((err) => {});
   }, []);
+
+  useEffect(() => {
+    async function getData() {
+      const res = await axios
+        .get(`/api/reviews/user/${listing.user}`)
+        .catch((err) => {
+          console.log(err);
+        });
+
+      setUserReviews(res.data);
+    }
+
+    getData();
+  }, [listing]);
 
   useEffect(() => {
     if (userReviews) {
