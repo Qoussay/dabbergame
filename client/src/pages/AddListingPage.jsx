@@ -100,8 +100,73 @@ export default function AddListingPage() {
     }
   }, [gameName, platformChosen]);
 
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
+
+  const validateInput = () => {
+    switch (pageState) {
+      case 0:
+        if (!gameName) {
+          setError("You must choose a game.");
+          return false;
+        }
+        if (!platformChosen) {
+          setError("You must choose a platform.");
+          return false;
+        } else {
+          return true;
+        }
+      case 1:
+        if (!listing.condition) {
+          setError("You must choose a condition.");
+          return false;
+        }
+        if (!listing.paymentMethod) {
+          setError("You must choose a payment method.");
+          return false;
+        }
+        if (!listing.price) {
+          setError("You must enter a price.");
+          return false;
+        }
+        if (listing.price > 999 || listing.price < 0) {
+          setError("You must enter a valid price.");
+          return false;
+        }
+        if (!listing.state) {
+          setError("You must choose a state.");
+          return false;
+        }
+        if (!listing.description) {
+          setError("You must write a description.");
+          return false;
+        }
+        return true;
+      case 2:
+        if (listing.trade === "") {
+          setError("You must choose a trade option.");
+          return false;
+        }
+        if (listing.delivery === "") {
+          setError("You must choose a delivery option.");
+          return false;
+        }
+        if (listing.gamesTrade.length === 0 && listing.trade) {
+          setError("You must choose at least one game for trade.");
+          return false;
+        }
+        return true;
+      default:
+        return true;
+    }
+  };
+
   const handleNextBtn = () => {
-    setPageState(pageState + 1);
+    if (validateInput()) setPageState(pageState + 1);
   };
 
   const handleBackBtn = () => {
@@ -119,19 +184,21 @@ export default function AddListingPage() {
   };
 
   const handleSubmission = async () => {
-    const res = await axios
-      .post("/api/listings", { listing: listing })
-      .catch((err) => {
-        console.log(err);
-        setError(err.response.data.error);
-      });
+    if (validateInput()) {
+      const res = await axios
+        .post("/api/listings", { listing: listing })
+        .catch((err) => {
+          console.log(err);
+          setError(err.response.data.error);
+        });
 
-    if (res.status === 200) {
-      console.log("Listing created successfully");
-      navigate("/");
-    } else {
-      setError("An error has occured. Listing could not be created.");
-      navigate(0);
+      if (res.status === 200) {
+        console.log("Listing created successfully");
+        navigate("/");
+      } else {
+        setError("An error has occured. Listing could not be created.");
+        navigate(0);
+      }
     }
   };
 
