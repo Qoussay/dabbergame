@@ -31,12 +31,14 @@ const signupRoute = require("./routes/signupRoute");
 const signinRoute = require("./routes/signinRoute");
 const userRoute = require("./routes/userRoute");
 const listingRoute = require("./routes/listingRoute");
+const reviewRoute = require("./routes/reviewRoute");
 
 app.use("/api/games", gameFetchRoute);
 app.use("/api/signup", signupRoute);
 app.use("/api/signin", signinRoute);
 app.use("/api/user", userRoute);
 app.use("/api/listings", listingRoute);
+app.use("/api/reviews", reviewRoute);
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {

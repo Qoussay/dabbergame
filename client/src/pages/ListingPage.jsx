@@ -14,7 +14,7 @@ import {
   faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import Pill from "../components/Pill";
-import reviews from "../mock/reviews.json";
+
 import SectionTitle from "../components/SectionTitle";
 import GameCover from "../components/GameCover";
 import { useState, useEffect } from "react";
@@ -33,6 +33,8 @@ export default function ListingPage() {
   const { loggedUser, setLoggedUser } = useUserContext();
 
   const [error, setError] = useState(null);
+
+  const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
     if (error) {
@@ -62,8 +64,6 @@ export default function ListingPage() {
   //   (review) => review.target === listing.user
   // );
 
-  const userReviews = [];
-
   useEffect(() => {
     async function getData() {
       const res = await axios.get(`/api/listings/${listingId}`).catch((err) => {
@@ -75,8 +75,15 @@ export default function ListingPage() {
 
     getData();
 
+    axios
+      .get(`/api/reviews/user/${listing.user}`)
+      .then((res) => {
+        setUserReviews(res.data);
+      })
+      .catch((err) => {});
+
     setShowingReviews([...userReviews.slice(0, 3)]);
-    if (userReviews.length >= 3) {
+    if (userReviews.length > 3) {
       setReviewsIsMore(true);
     }
   }, [listing]);

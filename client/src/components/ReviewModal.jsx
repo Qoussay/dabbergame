@@ -4,6 +4,9 @@ import { useState, useEffect } from "react";
 import { Rating, TextField } from "@mui/material";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 import Button from "./Button";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import CustomAlert from "./CustomAlert";
 export default function ReviewModal({
   open,
   closeButtonClick,
@@ -12,8 +15,49 @@ export default function ReviewModal({
 }) {
   const [score, setScore] = useState(0);
   const [body, setBody] = useState("");
+  const [error, setError] = useState(null);
 
-  const handleSubmission = () => {};
+  const navigate = useNavigate();
+
+  const validateInput = () => {
+    if (score === 0) {
+      setError("You must enter a score.");
+      return false;
+    }
+    if (!body) {
+      setError("You must enter a review message.");
+      return false;
+    }
+    return true;
+  };
+
+  const saveReview = async () => {
+    const res = await axios
+      .post("/api/reviews", {
+        review: {
+          source: source,
+          target: target,
+          message: body,
+          rate: score,
+        },
+      })
+      .catch((err) => {
+        setError("Error saving the review. Try again.");
+        return;
+      });
+
+    if (res.status === 200) {
+      navigate(0);
+    }
+  };
+
+  const handleSubmission = async () => {
+    try {
+      if (validateInput()) saveReview();
+    } catch {
+      console.log("error saving the review");
+    }
+  };
   if (!open) return null;
   return (
     <div className="w-full h-full fixed pt-16 bg-dark-bg z-10 laptop:-ml-60 desktop:-ml-80 -mt-24">
@@ -74,11 +118,14 @@ export default function ReviewModal({
             maxRows="3"
           />
         </div>
+        <CustomAlert type="error" message={error} fixed={false} timed={false} />
         <Button
           text="Submit"
           bgColor="bg-accent"
           textColor="text-bg-dark"
-          className="text-sm py-1.5 w-fit ml-auto mb-4"
+          className={`text-sm py-1.5 w-fit ml-auto mb-4 ${
+            error ? "mt-4" : null
+          }`}
           onClick={handleSubmission}
         />
       </div>
