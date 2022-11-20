@@ -7,6 +7,7 @@ import ProfileReviewCard from "./ProfileReviewCard";
 import { useUserContext } from "../context/LoggedUserContext";
 import { useState, useEffect } from "react";
 import ReviewModal from "./ReviewModal";
+import CustomAlert from "./CustomAlert";
 
 export default function ProfileReviewsPanel({ reviews, user }) {
   const [openReviewModal, setOpenReviewModal] = useState(false);
@@ -114,6 +115,8 @@ export default function ProfileReviewsPanel({ reviews, user }) {
           );
         })}
       </div>
+
+      <CustomAlert type="error" message={error} fixed={true} timed={true} />
     </div>
   );
 }
