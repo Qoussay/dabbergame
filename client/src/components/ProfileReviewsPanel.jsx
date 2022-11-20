@@ -83,7 +83,7 @@ export default function ProfileReviewsPanel({ reviews, user }) {
             </div>
           ) : (
             <div className="flex flex-col grow text-lg text-text-white z-0">
-              <UserReviewsScore username={user.username} />
+              <UserReviewsScore userReviews={reviews} />
               <div className="text-text-light">
                 {reviews.length} {reviews.length > 1 ? "Reviews" : "Review"}
               </div>
