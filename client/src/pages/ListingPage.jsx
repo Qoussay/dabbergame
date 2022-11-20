@@ -21,11 +21,25 @@ import { useState, useEffect } from "react";
 import UserReviewsScore from "../components/UserReviewsScore";
 import axios from "axios";
 import { useUserContext } from "../context/LoggedUserContext";
+import ReviewModal from "../components/ReviewModal";
+import CustomAlert from "../components/CustomAlert";
 
 export default function ListingPage() {
+  //review Modal
+  const [openReviewModal, setOpenReviewModal] = useState(false);
+
   const { listingId } = useParams();
   const navigate = useNavigate();
   const { loggedUser, setLoggedUser } = useUserContext();
+
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   const [listing, setListing] = useState({
     user: "",
@@ -74,6 +88,20 @@ export default function ListingPage() {
     }
   };
 
+  const handleReviewModalOpen = () => {
+    if (loggedUser) {
+      setOpenReviewModal(true);
+      document.body.style.overflow = "hidden";
+    } else {
+      setError("You need to log in first");
+    }
+  };
+
+  const handleReviewModalClose = () => {
+    setOpenReviewModal(false);
+    document.body.style.overflow = "auto";
+  };
+
   let gamesTradeSection;
   if (listing.trade) {
     gamesTradeSection = (
@@ -97,6 +125,13 @@ export default function ListingPage() {
 
   return (
     <div className="h-full">
+      <ReviewModal
+        open={openReviewModal}
+        closeButtonClick={() => handleReviewModalClose()}
+        target={listing.user}
+        source={loggedUser}
+      />
+      <CustomAlert type="error" message={error} fixed={true} timed={true} />
       <div className="flex flex-row space-x-10 h-full">
         {/* Left Panel */}
         <div className="flex flex-col w-1/4 space-y-10">
@@ -276,9 +311,7 @@ export default function ListingPage() {
                         />
                       }
                       className="text-sm py-1.5"
-                      onClick={() =>
-                        navigate(`/user/${listing.user}/reviews/add`)
-                      }
+                      onClick={handleReviewModalOpen}
                     />
                   )}
                 </div>

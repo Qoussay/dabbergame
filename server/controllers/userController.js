@@ -17,6 +17,7 @@ exports.validatePassword = (user, inputPassword) => {
 
 exports.getUserInfo = (req, res) => {
   const username = req.params.username;
+  console.log("this api has been called", username);
   User.findOne({ username: username }, function (err, user) {
     if (err) {
       res.status(500).json({ error: err });
