@@ -60,7 +60,7 @@ export default function ReviewModal({
   };
   if (!open) return null;
   return (
-    <div className="w-full h-full fixed pt-16 bg-dark-bg z-10 laptop:-ml-60 desktop:-ml-80 -mt-24">
+    <div className="w-screen h-screen fixed pt-16 bg-dark-bg z-20 left-0 top-0">
       <div className="bg-bg-light shadow-md px-4 shadow-bg-dark rounded-lg laptop:w-1/3 desktop:w-[28%] h-fit mx-auto flex flex-col py-3 z-10 mt-20">
         <div className="flex flex-row justify-end">
           <h1 className=" text-2xl text-accent text-left flex-auto ">
