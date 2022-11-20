@@ -74,14 +74,14 @@ export default function ListingPage() {
     }
 
     getData();
-
+    console.log("has ben called");
     axios
       .get(`/api/reviews/user/${listing.user}`)
       .then((res) => {
         setUserReviews(res.data);
       })
       .catch((err) => {});
-  }, [listing]);
+  }, []);
 
   useEffect(() => {
     if (userReviews) {
