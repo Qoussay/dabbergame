@@ -43,6 +43,20 @@ exports.getListingsForUser = (req, res) => {
     });
 };
 
+exports.updateListing = (req, res) => {
+  const newListing = req.body.listing;
+  ListingModel.findByIdAndUpdate(
+    newListing.id,
+    newListing,
+    function (err, result) {
+      if (!err) {
+        console.log(result);
+        res.status(200).json(result);
+      }
+    }
+  );
+};
+
 exports.getOneListing = (req, res) => {
   const listingId = req.params.id;
 

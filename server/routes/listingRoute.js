@@ -1,12 +1,13 @@
 const router = require("express").Router();
 
-const listingControlelr = require("../controllers/listingController");
+const listingController = require("../controllers/listingController");
 
 router
   .route("/")
-  .post(listingControlelr.saveListing)
-  .get(listingControlelr.getListings);
-router.route("/:id").get(listingControlelr.getOneListing);
-router.route("/user/:username").get(listingControlelr.getListingsForUser);
+  .post(listingController.saveListing)
+  .get(listingController.getListings);
+router.route("/:id").get(listingController.getOneListing);
+router.route("/:id/update").patch(listingController.updateListing);
+router.route("/user/:username").get(listingController.getListingsForUser);
 
 module.exports = router;
