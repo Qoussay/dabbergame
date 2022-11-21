@@ -17,7 +17,6 @@ exports.getUserReviews = (req, res) => {
     .sort({ dateCreated: "desc" })
     .exec(function (err, data) {
       if (!err) {
-        console.log(data);
         res.status(200).json(data);
       }
     });
