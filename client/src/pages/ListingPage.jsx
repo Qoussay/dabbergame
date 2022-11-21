@@ -14,18 +14,34 @@ import {
   faCircleCheck,
 } from "@fortawesome/free-solid-svg-icons";
 import Pill from "../components/Pill";
-import reviews from "../mock/reviews.json";
+
 import SectionTitle from "../components/SectionTitle";
 import GameCover from "../components/GameCover";
 import { useState, useEffect } from "react";
 import UserReviewsScore from "../components/UserReviewsScore";
 import axios from "axios";
 import { useUserContext } from "../context/LoggedUserContext";
+import ReviewModal from "../components/ReviewModal";
+import CustomAlert from "../components/CustomAlert";
 
 export default function ListingPage() {
+  //review Modal
+  const [openReviewModal, setOpenReviewModal] = useState(false);
+
   const { listingId } = useParams();
   const navigate = useNavigate();
   const { loggedUser, setLoggedUser } = useUserContext();
+
+  const [error, setError] = useState(null);
+
+  const [userReviews, setUserReviews] = useState([]);
+
+  useEffect(() => {
+    if (error) {
+      const timer = setTimeout(() => setError(null), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [error]);
 
   const [listing, setListing] = useState({
     user: "",
@@ -48,8 +64,6 @@ export default function ListingPage() {
   //   (review) => review.target === listing.user
   // );
 
-  const userReviews = [];
-
   useEffect(() => {
     async function getData() {
       const res = await axios.get(`/api/listings/${listingId}`).catch((err) => {
@@ -60,18 +74,51 @@ export default function ListingPage() {
     }
 
     getData();
+    console.log("has ben called");
+  }, []);
 
-    setShowingReviews([...userReviews.slice(0, 3)]);
-    if (userReviews.length >= 3) {
-      setReviewsIsMore(true);
+  useEffect(() => {
+    async function getData() {
+      const res = await axios
+        .get(`/api/reviews/user/${listing.user}`)
+        .catch((err) => {
+          console.log(err);
+        });
+
+      setUserReviews(res.data);
     }
+
+    getData();
   }, [listing]);
+
+  useEffect(() => {
+    if (userReviews) {
+      setShowingReviews([...userReviews.slice(0, 3)]);
+      if (userReviews.length > 3) {
+        setReviewsIsMore(true);
+      }
+    }
+  }, [userReviews]);
 
   const handleMore = () => {
     setShowingReviews(userReviews.slice(0, showingReviews.length + 3));
     if (showingReviews.length + 3 >= userReviews.length) {
       setReviewsIsMore(false);
     }
+  };
+
+  const handleReviewModalOpen = () => {
+    if (loggedUser) {
+      setOpenReviewModal(true);
+      document.body.style.overflow = "hidden";
+    } else {
+      setError("You need to log in first");
+    }
+  };
+
+  const handleReviewModalClose = () => {
+    setOpenReviewModal(false);
+    document.body.style.overflow = "auto";
   };
 
   let gamesTradeSection;
@@ -97,6 +144,13 @@ export default function ListingPage() {
 
   return (
     <div className="h-full">
+      <ReviewModal
+        open={openReviewModal}
+        closeButtonClick={() => handleReviewModalClose()}
+        target={listing.user}
+        source={loggedUser}
+      />
+      <CustomAlert type="error" message={error} fixed={true} timed={true} />
       <div className="flex flex-row space-x-10 h-full">
         {/* Left Panel */}
         <div className="flex flex-col w-1/4 space-y-10">
@@ -124,7 +178,7 @@ export default function ListingPage() {
               >
                 {listing.user}
               </div>
-              <UserReviewsScore username={listing.user} />
+              <UserReviewsScore userReviews={userReviews} />
               <div className=" text-text-medium text-sm">Date User Joined</div>
             </div>
           </div>
@@ -262,7 +316,7 @@ export default function ListingPage() {
               <div className="flex flex-col space-y-4">
                 <div className="flex flex-row">
                   <div className="flex flex-col justify-center grow">
-                    <UserReviewsScore username={listing.user} />
+                    <UserReviewsScore userReviews={userReviews} />
                   </div>
                   {loggedUser === listing.user ? null : (
                     <Button
@@ -276,9 +330,7 @@ export default function ListingPage() {
                         />
                       }
                       className="text-sm py-1.5"
-                      onClick={() =>
-                        navigate(`/user/${listing.user}/reviews/add`)
-                      }
+                      onClick={handleReviewModalOpen}
                     />
                   )}
                 </div>

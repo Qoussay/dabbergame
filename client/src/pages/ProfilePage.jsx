@@ -16,7 +16,7 @@ export default function ProfilePage() {
   const [user, setUser] = useState(null);
   //   get user
   const [userListings, setUserListings] = useState([]);
-  const userReviews = reviews.filter((review) => review.target === username);
+  const [userReviews, setUserReviews] = useState([]);
 
   useEffect(() => {
     axios
@@ -35,6 +35,15 @@ export default function ProfilePage() {
         console.log(userListings);
       })
       .catch((err) => {});
+
+    axios
+      .get(`/api/reviews/user/${username}`)
+      .then((res) => {
+        setUserReviews(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, [username]);
 
   const handleReviewBtn = () => {
@@ -73,7 +82,7 @@ export default function ProfilePage() {
             {username}
           </div>
           <div className=" text-text-white desktop:text-xl laptop:text-lg py-3">
-            <UserReviewsScore username={username} />
+            <UserReviewsScore userReviews={userReviews} />
           </div>
           <div className="flex flex-col space-y-1">
             <div className=" text-text-light desktop:text-lg laptop:text-base">
@@ -108,7 +117,7 @@ export default function ProfilePage() {
               onClick={handleReviewBtn}
             />
           </div>
-          <div className="rounded-lg bg-bg-light h-[65vh] overscroll-auto overflow-y-scroll no-scrollbar p-4">
+          <div className="rounded-lg bg-bg-light h-[65vh] overscroll-auto overflow-y-scroll no-scrollbar p-4 shadow-md shadow-bg-dark">
             {panel ? (
               <ProfileListingsPanel listings={userListings} />
             ) : (
