@@ -58,10 +58,13 @@ export default function ListingPage() {
     trade: "",
     description: "",
     status: "",
+    dateCreated: "",
   });
 
   const [reviewsIsMore, setReviewsIsMore] = useState(false);
   const [showingReviews, setShowingReviews] = useState([]);
+
+  const [userInfo, setUserInfo] = useState({ dateJoined: "" });
 
   // const userReviews = reviews.filter(
   //   (review) => review.target === listing.user
@@ -87,6 +90,12 @@ export default function ListingPage() {
         .catch((err) => {
           console.log(err);
         });
+
+      const res2 = await axios.get(`/api/user/${listing.user}`).catch((err) => {
+        console.log(err);
+      });
+
+      setUserInfo(res2.data);
 
       setUserReviews(res.data);
     }
@@ -235,7 +244,9 @@ export default function ListingPage() {
                 {listing.user}
               </div>
               <UserReviewsScore userReviews={userReviews} />
-              <div className=" text-text-medium text-sm">Date User Joined</div>
+              <div className=" text-text-medium text-sm">
+                Joined since {userInfo.dateJoined.substring(0, 10)}
+              </div>
             </div>
           </div>
           {/* Buttons for messaging user and for reporting  */}
@@ -380,7 +391,7 @@ export default function ListingPage() {
                 <div className="flex flex-col grow text-right">
                   <div className="text-text-white">{listing.state}</div>
                   <div className="text-sm text-text-light">
-                    Date listing added
+                    Created in {listing.dateCreated.substring(0, 10)}
                   </div>
                 </div>
               </div>
