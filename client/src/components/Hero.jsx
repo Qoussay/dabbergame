@@ -30,8 +30,8 @@ export default function Hero() {
     gameName: "",
     platform: "",
     state: "",
-    trade: "",
-    delivery: "",
+    trade: false,
+    delivery: false,
   });
 
   const handleInputChange = (e) => {
@@ -94,7 +94,10 @@ export default function Hero() {
             className="w-fit"
             control={
               <Checkbox
-                defaultChecked
+                value={query.delivery}
+                onChange={(event, newValue) => {
+                  setQuery({ ...query, delivery: newValue });
+                }}
                 sx={{
                   color: "#E5F0F4",
                   "&.Mui-checked": {
@@ -109,6 +112,10 @@ export default function Hero() {
             className="w-fit"
             control={
               <Checkbox
+                value={query.trade}
+                onChange={(event, newValue) => {
+                  setQuery({ ...query, trade: newValue });
+                }}
                 sx={{
                   color: "#E5F0F4",
                   "&.Mui-checked": {
