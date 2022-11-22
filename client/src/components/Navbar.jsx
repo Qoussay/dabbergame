@@ -37,23 +37,12 @@ export default function Navbar(props) {
     if (chosenGame) {
       navigate({
         pathname: "/listings",
-        search: createSearchParams({ gameName: chosenGame }).toString(),
+        search: createSearchParams({
+          gameName: chosenGame,
+        }).toString(),
       });
     }
   }, [chosenGame]);
-
-  const handleSubmission = (event, newValue) => {
-    const setState = async () => {
-      await setChosenGame(newValue);
-    };
-
-    setState();
-
-    navigate({
-      pathname: "/listings",
-      search: createSearchParams({ gameName: chosenGame }).toString(),
-    });
-  };
 
   const searchOptions = useFetchGames(inputValue);
 
@@ -112,7 +101,7 @@ export default function Navbar(props) {
           DabberGame
         </a>
         <Autocomplete
-          // value={gameName}
+          // value={chosenGame}
           onChange={(event, newValue) => {
             setChosenGame(newValue.name);
           }}

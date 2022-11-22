@@ -27,7 +27,7 @@ function Listings({ currentListings }) {
   );
 }
 
-export default function ListingsViewer({ itemsPerPage }) {
+export default function ListingsViewer({ itemsPerPage, query }) {
   // We start with an empty list of items.
   const [currentListings, setCurrentListings] = useState(null);
   const [pageCount, setPageCount] = useState(0);
@@ -45,15 +45,17 @@ export default function ListingsViewer({ itemsPerPage }) {
   useEffect(() => {
     // Fetch items from another resources.
     async function getData() {
-      const res = await axios.get("/api/listings").catch((err) => {
-        console.log(err);
-      });
+      const res = await axios
+        .get("/api/listings", { params: query })
+        .catch((err) => {
+          console.log(err);
+        });
 
       setData(res.data);
     }
 
     getData();
-  }, []);
+  }, [query]);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {

@@ -4,14 +4,15 @@ import { useSearchParams } from "react-router-dom";
 import { useEffect } from "react";
 export default function ListingsPage() {
   const [searchparams] = useSearchParams();
-  useEffect(() => {
-    console.log(searchparams.toString());
-  }, [searchparams]);
+  console.log(searchparams.get("gameName"));
 
   return (
     <div>
       <SortAndFilter />
-      <ListingsViewer itemsPerPage={42} />
+      <ListingsViewer
+        itemsPerPage={42}
+        query={{ gameName: searchparams.get("gameName") }}
+      />
     </div>
   );
 }
