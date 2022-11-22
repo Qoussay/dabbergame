@@ -196,6 +196,9 @@ export default function ListingPage() {
                   />
                 }
                 className="text-sm py-1.5"
+                onClick={() => {
+                  navigate(`/listing/${listingId}/update`);
+                }}
               />
               <Button
                 text="Mark as sold"
