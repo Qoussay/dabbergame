@@ -12,6 +12,7 @@ import {
   faTruck,
   faPenToSquare,
   faCircleCheck,
+  faTrashCan,
 } from "@fortawesome/free-solid-svg-icons";
 import Pill from "../components/Pill";
 
@@ -121,6 +122,20 @@ export default function ListingPage() {
     document.body.style.overflow = "auto";
   };
 
+  const deleteListing = async () => {
+    const res = await axios
+      .delete(`/api/listings/${listingId}`)
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.error);
+      });
+
+    if (res.status === 200) {
+      console.log("Listing deleted successfully");
+      navigate(`/`);
+    }
+  };
+
   let gamesTradeSection;
   if (listing.trade) {
     gamesTradeSection = (
@@ -211,6 +226,19 @@ export default function ListingPage() {
                   />
                 }
                 className="text-sm py-1.5"
+              />
+              <Button
+                text="Delete Listing"
+                bgColor="bg-red-400"
+                textColor="text-bg-dark"
+                icon={
+                  <FontAwesomeIcon
+                    icon={faTrashCan}
+                    className="text-bg-dark pr-2"
+                  />
+                }
+                className="text-sm py-1.5"
+                onClick={deleteListing}
               />
             </div>
           ) : (

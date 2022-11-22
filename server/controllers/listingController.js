@@ -57,6 +57,18 @@ exports.updateListing = (req, res) => {
   );
 };
 
+exports.deleteListing = (req, res) => {
+  const listingId = req.params.id;
+  console.log(listingId);
+  ListingModel.findByIdAndDelete(listingId, function (err, result) {
+    if (!err) {
+      console.log(result);
+      console.log("Listing deleted succesfully");
+      res.status(200).json(result);
+    } else console.log("Could not delete listing");
+  });
+};
+
 exports.getOneListing = (req, res) => {
   const listingId = req.params.id;
 

@@ -146,7 +146,7 @@ export default function UpdateListingPage() {
   const handleSubmission = async () => {
     if (validateInput()) {
       const res = await axios
-        .patch(`/api/listings/${listingId}/update`, { listing: listing })
+        .patch(`/api/listings/${listingId}`, { listing: listing })
         .catch((err) => {
           console.log(err);
           setError(err.response.data.error);
