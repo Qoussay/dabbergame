@@ -47,6 +47,7 @@ export default function AddListingPage() {
     trade: "",
     description: "",
     gamesTrade: [],
+    status: "",
   });
 
   //get user
@@ -327,6 +328,7 @@ export default function AddListingPage() {
                 rounded={true}
                 textSize="text-sm"
                 className="shadow-md shadow-bg-dark"
+                status=""
               />
             </div>
             {/* right panel  */}
@@ -485,6 +487,7 @@ export default function AddListingPage() {
                 rounded={true}
                 textSize="text-sm"
                 className=" shadow-md shadow-bg-dark"
+                status=""
               />
             </div>
             {/* right panel  */}

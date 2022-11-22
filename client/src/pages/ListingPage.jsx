@@ -216,6 +216,7 @@ export default function ListingPage() {
             rounded={true}
             textSize="text-base"
             className="shadow-md shadow-bg-dark"
+            status={listing.status}
           />
           {/* Profile Section  */}
           {/* Fetch data of user from userId from the listing data  */}

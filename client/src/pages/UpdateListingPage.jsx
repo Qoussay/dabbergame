@@ -26,6 +26,7 @@ export default function UpdateListingPage() {
     trade: "",
     description: "",
     gamesTrade: [],
+    status: "",
   });
   //setting up the error state for alert
   const [error, setError] = useState(null);
@@ -187,6 +188,7 @@ export default function UpdateListingPage() {
                 rounded={true}
                 textSize="text-sm"
                 className="shadow-md shadow-bg-dark"
+                status=""
               />
             </div>
             {/* right panel  */}
@@ -337,6 +339,7 @@ export default function UpdateListingPage() {
                 rounded={true}
                 textSize="text-sm"
                 className="shadow-md shadow-bg-dark"
+                status=""
               />
             </div>
             {/* right panel  */}

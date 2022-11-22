@@ -17,6 +17,7 @@ export default function ProfileListingCard({ listing }) {
         platform={listing.platform}
         rounded={false}
         textSize="text-[0.8rem]"
+        status={listing.status}
       />
       <div className="bg-bg-medium rounded-b-lg text-center text-accent flex flex-row space-x-1.5 px-1.5 py-1.5">
         <div className="flex flex-row grow space-x-1">
