@@ -57,6 +57,14 @@ export default function ListingsViewer({ itemsPerPage, query }) {
     getData();
   }, [query]);
 
+  if (data.length === 0) {
+    return (
+      <div className=" text-text-white text-2xl pt-6 text-center">
+        No listings available.
+      </div>
+    );
+  }
+
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {
     const newOffset = (event.selected * itemsPerPage) % data.length;
