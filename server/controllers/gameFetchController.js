@@ -20,7 +20,7 @@ exports.getGames = async (req, res) => {
 };
 
 exports.getGameInfo = async (req, res) => {
-  var data = `fields id,name,first_release_date, cover.image_id, platforms.name ; where name="${req.body.input}" & total_rating != null; sort follows asc;`;
+  var data = `fields id,name,first_release_date, cover.image_id, platforms.name ; where id=${req.body.input} & total_rating != null; sort follows asc;`;
   var config = {
     method: "post",
     url: "https://api.igdb.com/v4/games",

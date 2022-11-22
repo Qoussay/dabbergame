@@ -72,7 +72,7 @@ export default function AddListingPage() {
   const searchOptions = useFetchGames(gameTitleIV);
 
   //get game details from the hook
-  const { gameInfo, done } = useFetchGameInfo(gameName);
+  const { gameInfo, done } = useFetchGameInfo(gameName.id);
 
   useEffect(() => {
     if (gameInfo) {
@@ -213,7 +213,7 @@ export default function AddListingPage() {
               <Autocomplete
                 // value={gameName}
                 onChange={(event, newValue) => {
-                  setGameName(newValue.name);
+                  setGameName(newValue);
                 }}
                 inputValue={gameTitleIV}
                 onInputChange={(event, newInputValue) => {

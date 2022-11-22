@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-export default function useFetchGameInfo(gameName) {
+export default function useFetchGameInfo(gameId) {
   const [gameInfo, setGameInfo] = useState(null);
   const [done, setDone] = useState(true);
 
@@ -9,7 +9,7 @@ export default function useFetchGameInfo(gameName) {
     async function getGameData() {
       setDone(false);
       const data = await axios
-        .post(`/api/games/${gameName}`, { input: gameName })
+        .post(`/api/games/${gameId}`, { input: gameId })
         .catch((err) => {
           console.log(err);
         });
@@ -20,10 +20,10 @@ export default function useFetchGameInfo(gameName) {
 
       setDone(true);
     }
-    if (gameName) {
+    if (gameId) {
       getGameData();
     }
-  }, [gameName]);
+  }, [gameId]);
 
   return { gameInfo: gameInfo, done: done };
 }
