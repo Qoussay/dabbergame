@@ -9,7 +9,7 @@ export default function ProfileListingCard({ listing }) {
   const navigate = useNavigate();
   return (
     <div
-      onClick={() => navigate(`/listing/${listing.id}`)}
+      onClick={() => navigate(`/listing/${listing._id}`)}
       className="flex flex-col rounded-lg h-fit hover:cursor-pointer hover:shadow-accent hover:border-accent shadow-md shadow-bg-dark"
     >
       <GameCover

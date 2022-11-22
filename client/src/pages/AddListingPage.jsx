@@ -90,7 +90,7 @@ export default function AddListingPage() {
       setListing({
         ...listing,
         user: loggedUser,
-        gameName: gameName,
+        gameName: gameName.name,
         coverURL: `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.png`,
         platform: platformChosen.name,
       });
@@ -551,6 +551,7 @@ export default function AddListingPage() {
                   passTradeGamesList={(list) => {
                     setGameTradeList(list);
                   }}
+                  initGameList={gameTradeList}
                 />
               ) : null}
             </div>

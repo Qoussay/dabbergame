@@ -136,6 +136,25 @@ export default function ListingPage() {
     }
   };
 
+  const markListingSold = async () => {
+    const res = await axios
+      .patch(`/api/listings/${listingId}`, {
+        listing: { _id: listingId, status: "sold" },
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.error);
+      });
+
+    if (res.status === 200) {
+      console.log("Listing updated successfully");
+      navigate(0);
+    } else {
+      setError("An error has occured. Listing could not be created.");
+      navigate(0);
+    }
+  };
+
   let gamesTradeSection;
   if (listing.trade) {
     gamesTradeSection = (
@@ -226,6 +245,7 @@ export default function ListingPage() {
                   />
                 }
                 className="text-sm py-1.5"
+                onClick={markListingSold}
               />
               <Button
                 text="Delete Listing"
