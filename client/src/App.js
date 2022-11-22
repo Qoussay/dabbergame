@@ -8,6 +8,7 @@ import ProfilePage from "./pages/ProfilePage";
 import UpdateListingPage from "./pages/UpdateListingPage";
 import { useState, useContext, createContext, useEffect } from "react";
 import ErrorPage from "./components/ErrorPage";
+import ListingsPage from "./pages/ListingsPage";
 
 function App() {
   const [openModal, setOpenModal] = useState(false);
@@ -49,6 +50,7 @@ function App() {
             element={<UpdateListingPage />}
           />
           <Route path="/user/:username" element={<ProfilePage />} />
+          <Route path="/listings" element={<ListingsPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

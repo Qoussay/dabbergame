@@ -23,6 +23,7 @@ exports.saveListing = (req, res) => {
 exports.getListings = (req, res) => {
   console.log("this api has been called/");
   console.log(req.params);
+  console.log(req.query);
   ListingModel.find({ status: "pending" })
     .sort({ dateCreated: "desc" })
     .exec(function (err, data) {

@@ -6,7 +6,7 @@ import {
   faRightFromBracket,
   faRightToBracket,
 } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, createSearchParams } from "react-router-dom";
 import { TextField, Autocomplete, Box } from "@mui/material";
 import { useState, useEffect } from "react";
 import axios from "axios";
@@ -32,6 +32,28 @@ export default function Navbar(props) {
       return () => clearTimeout(timer);
     }
   }, [error]);
+
+  useEffect(() => {
+    if (chosenGame) {
+      navigate({
+        pathname: "/listings",
+        search: createSearchParams({ gameName: chosenGame }).toString(),
+      });
+    }
+  }, [chosenGame]);
+
+  const handleSubmission = (event, newValue) => {
+    const setState = async () => {
+      await setChosenGame(newValue);
+    };
+
+    setState();
+
+    navigate({
+      pathname: "/listings",
+      search: createSearchParams({ gameName: chosenGame }).toString(),
+    });
+  };
 
   const searchOptions = useFetchGames(inputValue);
 

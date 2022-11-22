@@ -64,31 +64,33 @@ export default function ListingsViewer({ itemsPerPage }) {
     setItemOffset(newOffset);
   };
   return (
-    <>
+    <div>
       <Listings currentListings={currentListings} />
-      <ReactPaginate
-        breakLabel="..."
-        nextLabel={
-          <FontAwesomeIcon
-            icon={faCircleArrowRight}
-            className="text-accent text-base"
-          />
-        }
-        onPageChange={handlePageClick}
-        pageRangeDisplayed={5}
-        pageCount={pageCount}
-        previousLabel={
-          <FontAwesomeIcon
-            icon={faCircleArrowLeft}
-            className="text-accent text-base"
-          />
-        }
-        renderOnZeroPageCount={null}
-        className="flex flex-row justify-center space-x-5 text-lg"
-        pageClassName=" hover:text-xl text-text-medium"
-        activeLinkClassName="text-text-white underline decoration-solid underline-offset-4 "
-      />
-    </>
+      {pageCount === 1 ? null : (
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel={
+            <FontAwesomeIcon
+              icon={faCircleArrowRight}
+              className="text-accent text-base"
+            />
+          }
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={5}
+          pageCount={pageCount}
+          previousLabel={
+            <FontAwesomeIcon
+              icon={faCircleArrowLeft}
+              className="text-accent text-base"
+            />
+          }
+          renderOnZeroPageCount={null}
+          className="flex flex-row justify-center space-x-5 text-lg"
+          pageClassName=" hover:text-xl text-text-medium"
+          activeLinkClassName="text-text-white underline decoration-solid underline-offset-4 "
+        />
+      )}
+    </div>
   );
 }
 
