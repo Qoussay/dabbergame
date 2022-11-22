@@ -54,6 +54,16 @@ export default function UpdateListingPage() {
     }
   }, [listing, loggedUser]);
 
+  useEffect(() => {
+    setGameTradeList(listing.gamesTrade);
+
+    if (listing.trade) {
+      setTradeAccepted(true);
+    } else {
+      setTradeAccepted(false);
+    }
+  }, [pageState]);
+
   //   useEffect(() => {
   //     if (listing.user !== loggedUser) setAccessGranted(false);
   //   }, [listing]);
@@ -393,6 +403,7 @@ export default function UpdateListingPage() {
                   passTradeGamesList={(list) => {
                     setGameTradeList(list);
                   }}
+                  initGameList={gameTradeList}
                 />
               ) : null}
             </div>
