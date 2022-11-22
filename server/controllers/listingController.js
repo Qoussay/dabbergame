@@ -46,7 +46,7 @@ exports.getListingsForUser = (req, res) => {
 exports.updateListing = (req, res) => {
   const newListing = req.body.listing;
   ListingModel.findByIdAndUpdate(
-    newListing.id,
+    newListing._id,
     newListing,
     function (err, result) {
       if (!err) {
@@ -63,7 +63,6 @@ exports.getOneListing = (req, res) => {
   ListingModel.findById(listingId, function (err, data) {
     if (!err) {
       res.status(200).json(data);
-      console.log(data);
     }
   });
 };

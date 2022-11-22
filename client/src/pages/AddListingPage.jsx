@@ -10,10 +10,7 @@ import {
   CircularProgress,
   Backdrop,
   Box,
-  Select,
   MenuItem,
-  InputLabel,
-  FormControl,
 } from "@mui/material";
 import useFetchGames from "../hooks/useFetchGames";
 import useFetchGameInfo from "../hooks/useFetchGameInfo";
