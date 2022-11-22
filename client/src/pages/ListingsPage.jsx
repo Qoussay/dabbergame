@@ -1,10 +1,44 @@
 import SortAndFilter from "../components/SortAndFilter";
 import ListingsViewer from "../components/ListingsViewer";
 import { useSearchParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 export default function ListingsPage() {
   const [searchparams] = useSearchParams();
-  console.log(searchparams.get("gameName"));
+  const [query, setQuery] = useState([]);
+
+  let params = {};
+
+  for (let entry of searchparams.entries()) {
+    switch (entry[0]) {
+      case "gameName":
+        if (entry[1] !== "") {
+          params = { ...params, gameName: entry[1] };
+        }
+        break;
+      case "platform":
+        if (entry[1] !== "") {
+          params = { ...params, platform: entry[1] };
+        }
+        break;
+      case "state":
+        if (entry[1] !== "") {
+          params = { ...params, state: entry[1] };
+        }
+        break;
+      case "delivery":
+        if (entry[1] !== "") {
+          params = { ...params, state: entry[1] };
+        }
+        break;
+      case "trade":
+        if (entry[1] !== "") {
+          params = { ...params, state: entry[1] };
+        }
+        break;
+      default:
+        break;
+    }
+  }
 
   return (
     <div>
@@ -12,10 +46,7 @@ export default function ListingsPage() {
         Listings for: {searchparams.get("gameName")}
       </div>
       <SortAndFilter />
-      <ListingsViewer
-        itemsPerPage={42}
-        query={{ gameName: searchparams.get("gameName") }}
-      />
+      <ListingsViewer itemsPerPage={42} query={params} />
     </div>
   );
 }
