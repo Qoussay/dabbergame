@@ -34,7 +34,7 @@ exports.getListingsForUser = (req, res) => {
   const username = req.params.username;
   console.log(username);
   ListingModel.find({ user: username })
-    .sort({ dateCreated: "desc" })
+    .sort({ status: 1, dateCreated: -1 })
     .exec(function (err, data) {
       if (!err) {
         console.log(data);

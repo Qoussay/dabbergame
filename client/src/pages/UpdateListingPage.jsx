@@ -26,7 +26,6 @@ export default function UpdateListingPage() {
     trade: "",
     description: "",
     gamesTrade: [],
-    status: "",
   });
   //setting up the error state for alert
   const [error, setError] = useState(null);

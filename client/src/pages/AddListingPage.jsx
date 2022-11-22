@@ -47,7 +47,6 @@ export default function AddListingPage() {
     trade: "",
     description: "",
     gamesTrade: [],
-    status: "",
   });
 
   //get user
