@@ -13,6 +13,7 @@ import {
   faPenToSquare,
   faCircleCheck,
   faTrashCan,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import Pill from "../components/Pill";
 
@@ -56,6 +57,7 @@ export default function ListingPage() {
     delivery: "",
     trade: "",
     description: "",
+    status: "",
   });
 
   const [reviewsIsMore, setReviewsIsMore] = useState(false);
@@ -155,6 +157,25 @@ export default function ListingPage() {
     }
   };
 
+  const markListingUnsold = async () => {
+    const res = await axios
+      .patch(`/api/listings/${listingId}`, {
+        listing: { _id: listingId, status: "pending" },
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.error);
+      });
+
+    if (res.status === 200) {
+      console.log("Listing updated successfully");
+      navigate(0);
+    } else {
+      setError("An error has occured. Listing could not be created.");
+      navigate(0);
+    }
+  };
+
   let gamesTradeSection;
   if (listing.trade) {
     gamesTradeSection = (
@@ -234,19 +255,35 @@ export default function ListingPage() {
                   navigate(`/listing/${listingId}/update`);
                 }}
               />
-              <Button
-                text="Mark as sold"
-                bgColor="bg-text-white"
-                textColor="text-text-dark"
-                icon={
-                  <FontAwesomeIcon
-                    icon={faCircleCheck}
-                    className="text-bg-dark pr-2"
-                  />
-                }
-                className="text-sm py-1.5"
-                onClick={markListingSold}
-              />
+              {listing.status === "pending" ? (
+                <Button
+                  text="Mark as sold"
+                  bgColor="bg-text-white"
+                  textColor="text-text-dark"
+                  icon={
+                    <FontAwesomeIcon
+                      icon={faCircleCheck}
+                      className="text-bg-dark pr-2"
+                    />
+                  }
+                  className="text-sm py-1.5"
+                  onClick={markListingSold}
+                />
+              ) : (
+                <Button
+                  text="Mark as unsold"
+                  bgColor="bg-text-white"
+                  textColor="text-text-dark"
+                  icon={
+                    <FontAwesomeIcon
+                      icon={faCircleXmark}
+                      className="text-bg-dark pr-2"
+                    />
+                  }
+                  className="text-sm py-1.5"
+                  onClick={markListingUnsold}
+                />
+              )}
               <Button
                 text="Delete Listing"
                 bgColor="bg-red-400"
