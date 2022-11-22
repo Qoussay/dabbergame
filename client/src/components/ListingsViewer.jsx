@@ -37,6 +37,12 @@ export default function ListingsViewer({ itemsPerPage }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
+    const endOffset = itemOffset + itemsPerPage;
+    setCurrentListings(data.slice(itemOffset, endOffset));
+    setPageCount(Math.ceil(data.length / itemsPerPage));
+  }, [itemOffset, itemsPerPage, data]);
+
+  useEffect(() => {
     // Fetch items from another resources.
     async function getData() {
       const res = await axios.get("/api/listings").catch((err) => {
@@ -47,10 +53,7 @@ export default function ListingsViewer({ itemsPerPage }) {
     }
 
     getData();
-    const endOffset = itemOffset + itemsPerPage;
-    setCurrentListings(data.slice(itemOffset, endOffset));
-    setPageCount(Math.ceil(data.length / itemsPerPage));
-  }, [itemOffset, itemsPerPage, data]);
+  }, []);
 
   // Invoke when user click to request another page.
   const handlePageClick = (event) => {

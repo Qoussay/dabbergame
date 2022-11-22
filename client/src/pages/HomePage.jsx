@@ -10,7 +10,7 @@ export default function HomePage() {
       <SectionTitle title="Popular platforms" />
       <PopularPlatformSection />
       <SectionTitle title="Latest Listings" />
-      <div className="py-6">
+      <div className="py-6" id="listingsSection">
         <SortAndFilter />
         <ListingsViewer itemsPerPage={42} />
       </div>
