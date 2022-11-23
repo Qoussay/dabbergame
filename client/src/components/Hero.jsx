@@ -18,7 +18,6 @@ import { useState, useEffect } from "react";
 import { useNavigate, createSearchParams } from "react-router-dom";
 import useFetchGames from "../hooks/useFetchGames";
 import useFetchGameInfo from "../hooks/useFetchGameInfo";
-import axios from "axios";
 
 export default function Hero() {
   const navigate = useNavigate();
@@ -33,15 +32,6 @@ export default function Hero() {
     trade: false,
     delivery: false,
   });
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
-    setQuery({
-      ...query,
-      [name]: value,
-    });
-  };
 
   const searchOptions = useFetchGames(gameTitleIV);
 
