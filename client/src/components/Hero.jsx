@@ -229,7 +229,6 @@ export default function Hero() {
             variant="filled"
             color="primary"
             dark="true"
-            size="small"
             select
           >
             <MenuItem key="yes" value={true}>
@@ -256,7 +255,6 @@ export default function Hero() {
             variant="filled"
             color="primary"
             dark="true"
-            size="small"
             select
           >
             <MenuItem key="yes" value="yes">
