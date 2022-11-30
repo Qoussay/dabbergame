@@ -26,17 +26,15 @@ export default function ListingsPage() {
         }
         break;
       case "delivery":
-        if (entry[1] === "false") {
-          params = { ...params, delivery: false };
-        } else {
-          params = { ...params, delivery: true };
+        if (entry[1] !== "whatever" && entry[1] !== "") {
+          if (entry[1] === "false") params = { ...params, delivery: false };
+          else params = { ...params, delivery: true };
         }
         break;
       case "trade":
-        if (entry[1] === "false") {
-          params = { ...params, trade: false };
-        } else {
-          params = { ...params, trade: true };
+        if (entry[1] !== "whatever" && entry[1] !== "") {
+          if (entry[1] === "false") params = { ...params, trade: false };
+          else params = { ...params, trade: true };
         }
         break;
       default:

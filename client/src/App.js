@@ -62,3 +62,4 @@ export default App;
 
 // TO-DO:
 //   - responsive design: make the padding 80 when on mac screen but 96 when on 1920 monitor
+// dont delete from database, but archive it instead.

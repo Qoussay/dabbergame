@@ -3,8 +3,7 @@ import Button from "./Button";
 import {
   TextField,
   Autocomplete,
-  FormControlLabel,
-  Checkbox,
+  MenuItem,
   Box,
   Backdrop,
   CircularProgress,
@@ -29,8 +28,8 @@ export default function Hero() {
     gameName: "",
     platform: "",
     state: "",
-    trade: false,
-    delivery: false,
+    trade: "",
+    delivery: "",
   });
 
   const searchOptions = useFetchGames(gameTitleIV);
@@ -70,6 +69,15 @@ export default function Hero() {
     });
   };
 
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
+    setQuery({
+      ...query,
+      [name]: value,
+    });
+  };
+
   return (
     <div className="mb-16 space-y-12">
       {/* title of the hero section */}
@@ -78,46 +86,6 @@ export default function Hero() {
       </h1>
       {/* container for the form  */}
       <form className="bg-bg-light w-full rounded-lg shadow-md shadow-bg-dark flex flex-col p-10 space-y-8">
-        {/* check boxes for trading and selling  */}
-        <div className="flex flex-row space-x-8 text-text-white">
-          <FormControlLabel
-            className="w-fit"
-            control={
-              <Checkbox
-                value={query.delivery}
-                onChange={(event, newValue) => {
-                  setQuery({ ...query, delivery: newValue });
-                }}
-                sx={{
-                  color: "#E5F0F4",
-                  "&.Mui-checked": {
-                    color: "#47DDC2",
-                  },
-                }}
-              />
-            }
-            label="Delivery"
-          />
-          <FormControlLabel
-            className="w-fit"
-            control={
-              <Checkbox
-                value={query.trade}
-                onChange={(event, newValue) => {
-                  setQuery({ ...query, trade: newValue });
-                }}
-                sx={{
-                  color: "#E5F0F4",
-                  "&.Mui-checked": {
-                    color: "#47DDC2",
-                  },
-                }}
-              />
-            }
-            label="For Trade"
-          />
-        </div>
-
         {/* search fields  */}
         <div className="flex flex-row space-x-6">
           <div className="flex grow flex-row ">
@@ -151,6 +119,7 @@ export default function Hero() {
                     variant="filled"
                     color="primary"
                     dark="true"
+                    label="Platform"
                     placeholder="Platform"
                     sx={{
                       background: "#fff",
@@ -158,13 +127,6 @@ export default function Hero() {
                       borderBottomLeftRadius: "5px",
                       borderTopRightRadius: "0px",
                       borderBottomRightRadius: "0px",
-                      "& .MuiFilledInput-root": {
-                        paddingTop: 0,
-                      },
-                    }}
-                    inputProps={{
-                      ...params.inputProps,
-                      autoComplete: "new-password", // disable autocomplete and autofill
                     }}
                   />
                 )}
@@ -207,6 +169,7 @@ export default function Hero() {
                     color="primary"
                     dark="true"
                     placeholder="Search for a game"
+                    label="Game Title"
                     sx={{
                       background: "#fff",
                       borderTopLeftRadius: "0px",
@@ -214,9 +177,6 @@ export default function Hero() {
                       borderTopRightRadius: "5px",
                       borderBottomRightRadius: "5px",
                       borderLeft: "1px solid #171826",
-                      "& .MuiFilledInput-root": {
-                        paddingTop: 0,
-                      },
                     }}
                   />
                 )}
@@ -239,18 +199,76 @@ export default function Hero() {
                   variant="filled"
                   color="primary"
                   dark="true"
+                  label="Location"
                   placeholder="All Tunisia"
                   sx={{
                     background: "#fff",
                     borderRadius: "5px",
-                    "& .MuiFilledInput-root": {
-                      paddingTop: 0,
-                    },
                   }}
                 />
               )}
             />
           </div>
+        </div>
+
+        {/* trade and delivery values  */}
+        <div className="flex flex-row space-x-8 text-text-white">
+          <TextField
+            name="trade"
+            value={query.trade}
+            onChange={(e) => {
+              handleInputChange(e);
+            }}
+            sx={{
+              background: "#fff",
+              borderRadius: "5px",
+              width: "100%",
+            }}
+            type="number"
+            label="Trade"
+            variant="filled"
+            color="primary"
+            dark="true"
+            size="small"
+            select
+          >
+            <MenuItem key="yes" value={true}>
+              Yes
+            </MenuItem>
+            <MenuItem key="no" value={false}>
+              No
+            </MenuItem>
+            <MenuItem key="whatever" value="whatever">
+              I don't mind
+            </MenuItem>
+          </TextField>
+          <TextField
+            name="delivery"
+            value={query.delivery}
+            onChange={handleInputChange}
+            sx={{
+              background: "#fff",
+              borderRadius: "5px",
+              width: "100%",
+            }}
+            type="number"
+            label="Delivery"
+            variant="filled"
+            color="primary"
+            dark="true"
+            size="small"
+            select
+          >
+            <MenuItem key="yes" value="yes">
+              Yes
+            </MenuItem>
+            <MenuItem key="no" value="no">
+              No
+            </MenuItem>
+            <MenuItem key="whatever" value="whatever">
+              I don't mind
+            </MenuItem>
+          </TextField>
         </div>
         {/* submit buttons */}
         <div className="flex flex-row space-x-6 justify-center">
