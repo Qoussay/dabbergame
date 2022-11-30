@@ -72,7 +72,7 @@ export default function AddListingPage() {
   const searchOptions = useFetchGames(gameTitleIV);
 
   //get game details from the hook
-  const { gameInfo, done } = useFetchGameInfo(gameName.id);
+  const { gameInfo, done } = useFetchGameInfo(!gameName ? "" : gameName.id);
 
   useEffect(() => {
     if (gameInfo) {
