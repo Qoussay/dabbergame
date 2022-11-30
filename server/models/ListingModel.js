@@ -14,6 +14,7 @@ const listingSchema = new mongoose.Schema({
   description: String,
   gamesTrade: Array,
   status: { type: String, default: "pending" },
+  archived: { type: Boolean, default: false },
   dateCreated: {
     type: Date,
     default: Date.now,
