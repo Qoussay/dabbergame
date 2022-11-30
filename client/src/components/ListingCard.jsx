@@ -12,6 +12,7 @@ export default function ListingCard(props) {
         platform={props.data.platform}
         rounded={false}
         textSize="text-[0.8rem]"
+        status={props.data.status}
       />
       <ListingCardInfo
         user={props.data.user}

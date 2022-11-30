@@ -21,7 +21,8 @@ exports.saveListing = (req, res) => {
 };
 
 exports.getListings = (req, res) => {
-  ListingModel.find({})
+  console.log(req.query);
+  ListingModel.find({ status: "pending", ...req.query })
     .sort({ dateCreated: "desc" })
     .exec(function (err, data) {
       if (!err) {
@@ -34,7 +35,7 @@ exports.getListingsForUser = (req, res) => {
   const username = req.params.username;
   console.log(username);
   ListingModel.find({ user: username })
-    .sort({ dateCreated: "desc" })
+    .sort({ status: 1, dateCreated: -1 })
     .exec(function (err, data) {
       if (!err) {
         console.log(data);
@@ -43,13 +44,38 @@ exports.getListingsForUser = (req, res) => {
     });
 };
 
+exports.updateListing = (req, res) => {
+  const newListing = req.body.listing;
+  ListingModel.findByIdAndUpdate(
+    newListing._id,
+    newListing,
+    function (err, result) {
+      if (!err) {
+        console.log(result);
+        res.status(200).json(result);
+      }
+    }
+  );
+};
+
+exports.deleteListing = (req, res) => {
+  const listingId = req.params.id;
+  console.log(listingId);
+  ListingModel.findByIdAndDelete(listingId, function (err, result) {
+    if (!err) {
+      console.log(result);
+      console.log("Listing deleted succesfully");
+      res.status(200).json(result);
+    } else console.log("Could not delete listing");
+  });
+};
+
 exports.getOneListing = (req, res) => {
   const listingId = req.params.id;
 
   ListingModel.findById(listingId, function (err, data) {
     if (!err) {
       res.status(200).json(data);
-      console.log(data);
     }
   });
 };

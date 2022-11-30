@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 import useFetchGames from "../hooks/useFetchGames";
 import useFetchGameInfo from "../hooks/useFetchGameInfo";
 
-export default function TradeGamesPanel({ passTradeGamesList }) {
+export default function TradeGamesPanel({ passTradeGamesList, initGameList }) {
   //final gamename chosen by the user
-  const [gameList, setGameList] = useState([]);
+  const [gameList, setGameList] = useState(initGameList);
   const [gameTitleIV, setGameTitleIV] = useState("");
   const searchOptions = useFetchGames(gameTitleIV);
 
@@ -26,6 +26,7 @@ export default function TradeGamesPanel({ passTradeGamesList }) {
             console.log(newValue);
             setGameList(newValue);
           }}
+          value={gameList}
           inputValue={gameTitleIV}
           onInputChange={(event, newInputValue) => {
             setGameTitleIV(newInputValue);
@@ -74,7 +75,7 @@ export default function TradeGamesPanel({ passTradeGamesList }) {
         />
       </div>
 
-      <div className="grid grid-cols-6 gap-4">
+      <div className="grid laptop:grid-cols-6 desktop:grid-cols-5 gap-4">
         {gameList.map((game) => {
           return (
             <img

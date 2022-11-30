@@ -13,6 +13,7 @@ const listingSchema = new mongoose.Schema({
   trade: Boolean,
   description: String,
   gamesTrade: Array,
+  status: { type: String, default: "pending" },
   dateCreated: {
     type: Date,
     default: Date.now,

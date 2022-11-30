@@ -1,39 +1,18 @@
-import { useContext, useEffect, useState } from "react";
-import Button from "../components/Button";
-import GameCover from "../components/GameCover";
-import TradeGamesPanel from "../components/TradeGamesPanel";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import axios from "axios";
+import GameCover from "../components/GameCover";
+import ErrorPage from "../components/ErrorPage";
 import states from "../mock/states.json";
-import {
-  Autocomplete,
-  TextField,
-  CircularProgress,
-  Backdrop,
-  Box,
-  MenuItem,
-} from "@mui/material";
-import useFetchGames from "../hooks/useFetchGames";
-import useFetchGameInfo from "../hooks/useFetchGameInfo";
+import Button from "../components/Button";
+import { Autocomplete, TextField, MenuItem } from "@mui/material";
 import { useUserContext } from "../context/LoggedUserContext";
-import { useNavigate } from "react-router-dom";
+import TradeGamesPanel from "../components/TradeGamesPanel";
 import CustomAlert from "../components/CustomAlert";
-
-export default function AddListingPage() {
-  const navigate = useNavigate();
-
-  //setting up the error state for alert
-  const [error, setError] = useState(null);
-
-  // this state will keep track of the page state
-  const [pageState, setPageState] = useState(0);
-
-  // input Values
-  const [gameTitleIV, setGameTitleIV] = useState("");
-  const [platformOptions, setPlatformOptions] = useState([]);
-  const [platformChosen, setPlatformChosen] = useState("");
-  const [platformInput, setPlatformInput] = useState("");
+export default function UpdateListingPage() {
+  const [pageState, setPageState] = useState(1);
+  const { listingId } = useParams();
   const [gameTradeList, setGameTradeList] = useState([]);
-  // the rest of the values
   const [listing, setListing] = useState({
     user: "",
     state: "",
@@ -48,54 +27,50 @@ export default function AddListingPage() {
     description: "",
     gamesTrade: [],
   });
-
-  //get user
+  //setting up the error state for alert
+  const [error, setError] = useState(null);
+  const [tradeAccepted, setTradeAccepted] = useState(false);
+  const [accessGranted, setAccessGranted] = useState(true);
+  const navigate = useNavigate();
   const { loggedUser } = useUserContext();
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
+  useEffect(() => {
+    async function getData() {
+      const res = await axios.get(`/api/listings/${listingId}`).catch((err) => {
+        console.log(err);
+      });
 
-    setListing({
-      ...listing,
-      [name]: value,
-    });
-  };
+      setListing(res.data);
+    }
 
-  //final gamename chosen by the user
-  const [gameName, setGameName] = useState("");
-
-  //final object that will be passed to the backend to be saved in the database
-
-  const [tradeAccepted, setTradeAccepted] = useState(false);
-
-  //these are the search options that will be displayed while the user is typing
-  const searchOptions = useFetchGames(gameTitleIV);
-
-  //get game details from the hook
-  const { gameInfo, done } = useFetchGameInfo(gameName.id);
+    getData();
+  }, [listingId]);
 
   useEffect(() => {
-    if (gameInfo) {
-      setPlatformOptions(gameInfo.platforms);
-      console.log(gameInfo);
+    if (listing.user !== loggedUser || !loggedUser) {
+      setAccessGranted(false);
+    } else {
+      setAccessGranted(true);
     }
-  }, [gameInfo]);
+  }, [listing, loggedUser]);
+
+  useEffect(() => {
+    setGameTradeList(listing.gamesTrade);
+
+    if (listing.trade) {
+      setTradeAccepted(true);
+    } else {
+      setTradeAccepted(false);
+    }
+  }, [pageState]);
+
+  //   useEffect(() => {
+  //     if (listing.user !== loggedUser) setAccessGranted(false);
+  //   }, [listing]);
 
   useEffect(() => {
     setListing({ ...listing, gamesTrade: gameTradeList });
   }, [gameTradeList]);
-
-  useEffect(() => {
-    if (gameName && platformChosen) {
-      setListing({
-        ...listing,
-        user: loggedUser,
-        gameName: gameName.name,
-        coverURL: `https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.png`,
-        platform: platformChosen.name,
-      });
-    }
-  }, [gameName, platformChosen]);
 
   useEffect(() => {
     if (error) {
@@ -104,19 +79,26 @@ export default function AddListingPage() {
     }
   }, [error]);
 
+  const handleNextBtn = () => {
+    if (validateInput()) setPageState(pageState + 1);
+  };
+
+  const handleBackBtn = () => {
+    setPageState(pageState - 1);
+  };
+
+  const handleTradeChange = (value) => {
+    if (value) {
+      setTradeAccepted(true);
+      return;
+    } else {
+      setTradeAccepted(false);
+      return;
+    }
+  };
+
   const validateInput = () => {
     switch (pageState) {
-      case 0:
-        if (!gameName) {
-          setError("You must choose a game.");
-          return false;
-        }
-        if (!platformChosen) {
-          setError("You must choose a platform.");
-          return false;
-        } else {
-          return true;
-        }
       case 1:
         if (!listing.condition) {
           setError("You must choose a condition.");
@@ -162,36 +144,27 @@ export default function AddListingPage() {
     }
   };
 
-  const handleNextBtn = () => {
-    if (validateInput()) setPageState(pageState + 1);
-  };
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
 
-  const handleBackBtn = () => {
-    setPageState(pageState - 1);
-  };
-
-  const handleTradeChange = (value) => {
-    if (value) {
-      setTradeAccepted(true);
-      return;
-    } else {
-      setTradeAccepted(false);
-      return;
-    }
+    setListing({
+      ...listing,
+      [name]: value,
+    });
   };
 
   const handleSubmission = async () => {
     if (validateInput()) {
       const res = await axios
-        .post("/api/listings", { listing: listing })
+        .patch(`/api/listings/${listingId}`, { listing: listing })
         .catch((err) => {
           console.log(err);
           setError(err.response.data.error);
         });
 
       if (res.status === 200) {
-        console.log("Listing created successfully");
-        navigate("/");
+        console.log("Listing updated successfully");
+        navigate(`/listing/${listingId}`);
       } else {
         setError("An error has occured. Listing could not be created.");
         navigate(0);
@@ -202,119 +175,6 @@ export default function AddListingPage() {
   let formStage = null;
 
   switch (pageState) {
-    case 0:
-      formStage = (
-        <div className="flex flex-col">
-          <div className="text-text-white text-lg pb-4">
-            Choose a game and select the corresponding platform
-          </div>
-          <form className="flex flex-row space-x-4">
-            <div className="w-2/3">
-              <Autocomplete
-                // value={gameName}
-                onChange={(event, newValue) => {
-                  setGameName(newValue);
-                }}
-                inputValue={gameTitleIV}
-                onInputChange={(event, newInputValue) => {
-                  setGameTitleIV(newInputValue);
-                }}
-                className="grow pt-1"
-                disablePortal
-                options={searchOptions}
-                getOptionLabel={(option) => option.name}
-                renderOption={(props, option) => (
-                  <Box
-                    component="li"
-                    sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                    {...props}
-                  >
-                    <img
-                      // loading="lazy"
-                      width="40"
-                      src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${option.cover.image_id}.png`}
-                      alt=""
-                    />
-                    {option.name} (
-                    {new Date(option.first_release_date * 1000).getFullYear()})
-                  </Box>
-                )}
-                renderInput={(params) => (
-                  <TextField
-                    {...params}
-                    variant="filled"
-                    color="primary"
-                    dark="true"
-                    placeholder="Search for a game"
-                    sx={{
-                      background: "#fff",
-                      borderRadius: "5px",
-                      "& .MuiFilledInput-root": {
-                        paddingTop: 0,
-                      },
-                    }}
-                  />
-                )}
-              />
-            </div>
-
-            <Autocomplete
-              // value={platformChosen ? platformChosen.name : null}
-              onChange={(event, newValue) => {
-                setPlatformChosen(newValue);
-              }}
-              inputValue={platformInput}
-              onInputChange={(event, newInputValue) => {
-                setPlatformInput(newInputValue);
-              }}
-              disablePortal
-              className="grow pt-1"
-              autoHighlight
-              options={platformOptions}
-              getOptionLabel={(option) => option.name}
-              renderOption={(props, option) => (
-                <Box
-                  component="li"
-                  sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
-                  {...props}
-                >
-                  {option.name}
-                </Box>
-              )}
-              renderInput={(params) => (
-                <TextField
-                  {...params}
-                  variant="filled"
-                  color="primary"
-                  dark="true"
-                  placeholder="Platform"
-                  sx={{
-                    background: "#fff",
-                    borderRadius: "5px",
-                    "& .MuiFilledInput-root": {
-                      paddingTop: 0,
-                    },
-                  }}
-                  inputProps={{
-                    ...params.inputProps,
-                    autoComplete: "new-password", // disable autocomplete and autofill
-                  }}
-                />
-              )}
-            />
-          </form>
-          <div className="flex flex-row justify-end pt-10">
-            <Button
-              text="Next"
-              bgColor="bg-accent"
-              textColor="text-text-dark"
-              className="text-base py-1.5 px-6"
-              onClick={handleNextBtn}
-            />
-          </div>
-        </div>
-      );
-      break;
     case 1:
       formStage = (
         <div className="flex flex-col">
@@ -322,8 +182,8 @@ export default function AddListingPage() {
             {/* left panel for image  */}
             <div className="w-1/4">
               <GameCover
-                url={`https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.png`}
-                platform={platformChosen.name}
+                url={listing.coverURL}
+                platform={listing.platform}
                 rounded={true}
                 textSize="text-sm"
                 className="shadow-md shadow-bg-dark"
@@ -454,15 +314,7 @@ export default function AddListingPage() {
               </div>
             </div>
           </div>
-          <div className="flex flex-row pt-10">
-            <Button
-              text="Back"
-              bgColor="bg-text-white"
-              textColor="text-bg-dark"
-              className="text-base py-1.5 px-6"
-              onClick={handleBackBtn}
-            />
-            <div className="grow"></div>
+          <div className="flex flex-row pt-10 justify-end">
             <Button
               text="Next"
               bgColor="bg-accent"
@@ -481,11 +333,11 @@ export default function AddListingPage() {
             {/* left panel for image  */}
             <div className="w-1/4 ">
               <GameCover
-                url={`https://images.igdb.com/igdb/image/upload/t_cover_big/${gameInfo.cover.image_id}.png`}
-                platform={platformChosen.name}
+                url={listing.coverURL}
+                platform={listing.platform}
                 rounded={true}
                 textSize="text-sm"
-                className=" shadow-md shadow-bg-dark"
+                className="shadow-md shadow-bg-dark"
                 status=""
               />
             </div>
@@ -582,26 +434,14 @@ export default function AddListingPage() {
       formStage = null;
       break;
   }
+
+  if (!accessGranted) return <ErrorPage />;
   return (
     <div>
-      {/* <div className="text-text-white text-3xl">
-        What game would you like to sell ?
-      </div> */}
       <div className=" bg-bg-light rounded-lg shadow-md shadow-bg-dark flex flex-col space-y-6 p-10 mt-10">
         {formStage}
       </div>
-      <div className="mt-20">
-        <Backdrop
-          sx={{
-            color: "#fff",
-            zIndex: (theme) => theme.zIndex.drawer + 1,
-          }}
-          open={!done}
-        >
-          <CircularProgress color="inherit" />
-        </Backdrop>
-        <CustomAlert type="error" message={error} fixed={true} timed={true} />
-      </div>
+      <CustomAlert type="error" message={error} fixed={true} timed={true} />
     </div>
   );
 }

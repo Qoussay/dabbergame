@@ -12,6 +12,8 @@ import {
   faTruck,
   faPenToSquare,
   faCircleCheck,
+  faTrashCan,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import Pill from "../components/Pill";
 
@@ -55,10 +57,14 @@ export default function ListingPage() {
     delivery: "",
     trade: "",
     description: "",
+    status: "",
+    dateCreated: "",
   });
 
   const [reviewsIsMore, setReviewsIsMore] = useState(false);
   const [showingReviews, setShowingReviews] = useState([]);
+
+  const [userInfo, setUserInfo] = useState({ dateJoined: "" });
 
   // const userReviews = reviews.filter(
   //   (review) => review.target === listing.user
@@ -84,6 +90,12 @@ export default function ListingPage() {
         .catch((err) => {
           console.log(err);
         });
+
+      const res2 = await axios.get(`/api/user/${listing.user}`).catch((err) => {
+        console.log(err);
+      });
+
+      setUserInfo(res2.data);
 
       setUserReviews(res.data);
     }
@@ -119,6 +131,58 @@ export default function ListingPage() {
   const handleReviewModalClose = () => {
     setOpenReviewModal(false);
     document.body.style.overflow = "auto";
+  };
+
+  const deleteListing = async () => {
+    const res = await axios
+      .delete(`/api/listings/${listingId}`)
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.error);
+      });
+
+    if (res.status === 200) {
+      console.log("Listing deleted successfully");
+      navigate(`/`);
+    }
+  };
+
+  const markListingSold = async () => {
+    const res = await axios
+      .patch(`/api/listings/${listingId}`, {
+        listing: { _id: listingId, status: "sold" },
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.error);
+      });
+
+    if (res.status === 200) {
+      console.log("Listing updated successfully");
+      navigate(0);
+    } else {
+      setError("An error has occured. Listing could not be created.");
+      navigate(0);
+    }
+  };
+
+  const markListingUnsold = async () => {
+    const res = await axios
+      .patch(`/api/listings/${listingId}`, {
+        listing: { _id: listingId, status: "pending" },
+      })
+      .catch((err) => {
+        console.log(err);
+        setError(err.response.data.error);
+      });
+
+    if (res.status === 200) {
+      console.log("Listing updated successfully");
+      navigate(0);
+    } else {
+      setError("An error has occured. Listing could not be created.");
+      navigate(0);
+    }
   };
 
   let gamesTradeSection;
@@ -161,6 +225,7 @@ export default function ListingPage() {
             rounded={true}
             textSize="text-base"
             className="shadow-md shadow-bg-dark"
+            status={listing.status}
           />
           {/* Profile Section  */}
           {/* Fetch data of user from userId from the listing data  */}
@@ -179,7 +244,9 @@ export default function ListingPage() {
                 {listing.user}
               </div>
               <UserReviewsScore userReviews={userReviews} />
-              <div className=" text-text-medium text-sm">Date User Joined</div>
+              <div className=" text-text-medium text-sm">
+                Joined since {userInfo.dateJoined.substring(0, 10)}
+              </div>
             </div>
           </div>
           {/* Buttons for messaging user and for reporting  */}
@@ -196,18 +263,51 @@ export default function ListingPage() {
                   />
                 }
                 className="text-sm py-1.5"
+                onClick={() => {
+                  navigate(`/listing/${listingId}/update`);
+                }}
               />
+              {listing.status === "pending" ? (
+                <Button
+                  text="Mark as sold"
+                  bgColor="bg-text-white"
+                  textColor="text-text-dark"
+                  icon={
+                    <FontAwesomeIcon
+                      icon={faCircleCheck}
+                      className="text-bg-dark pr-2"
+                    />
+                  }
+                  className="text-sm py-1.5"
+                  onClick={markListingSold}
+                />
+              ) : (
+                <Button
+                  text="Mark as unsold"
+                  bgColor="bg-text-white"
+                  textColor="text-text-dark"
+                  icon={
+                    <FontAwesomeIcon
+                      icon={faCircleXmark}
+                      className="text-bg-dark pr-2"
+                    />
+                  }
+                  className="text-sm py-1.5"
+                  onClick={markListingUnsold}
+                />
+              )}
               <Button
-                text="Mark as sold"
-                bgColor="bg-text-white"
-                textColor="text-text-dark"
+                text="Delete Listing"
+                bgColor="bg-red-400"
+                textColor="text-bg-dark"
                 icon={
                   <FontAwesomeIcon
-                    icon={faCircleCheck}
+                    icon={faTrashCan}
                     className="text-bg-dark pr-2"
                   />
                 }
                 className="text-sm py-1.5"
+                onClick={deleteListing}
               />
             </div>
           ) : (
@@ -291,7 +391,7 @@ export default function ListingPage() {
                 <div className="flex flex-col grow text-right">
                   <div className="text-text-white">{listing.state}</div>
                   <div className="text-sm text-text-light">
-                    Date listing added
+                    Created in {listing.dateCreated.substring(0, 10)}
                   </div>
                 </div>
               </div>

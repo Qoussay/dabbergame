@@ -1,21 +1,17 @@
-import { Autocomplete, TextField } from "@mui/material";
-export default function SortAndFilter({ className }) {
-  const sortOptions = [
-    { value: "option1", label: "option1" },
-    { value: "option2", label: "option2" },
-    { value: "option3", label: "option3" },
-    { value: "option4", label: "option4" },
-    { value: "option5", label: "option5" },
-  ];
+import { Autocomplete, TextField, Box } from "@mui/material";
+import platforms from "../mock/platforms.json";
+import states from "../mock/states.json";
+export default function SortAndFilter({ className, listingId }) {
   return (
     <form className={`flex flex-row space-x-5 ${className} place-items-center`}>
       <Autocomplete
         className="w-1/5"
         disablePortal
-        options={sortOptions}
+        options={[]}
         renderInput={(params) => (
           <TextField
             {...params}
+            disabled
             variant="filled"
             color="primary"
             dark="true"
@@ -36,7 +32,17 @@ export default function SortAndFilter({ className }) {
       <Autocomplete
         className="w-1/5"
         disablePortal
-        options={sortOptions}
+        options={platforms}
+        getOptionLabel={(option) => option.name}
+        renderOption={(props, option) => (
+          <Box
+            component="li"
+            sx={{ "& > img": { mr: 2, flexShrink: 0 } }}
+            {...props}
+          >
+            {option.name}
+          </Box>
+        )}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -58,7 +64,7 @@ export default function SortAndFilter({ className }) {
       <Autocomplete
         className="w-1/5"
         disablePortal
-        options={sortOptions}
+        options={states}
         renderInput={(params) => (
           <TextField
             {...params}
@@ -80,7 +86,7 @@ export default function SortAndFilter({ className }) {
       <Autocomplete
         className="w-1/5"
         disablePortal
-        options={sortOptions}
+        options={["New", "Used"]}
         renderInput={(params) => (
           <TextField
             {...params}
