@@ -1,11 +1,11 @@
 [
     {
-        "name": "Playstation 5",
+        "name": "PlayStation 5",
         "image": "/platformLogos/ps5_logo.png",
         "color": "bg-white"
     },
     {
-        "name": "Playstation 4",
+        "name": "PlayStation 4",
         "image": "/platformLogos/ps4Logo.png",
         "color": "bg-blue-700"
     },
@@ -15,7 +15,7 @@
         "color": "bg-green-500"
     },
     {
-        "name": "Xbox Series X",
+        "name": "Xbox Series X|S",
         "image": "/platformLogos/xboxSeriesXLogo.png",
         "color": "bg-green-500"
     },

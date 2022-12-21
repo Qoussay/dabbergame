@@ -8,7 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //get the url of the mongo database
-const mongo_url = "mongodb://localhost:27017/dabbergame";
+const mongo_url =
+  "mongodb+srv://admin-q:BTtroz35ETErDOp2@cluster0.y18nt.mongodb.net/dabbergame?retryWrites=true&w=majority";
 
 //connect to the database through mongoose.connect
 mongoose

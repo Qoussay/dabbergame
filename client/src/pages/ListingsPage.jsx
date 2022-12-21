@@ -46,9 +46,7 @@ export default function ListingsPage() {
 
   return (
     <div>
-      <div className=" text-text-white text-3xl pb-6">
-        Listings for: {searchparams.get("gameName")}
-      </div>
+      <div className=" text-text-white text-3xl pb-6">Listing found:</div>
       <SortAndFilter />
       <ListingsViewer itemsPerPage={42} query={params} />
     </div>

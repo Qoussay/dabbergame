@@ -21,7 +21,6 @@ exports.saveListing = (req, res) => {
 };
 
 exports.getListings = (req, res) => {
-  console.log(req.query);
   ListingModel.find({ status: "pending", archived: false, ...req.query })
     .sort({ dateCreated: "desc" })
     .exec(function (err, data) {
