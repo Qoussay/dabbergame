@@ -1,4 +1,23 @@
 {
+  "name": "dabbergame2",
+  "description": "This is a web application implemented using the MERN stack. It is an online marketplace for trading, selling or buying video games.",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Qoussay/dabbergame.git"
+  },
+  "author": "Qoussay El Akkari",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Qoussay/dabbergame/issues"
+  },
+  "homepage": "https://github.com/Qoussay/dabbergame#readme",
   "dependencies": {
     "dotenv": "^16.0.3"
   }
