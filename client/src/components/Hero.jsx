@@ -58,9 +58,9 @@ export default function Hero() {
     }
   }, [chosenGame, platformChosen]);
 
-  useEffect(() => {
-    console.log(query);
-  }, [query]);
+  // useEffect(() => {
+  //   console.log(query);
+  // }, [query]);
 
   const handleSubmission = async () => {
     navigate({

@@ -21,7 +21,7 @@ export default function ReviewModal({
 
   const validateInput = () => {
     if (score === 0) {
-      setError("You must enter a score.");
+      setError("Please rate the user.");
       return false;
     }
     if (!body) {
