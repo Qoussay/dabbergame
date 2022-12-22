@@ -16,6 +16,7 @@ exports.signup = async (req, res) => {
       dateOfBirth: user.dateOfBirth,
       state: user.state,
       username: user.username,
+      phoneNumber: user.phoneNumber,
       email: user.email,
       salt: salt,
       hash: hash,

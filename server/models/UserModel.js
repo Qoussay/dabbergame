@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   email: { type: String, unique: true },
   salt: String,
   hash: String,
+  phoneNumber: String,
   dateJoined: {
     type: Date,
     default: Date.now,

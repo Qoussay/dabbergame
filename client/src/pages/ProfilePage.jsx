@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import reviews from "../mock/reviews.json";
 import { useNavigate, useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faPhone } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 export default function ProfilePage() {
@@ -85,6 +85,13 @@ export default function ProfilePage() {
             <UserReviewsScore userReviews={userReviews} />
           </div>
           <div className="flex flex-col space-y-1">
+            <div className=" text-text-light desktop:text-lg laptop:text-base">
+              <FontAwesomeIcon
+                icon={faPhone}
+                className="text-text-light pr-2"
+              />
+              {user.phoneNumber}
+            </div>
             <div className=" text-text-light desktop:text-lg laptop:text-base">
               <FontAwesomeIcon
                 icon={faLocationDot}

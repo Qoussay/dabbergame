@@ -14,6 +14,7 @@ import {
   faCircleCheck,
   faTrashCan,
   faCircleXmark,
+  faPhone,
 } from "@fortawesome/free-solid-svg-icons";
 import Pill from "../components/Pill";
 
@@ -64,7 +65,7 @@ export default function ListingPage() {
   const [reviewsIsMore, setReviewsIsMore] = useState(false);
   const [showingReviews, setShowingReviews] = useState([]);
 
-  const [userInfo, setUserInfo] = useState({ dateJoined: "" });
+  const [userInfo, setUserInfo] = useState({ dateJoined: "", phoneNumber: "" });
 
   // const userReviews = reviews.filter(
   //   (review) => review.target === listing.user
@@ -311,32 +312,14 @@ export default function ListingPage() {
               />
             </div>
           ) : (
-            <div className="flex flex-col space-y-3">
-              <Button
-                text="Contact The Seller"
-                bgColor="bg-accent"
-                textColor="text-text-dark"
-                icon={
-                  <FontAwesomeIcon
-                    icon={faMessage}
-                    className="text-bg-dark pr-2"
-                  />
-                }
-                className="text-sm py-1.5"
-              />
-              <Button
-                text="Report Listing"
-                bgColor="bg-red-400"
-                textColor="text-bg-dark"
-                icon={
-                  <FontAwesomeIcon
-                    icon={faFlag}
-                    className="text-bg-dark pr-2"
-                  />
-                }
-                className="text-sm py-1.5"
-              />
-            </div>
+            <Pill
+              bgColor="bg-text-white"
+              text={userInfo.phoneNumber}
+              icon={
+                <FontAwesomeIcon icon={faPhone} className="text-bg-dark pr-2" />
+              }
+              className="py-1.5 px-5 text-center"
+            />
           )}
         </div>
         {/* RIght Panel  */}

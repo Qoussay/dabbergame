@@ -18,6 +18,7 @@ export default function RegistrationForm({ onClick }) {
     email: "",
     username: "",
     password: "",
+    phoneNumber: "",
     dateOfBirth: null,
     state: "",
   });
@@ -68,6 +69,16 @@ export default function RegistrationForm({ onClick }) {
       setSigningUp(false);
       return false;
     }
+    if (!values.phoneNumber) {
+      setError("You must enter a phoneNumber.");
+      setSigningUp(false);
+      return false;
+    }
+    if (values.phoneNumber.length !== 8) {
+      setError("You must enter a valid phone number.");
+      setSigningUp(false);
+      return false;
+    }
     if (!values.password) {
       setError("You must enter a password.");
       setSigningUp(false);
@@ -83,6 +94,10 @@ export default function RegistrationForm({ onClick }) {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+
+    if (name === "phoneNumber") {
+      if (isNaN(value)) return;
+    }
 
     setValues({
       ...values,
@@ -199,6 +214,20 @@ export default function RegistrationForm({ onClick }) {
               }}
             />
           )}
+        />
+        <TextField
+          name="phoneNumber"
+          value={values.phoneNumber}
+          onChange={handleInputChange}
+          sx={{
+            background: "#fff",
+            borderRadius: "5px",
+          }}
+          label="Phone Number"
+          variant="filled"
+          color="primary"
+          dark="true"
+          size="small"
         />
         <TextField
           name="username"
