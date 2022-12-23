@@ -10,7 +10,7 @@ export default function ProfileListingsPanel({ listings }) {
   }
   return (
     <div className="flex flex-col space-y-4">
-      <div className="flex flex-row">
+      {/* <div className="flex flex-row">
         <SortAndFilter className="grow text-sm" />
         <form className="flex flex-col justify-center">
           <input
@@ -19,7 +19,7 @@ export default function ProfileListingsPanel({ listings }) {
             placeholder="Search for a game"
           />
         </form>
-      </div>
+      </div> */}
       <div className="grid desktop:grid-cols-6 laptop:grid-cols-5 gap-4">
         {listings.map((listing) => {
           return <ProfileListingCard listing={listing} />;
