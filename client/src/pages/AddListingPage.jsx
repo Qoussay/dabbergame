@@ -32,6 +32,14 @@ export default function AddListingPage() {
   const [platformOptions, setPlatformOptions] = useState([]);
   const [platformChosen, setPlatformChosen] = useState("");
   const [platformInput, setPlatformInput] = useState("");
+  const [gameName, setGameName] = useState("");
+
+  //these are the search options that will be displayed while the user is typing
+  const searchOptions = useFetchGames(gameTitleIV);
+
+  //get game details from the hook
+  const { gameInfo, done } = useFetchGameInfo(!gameName ? "" : gameName.id);
+
   const [gameTradeList, setGameTradeList] = useState([]);
   // the rest of the values
   const [listing, setListing] = useState({
@@ -61,18 +69,9 @@ export default function AddListingPage() {
     });
   };
 
-  //final gamename chosen by the user
-  const [gameName, setGameName] = useState("");
-
   //final object that will be passed to the backend to be saved in the database
 
   const [tradeAccepted, setTradeAccepted] = useState(false);
-
-  //these are the search options that will be displayed while the user is typing
-  const searchOptions = useFetchGames(gameTitleIV);
-
-  //get game details from the hook
-  const { gameInfo, done } = useFetchGameInfo(!gameName ? "" : gameName.id);
 
   useEffect(() => {
     if (gameInfo) {

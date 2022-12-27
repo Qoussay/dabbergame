@@ -9,28 +9,12 @@ export default function useFetchGames(searchString) {
       setGameSearch(data);
     }
     if (searchString) {
-      //   setGameSearch(["Searching ..."]);
-      //   try {
-      //     getData();
-      //   } catch {
-      //     setGameSearch(["Try again please."]);
-      //   }
       getData();
     }
   }, [searchString]);
 
   return gameSearch;
 }
-
-const generateSearchOptions = (array) =>
-  array.map(
-    (item) => item.name
-    // `${item.name} (${
-    //   item.first_release_date
-    //     ? new Date(item.first_release_date * 1000).getFullYear()
-    //     : "#"
-    // })`
-  );
 
 async function fetchData(searchString) {
   const res = await axios

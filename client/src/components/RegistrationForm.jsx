@@ -107,10 +107,6 @@ export default function RegistrationForm({ onClick }) {
 
   const registerUser = async () => {
     const res = await axios.post("/api/signup", values).catch((err) => {
-      // console.log(err);
-      // setError(err.response.data.message);
-      // setSigningUp(false);
-      // return;
       console.log("res status is 400");
       setError("Username or email is already in use.");
       setSigningUp(false);

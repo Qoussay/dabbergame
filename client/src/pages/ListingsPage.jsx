@@ -2,6 +2,7 @@ import SortAndFilter from "../components/SortAndFilter";
 import ListingsViewer from "../components/ListingsViewer";
 import { useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
+import SectionTitle from "../components/SectionTitle";
 export default function ListingsPage() {
   const [searchparams] = useSearchParams();
   const [query, setQuery] = useState([]);
@@ -41,13 +42,10 @@ export default function ListingsPage() {
         break;
     }
   }
-
-  console.log(params);
-
   return (
     <div>
-      <div className=" text-text-white text-3xl pb-6">Listing found:</div>
-      <SortAndFilter />
+      {/* <div className=" text-text-white text-3xl pb-6">Listings found:</div> */}
+      <SectionTitle title="Listings found" />
       <ListingsViewer itemsPerPage={42} query={params} />
     </div>
   );
